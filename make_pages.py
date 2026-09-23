@@ -1,29 +1,32 @@
-<!DOCTYPE html>
+import re
+
+def create_page(filename, title, hero_title, hero_desc):
+    html = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy | Caspian & Sun Food Trading LLC</title>
+  <title>{title} | Caspian & Sun Food Trading LLC</title>
   <link rel="icon" type="image/png" href="images/logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Alex+Brush&display=swap" rel="stylesheet">
   <link href="components.css" rel="stylesheet">
   <style>
-    :root {
+    :root {{
       --deep-teal: #1E4951;
       --rich-gold: #D7BB51;
       --charcoal: #171813;
       --cream: #fcfaf8;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
+    }}
+    * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+    body {{
       font-family: 'Manrope', sans-serif;
       color: var(--charcoal);
       background-color: var(--cream);
       line-height: 1.6;
-    }
+    }}
     
     /* HERO */
-    .hero {
+    .hero {{
       position: relative;
       height: 45vh;
       min-height: 300px;
@@ -34,21 +37,21 @@
       padding: clamp(1.5rem, 4vw, 3.5rem);
       color: #fff;
       text-align: center;
-    }
-    .hero-inner { max-width: 800px; margin: 0 auto; margin-top: 60px; }
-    .hero h1 {
+    }}
+    .hero-inner {{ max-width: 800px; margin: 0 auto; margin-top: 60px; }}
+    .hero h1 {{
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.4rem, 5vw, 4rem);
       font-weight: 500;
       margin-bottom: 0.5rem;
-    }
-    .hero p {
+    }}
+    .hero p {{
       font-size: clamp(0.9rem, 1.5vw, 1.1rem);
       color: rgba(255,255,255,0.85);
-    }
+    }}
 
     /* CONTENT SECTION */
-    .page-content {
+    .page-content {{
       max-width: 900px;
       margin: 0 auto;
       padding: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 5vw, 3rem);
@@ -58,30 +61,30 @@
       transform: translateY(-40px);
       position: relative;
       z-index: 10;
-    }
-    .page-content h2 {
+    }}
+    .page-content h2 {{
       font-family: 'Playfair Display', serif;
       font-size: 29px;
       font-weight: 500;
       color: var(--charcoal);
       margin-top: 2.5rem;
       margin-bottom: 1rem;
-    }
-    .page-content h2:first-child { margin-top: 0; }
-    .page-content p {
+    }}
+    .page-content h2:first-child {{ margin-top: 0; }}
+    .page-content p {{
       font-size: 16px;
       color: rgb(90, 90, 86);
       line-height: 27px;
       margin-bottom: 1.5rem;
-    }
-    .page-content ul {
+    }}
+    .page-content ul {{
       margin-bottom: 1.5rem;
       padding-left: 1.5rem;
       color: rgb(90, 90, 86);
       font-size: 16px;
       line-height: 27px;
-    }
-    .page-content li { margin-bottom: 0.5rem; }
+    }}
+    .page-content li {{ margin-bottom: 0.5rem; }}
   </style>
 </head>
 <body>
@@ -90,8 +93,8 @@
 
   <section class="hero">
     <div class="hero-inner">
-      <h1>Privacy Policy</h1>
-      <p>Learn how we collect, use, and protect your information.</p>
+      <h1>{hero_title}</h1>
+      <p>{hero_desc}</p>
     </div>
   </section>
 
@@ -121,4 +124,10 @@
 
   <script src="components.js"></script>
 </body>
-</html>
+</html>'''
+    
+    with open(filename, 'w', encoding='utf-8') as f:
+        f.write(html)
+
+create_page('privacy-policy.html', 'Privacy Policy', 'Privacy Policy', 'Learn how we collect, use, and protect your information.')
+create_page('terms.html', 'Terms of Use', 'Terms of Use', 'Read the terms and conditions governing the use of our services.')
