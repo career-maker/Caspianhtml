@@ -42,22 +42,33 @@ function initHeaderScroll() {
   var hero = document.querySelector('.hero');
   if(!header) return;
   
+  var forceSticky = document.body.classList.contains('force-sticky-header');
+  if (forceSticky) {
+    header.classList.add('scrolled');
+  }
+  
   var lastY = window.scrollY;
   function onScroll() {
     var y = window.scrollY;
     var threshold = hero ? hero.offsetHeight - 80 : 200;
-    if (y > threshold) {
-      header.classList.add('scrolled');
-      if (y > lastY + 4) { header.classList.add('hide'); }
-      else if (y < lastY - 4) { header.classList.remove('hide'); }
+    
+    if (forceSticky) {
+       header.classList.add('scrolled');
+       if (y > lastY + 4 && y > 100) { header.classList.add('hide'); }
+       else if (y < lastY - 4) { header.classList.remove('hide'); }
     } else {
-      header.classList.remove('scrolled');
-      header.classList.remove('hide');
+      if (y > threshold) {
+        header.classList.add('scrolled');
+        if (y > lastY + 4) { header.classList.add('hide'); }
+        else if (y < lastY - 4) { header.classList.remove('hide'); }
+      } else {
+        header.classList.remove('scrolled');
+        header.classList.remove('hide');
+      }
     }
-    lastY = y < 0 ? 0 : y;
+    lastY = y;
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
+  window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
 }
 
