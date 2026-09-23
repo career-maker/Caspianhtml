@@ -14,13 +14,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         footerPlaceholder.innerHTML = footerHtml;
     }
 
+  } catch (err) {
+    console.error("Failed to load components", err);
+  } finally {
     initActiveLinks();
     initHeaderScroll();
     initHamburger();
     initFooterAccordion();
     initReveal();
-  } catch (err) {
-    console.error("Failed to load components", err);
   }
 });
 
