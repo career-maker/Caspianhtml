@@ -43,29 +43,12 @@ img{max-width:100%;display:block;}
 .search-box input:focus{outline:none;border-color:var(--rich-gold);box-shadow:0 0 0 3px rgba(215,187,81,.2);}
 .sort-select{padding:.75rem 2.2rem .75rem 1rem;border:1px solid #ddd;font-family:'Manrope',sans-serif;font-size:.88rem;color:var(--charcoal);background:#fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23171813" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>') no-repeat right 12px center/14px;appearance:none;cursor:pointer;}
 
-.shop-grid{display:grid;grid-template-columns:280px 1fr;gap:clamp(2rem,4vw,3.5rem);align-items:start;}
+.shop-grid{display:block;}
 
-/* SIDEBAR */
-.sidebar{background:var(--cream);padding:clamp(1.8rem,3vw,2.5rem);}
-.sidebar-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:500;color:var(--deep-teal);margin-bottom:min(1.6rem, 2.5vh);}
-.cat-group{border-bottom:1px solid rgba(0,0,0,.08);}
-.cat-group:last-child{border-bottom:none;}
-.cat-toggle{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;padding:1rem 0;cursor:pointer;text-align:left;font-family:'Manrope',sans-serif;font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--charcoal);}
-.cat-toggle .plus{width:18px;height:18px;flex:none;position:relative;}
-.cat-toggle .plus::before,.cat-toggle .plus::after{content:'';position:absolute;background:var(--deep-teal);transition:transform .3s ease;}
-.cat-toggle .plus::before{left:0;top:50%;width:100%;height:1.5px;transform:translateY(-50%);}
-.cat-toggle .plus::after{top:0;left:50%;width:1.5px;height:100%;transform:translateX(-50%);}
-.cat-group.open .plus::after{transform:translateX(-50%) rotate(90deg) scaleY(0);}
-.cat-list{list-style:none;max-height:0;overflow:hidden;transition:max-height .4s ease;}
-.cat-group.open .cat-list{max-height:600px;padding-bottom:1.2rem;}
-.cat-list li{margin-bottom:.7rem;}
-.cat-list label{display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:#4a4a45;cursor:pointer;}
-.cat-list input[type="checkbox"]{appearance:none;width:15px;height:15px;flex:none;border:1.5px solid var(--rich-gold);background:#fff;cursor:pointer;position:relative;transition:background .2s ease;}
-.cat-list input[type="checkbox"]:checked{background:var(--rich-gold);}
-.cat-list input[type="checkbox"]:checked::after{content:'';position:absolute;left:4px;top:1px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}
+
 
 /* PRODUCT GRID */
-.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,2.5vw,2rem);}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:clamp(1.5rem,3vw,2.5rem);}
 .product-card{background:#fff;border:1px solid #eee;padding:clamp(1.8rem,3vw,2.5rem) 1.2rem 1.6rem;display:flex;flex-direction:column;align-items:center;transition:box-shadow .35s ease,transform .35s ease;}
 .product-card:hover{box-shadow:0 18px 40px rgba(0,0,0,.08);transform:translateY(-4px);}
 .product-icon{width:100%;aspect-ratio:1/1;overflow:hidden;margin-bottom:1.4rem;}
@@ -77,14 +60,10 @@ img{max-width:100%;display:block;}
 
 
 /* RESPONSIVE */
-@media (max-width:1024px){
-  .shop-grid{grid-template-columns:1fr;}
-  .sidebar{max-width:100%;}
-  .product-grid{grid-template-columns:repeat(2,1fr);}
-}
+
 
 @media (max-width:600px){
-  .product-grid{grid-template-columns:1fr;}
+
   .search-row{align-items:flex-start;}
   .search-controls{width:100%;}
   .search-box,.search-box input{width:100%;}
@@ -133,45 +112,7 @@ html,body{max-width:100%;overflow-x:hidden;}
   </div>
 
   <div class="shop-grid">
-    <aside class="sidebar reveal">
-      <div class="sidebar-title">Product Categories</div>
 
-      <div class="cat-group open">
-        <button class="cat-toggle"><span>Frozen Seafood Product</span><span class="plus"></span></button>
-        <ul class="cat-list">
-          <li><label><input type="checkbox" checked> Carabinaro Shrimp</label></li>
-          <li><label><input type="checkbox" checked> Calluga Hybrid Caviar</label></li>
-          <li><label><input type="checkbox"> Osetra Caviar</label></li>
-          <li><label><input type="checkbox" checked> Belluga Caviar</label></li>
-          <li><label><input type="checkbox" checked> Frozen Yellow Tail Hamachi</label></li>
-          <li><label><input type="checkbox"> Hokkaido Scallops</label></li>
-          <li><label><input type="checkbox" checked> King Crab Legs</label></li>
-          <li><label><input type="checkbox" checked> Lobster Tail</label></li>
-          <li><label><input type="checkbox" checked> Premium Saku Tuna</label></li>
-          <li><label><input type="checkbox" checked> Premium Tuna Loin</label></li>
-          <li><label><input type="checkbox"> Salmon Roe Ikura Chum Keta</label></li>
-          <li><label><input type="checkbox" checked> Sushi EBI</label></li>
-          <li><label><input type="checkbox" checked> Unagi</label></li>
-          <li><label><input type="checkbox" checked> Black Cod Sable Fish H&G</label></li>
-        </ul>
-      </div>
-
-      <div class="cat-group">
-        <button class="cat-toggle"><span>Butchery</span><span class="plus"></span></button>
-        <ul class="cat-list">
-          <li><label><input type="checkbox"> Prime Beef Cuts</label></li>
-          <li><label><input type="checkbox"> Lamb Chops</label></li>
-        </ul>
-      </div>
-
-      <div class="cat-group">
-        <button class="cat-toggle"><span>Poultry Products</span><span class="plus"></span></button>
-        <ul class="cat-list">
-          <li><label><input type="checkbox"> Grade-A Chicken</label></li>
-          <li><label><input type="checkbox"> Duck Breast</label></li>
-        </ul>
-      </div>
-    </aside>
 
     <div class="product-grid">
 
