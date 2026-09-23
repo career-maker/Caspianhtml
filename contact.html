@@ -3,312 +3,681 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us | Caspian &amp; Sun Food Trading LLC</title>
-  <meta name="description" content="Get in touch with Caspian & Sun Food Trading LLC. Inquire about wholesale seafood, royal caviar allocations, and international food trade.">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/png" href="images/logo.png">
+  <title>Contact Us | Caspian & Sun Food Trading LLC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --deep-teal: #1E4951;
+      --rich-gold: #D7BB51;
+      --charcoal-black: #171813;
+      --charcoal: #171813;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Manrope', sans-serif; color: var(--charcoal-black); background: #fff; line-height: 1.7; }
+
+    /* HEADER — shared component (matches about.html) — transparent overlay on hero; liquid-glass white on scroll; hides on scroll-down, shows on scroll-up */
+    header{position:fixed;top:0;left:0;right:0;background:transparent;padding:clamp(1rem,1.8vw,1.8rem) clamp(1.5rem,4vw,5.5rem);display:flex;justify-content:space-between;align-items:center;z-index:200;gap:clamp(.6rem,1.5vw,1.5rem);flex-wrap:nowrap;transform:translateY(0);transition:background .4s ease,padding .4s ease,box-shadow .4s ease,border-color .4s ease,transform .35s ease;border-bottom:1px solid transparent;}
+    header.hide{transform:translateY(-100%);}
+    header.scrolled{background:rgba(255,255,255,.68);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);box-shadow:0 4px 30px rgba(0,0,0,.06);border-bottom:1px solid rgba(0,0,0,.06);padding:clamp(.6rem,1.1vw,1rem) clamp(1.5rem,4vw,5.5rem);}
+    .logo{display:flex;align-items:center;min-width:fit-content;}
+    .logo img{height:clamp(48px,5vw,96px);width:auto;transition:height .4s ease;}
+    header.scrolled .logo img{height:clamp(42px,4.2vw,74px);}
+    nav{display:flex;gap:clamp(.7rem,1.5vw,2.6rem);align-items:center;flex:1;justify-content:flex-start;flex-wrap:nowrap;min-width:0;}
+    nav a{position:relative;font-family:'Playfair Display',serif;color:#fff;text-decoration:none;font-size:clamp(.68rem,1vw,1.05rem);font-weight:500;transition:color .35s ease;text-transform:uppercase;letter-spacing:.6px;white-space:nowrap;text-shadow:0 1px 4px rgba(0,0,0,.25);padding-bottom:4px;}
+    nav a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;background:currentColor;transition:width .35s cubic-bezier(.65,0,.35,1);}
+    header.scrolled nav a{color:var(--charcoal-black);text-shadow:none;}
+    nav a:hover,nav a.active{color:var(--rich-gold);}
+    nav a:hover::after,nav a.active::after{width:100%;}
+    .header-right{display:flex;align-items:center;gap:clamp(.6rem,1.3vw,1.8rem);justify-content:flex-end;flex:1;}
+    .phone-cta{display:flex;align-items:center;gap:.4rem;color:#fff;font-size:clamp(.68rem,.9vw,.95rem);font-weight:500;white-space:nowrap;transition:color .4s ease;text-shadow:0 1px 4px rgba(0,0,0,.25);}
+    .phone-cta svg{width:14px;height:14px;stroke:#fff;fill:none;transition:stroke .4s ease;flex:none;}
+    header.scrolled .phone-cta{color:var(--charcoal-black);text-shadow:none;}
+    header.scrolled .phone-cta svg{stroke:var(--charcoal-black);}
+    .cta-btn{background:transparent;border:1px solid #fff;color:#fff;padding:clamp(.45rem,.9vw,.8rem) clamp(.8rem,1.6vw,1.8rem);font-family:'Manrope',sans-serif;font-size:clamp(.68rem,.85vw,.9rem);font-weight:500;cursor:pointer;transition:background .35s ease,color .35s ease,border-color .35s ease,transform .3s ease,box-shadow .3s ease;text-decoration:none;display:inline-block;white-space:nowrap;}
+    .cta-btn:hover{background:#fff;color:var(--deep-teal);transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.18);}
+    header.scrolled .cta-btn{border-color:var(--charcoal-black);color:var(--charcoal-black);}
+    header.scrolled .cta-btn:hover{background:var(--deep-teal);color:#fff;border-color:var(--deep-teal);box-shadow:0 10px 24px rgba(30,73,81,.25);}
+
+    /* HAMBURGER */
+    .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;background:none;border:none;cursor:pointer;padding:0;z-index:210;}
+    .hamburger span{display:block;width:26px;height:2px;background:#fff;transition:background .4s ease,transform .3s ease,opacity .3s ease;}
+    header.scrolled .hamburger span{background:var(--charcoal-black);}
+
+    /* MOBILE DRAWER */
+    .drawer-backdrop{position:fixed;inset:0;background:rgba(10,15,15,.45);z-index:290;opacity:0;pointer-events:none;transition:opacity .35s ease;}
+    .drawer-backdrop.open{opacity:1;pointer-events:auto;}
+    .mobile-drawer{position:fixed;top:0;right:0;height:100vh;height:100dvh;width:min(320px,82vw);background:#fff;z-index:300;box-shadow:-10px 0 35px rgba(0,0,0,.18);transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:1.6rem 1.8rem 2rem;overflow-y:auto;}
+    .mobile-drawer.open{transform:translateX(0);}
+    .drawer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:2.2rem;}
+    .drawer-logo{height:48px;width:auto;}
+    .drawer-close{background:none;border:none;font-size:1.8rem;line-height:1;cursor:pointer;color:var(--charcoal-black);padding:.2rem .4rem;}
+    .drawer-nav{display:flex;flex-direction:column;gap:1.3rem;margin-bottom:auto;}
+    .drawer-nav a{display:block;font-family:'Playfair Display',serif;font-size:1.15rem;text-transform:uppercase;letter-spacing:1px;color:var(--charcoal-black);text-decoration:none;transition:color .3s ease,padding-left .3s ease;border-left:2px solid transparent;padding-left:0;}
+    .drawer-nav a.active,.drawer-nav a:hover{color:var(--deep-teal);padding-left:.7rem;border-left-color:var(--rich-gold);}
+    .drawer-footer{display:flex;flex-direction:column;gap:1rem;padding-top:1.5rem;margin-top:1.5rem;border-top:1px solid #eee;}
+    .drawer-footer .phone-cta{color:var(--charcoal-black);text-shadow:none;font-size:.95rem;}
+    .drawer-footer .phone-cta svg{stroke:var(--charcoal-black);}
+    .cta-btn-solid{background:var(--deep-teal);color:#fff;border:none;padding:.9rem 1.5rem;font-family:'Manrope',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;text-align:center;width:100%;transition:background .3s ease,transform .3s ease,box-shadow .3s ease;}
+    .cta-btn-solid:hover{background:#0f3a46;transform:translateY(-2px);box-shadow:0 10px 22px rgba(30,73,81,.3);}
+    body.drawer-open{overflow:hidden;}
+
+    /* SCROLL-REVEAL ENTRANCE ANIMATIONS */
+    .reveal{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
+    .reveal.in-view{opacity:1;transform:translateY(0);}
+    @media (prefers-reduced-motion: reduce){.reveal{opacity:1!important;transform:none!important;transition:none!important;}}
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: clamp(320px, 40vw, 760px);
+      background: linear-gradient(to top, rgba(10,15,15,.55) 0%, rgba(10,15,15,.15) 45%, rgba(0,0,0,0) 70%), url('images/pdf_extracted/extracted_0_2000x1121.jpeg') center/cover;
+      display: flex;
+      align-items: flex-end;
+      padding: clamp(1.5rem, 4vw, 3.5rem) clamp(2.5rem, 7vw, 5.5rem);
+      color: #fff;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6.5vw, 4.2rem);
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,.25);
+      opacity: 0;
+      animation: heroFadeUp 1s cubic-bezier(.16,1,.3,1) .2s forwards;
+    }
+    .hero p {
+      font-size: clamp(.8rem, 1.6vw, 1rem);
+      max-width: 480px;
+      color: #fff;
+      opacity: 0;
+      animation: heroFadeUp 1s cubic-bezier(.16,1,.3,1) .45s forwards;
+    }
+    @keyframes heroFadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+    @media (prefers-reduced-motion: reduce){.hero h1,.hero p{animation:none;opacity:1;}}
+
+
+    /* CONTACT FORM SECTION */
+    .contact-section {
+      padding: clamp(3rem, 5vw, 4.5rem) clamp(1.5rem, 5vw, 3rem);
+      background: #fff;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 4vw, 3rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4.6vw, 3.75rem);
+      font-weight: 500;
+      line-height: 1.22;
+      letter-spacing: -.5px;
+      margin-bottom: 1rem;
+      color: var(--charcoal-black);
+    }
+    p {
+      font-size: clamp(.85rem, 1.6vw, 1rem);
+      color: #5a5a56;
+    }
+    .form-section p {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: clamp(1.2rem, 2.5vw, 1.8rem);
+    }
+
+    /* FORM FIELDS */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      color: var(--charcoal-black);
+    }
+    input, textarea {
+      padding: clamp(0.7rem, 1.5vw, 0.9rem) clamp(0.8rem, 2vw, 1rem);
+      border: 1px solid #ddd;
+      font-family: ‘Manrope’, sans-serif;
+      font-size: 0.95rem;
+      color: var(--charcoal-black);
+      background: #fff;
+      transition: all 0.3s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--rich-gold);
+      box-shadow: 0 0 0 3px rgba(215,187,81,.2);
+      background: #fafafa;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+      margin-bottom: 1.2rem;
+    }
+    .form-submit {
+      position: relative;
+      z-index: 1;
+      background: var(--deep-teal);
+      color: #fff;
+      padding: 0.85rem 2.2rem;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .3s ease, transform .35s cubic-bezier(.34,1.56,.64,1);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .btn-shop:hover .form-submit { background: #0f3a46; transform: translate(-3px,-3px); }
+
+    /* CONTACT INFO BOX */
+    .info-box {
+      background: var(--deep-teal);
+      color: #fff;
+      padding: clamp(2rem, 4vw, 2.8rem);
+      border: 3px solid var(--rich-gold);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 3vw, 3rem);
+    }
+    .info-box h2 { color: #fff; margin-bottom: 1.5rem; grid-column: 1/-1; }
+    .info-item { display: flex; flex-direction: column; }
+    .info-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: #E8E2C8;
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .info-value {
+      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+      color: #fff;
+      line-height: 1.7;
+    }
+    .info-value a {
+      color: #E8E2C8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .info-value a:hover { color: var(--rich-gold); }
+
+    /* MAP SECTION */
+    .map-section {
+      padding: clamp(3rem, 5vw, 4.5rem) clamp(1.5rem, 5vw, 3rem);
+      background: #fcfaf8;
+    }
+    .map-section h2 {
+      margin-bottom: 0.5rem;
+      color: var(--charcoal-black);
+    }
+    .map-section > p {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: clamp(2.5rem, 4vw, 4rem);
+    }
+    .map-container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .map-placeholder {
+      width: 100%;
+      height: clamp(350px, 50vh, 500px);
+      background: url('images/dotted-map.png') center/contain no-repeat;
+      position: relative;
+    }
+    .map-marker {
+      position: absolute;
+      top: 31%;
+      left: 56%;
+      z-index: 10;
+    }
+    .location-card {
+      position: absolute;
+      top: 15%;
+      right: 15%;
+      padding: 1.5rem 2rem;
+      background: #fff;
+      border-radius: 4px;
+      z-index: 15;
+      min-width: 260px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .location-name {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: var(--charcoal-black);
+    }
+    .location-details {
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      padding: clamp(3rem, 5vw, 4.5rem) clamp(1.5rem, 5vw, 3rem);
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 4vw, 3rem);
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .cta-image img { width: 100%; height: auto; display: block; }
+    .cta-content {
+      position: relative;
+      z-index: 2;
+    }
+    .cta-watermark {
+      position: absolute;
+      top: 50%;
+      right: -40px;
+      transform: translateY(-50%);
+      width: clamp(380px, 42vw, 600px);
+      height: auto;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+      mix-blend-mode: multiply;
+    }
+    .cta-content h2,
+    .cta-content p,
+    .cta-content .cta-button-alt {
+      position: relative;
+      z-index: 1;
+    }
+    .cta-content h2 {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-family: 'Playfair Display', serif;
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+      letter-spacing: -0.5px;
+    }
+    .cta-content p {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    .btn-shop { position: relative; display: inline-block; }
+    .btn-shop::after { content:''; position:absolute; bottom:-8px; right:-8px; width:100%; height:100%; border:1.5px solid var(--rich-gold); z-index:0; transition: transform .35s cubic-bezier(.34,1.56,.64,1); }
+    .btn-shop:hover::after { transform: translate(4px,4px); }
+    .cta-button-alt {
+      position: relative;
+      z-index: 1;
+      background: var(--deep-teal);
+      color: #fff;
+      padding: 0.85rem 2.2rem;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      transition: background .3s ease, transform .35s cubic-bezier(.34,1.56,.64,1);
+    }
+    .btn-shop:hover .cta-button-alt { background: #0f3a46; transform: translate(-3px,-3px); }
+
+    /* FOOTER — shared component (matches about.html) — 5 columns: logo+social / about / quick links / products / contact */
+    footer{background:var(--deep-teal);color:#fff;padding:clamp(2.5rem,5vw,4rem) clamp(1.5rem,5vw,3rem) clamp(1.5rem,3vw,2rem);}
+    .footer-grid{display:grid;grid-template-columns:.85fr 1.15fr 1fr 1fr 1.15fr;gap:clamp(1.5rem,3vw,2.5rem);max-width:1400px;margin:0 auto clamp(2.5rem,4vw,3.5rem);}
+    .footer-section h3{font-family:'Playfair Display',serif;font-size:clamp(1rem,1.6vw,1.15rem);font-weight:500;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.8px;}
+    .footer-section p,.footer-section a,.footer-section li{font-size:clamp(.82rem,1.4vw,.92rem);line-height:1.8;color:rgba(255,255,255,.85);}
+    .footer-section a{text-decoration:none;transition:color .3s;}
+    .footer-section a:hover{color:var(--rich-gold);}
+    .footer-logo-badge{width:clamp(90px,9vw,115px);height:clamp(90px,9vw,115px);margin-bottom:clamp(1.5rem,3vw,2.2rem);}
+    .social-links{display:flex;gap:.6rem;margin-top:.9rem;}
+    .social-links a{width:34px;height:34px;background:rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;color:#fff;}
+    .social-links a svg{width:16px;height:16px;transition:transform .3s;}
+    .social-links a:hover svg{transform:scale(1.15);}
+    .social-links a:hover{background:var(--rich-gold);color:var(--deep-teal);}
+    .footer-contact-item{display:flex;align-items:flex-start;gap:.6rem;margin-bottom:.9rem;}
+    .footer-contact-item svg{width:16px;height:16px;stroke:#fff;fill:none;flex:none;margin-top:.2rem;}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:clamp(1.3rem,2.5vw,1.7rem);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;max-width:1400px;margin:0 auto;font-size:clamp(.78rem,1.2vw,.88rem);}
+    .footer-bottom p{color:rgba(255,255,255,.75);}
+    .footer-bottom a{color:rgba(255,255,255,.75);text-decoration:none;}
+    .footer-bottom a:hover{color:var(--rich-gold);}
+    .footer-bottom strong{color:#fff;}
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      nav { display: none; }
+      .phone-cta { display: none; }
+      .hamburger { display: flex; }
+      .contact-grid, .map-grid, .cta-grid { grid-template-columns: 1fr; }
+      .info-box { grid-template-columns: 1fr; gap: 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      header { padding: 1rem 1.25rem; }
+      header.scrolled { padding: .7rem 1.25rem; }
+      .cta-btn { display: none; }
+      .btn-shop, .form-submit { width: 100%; }
+      .cta-button-alt { width: auto; }
+      .map-placeholder { height: 280px; }
+      .footer-grid { grid-template-columns: 1fr; text-align: center; }
+      .social-links { justify-content: center; }
+      .footer-contact-item { justify-content: center; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    html, body { max-width: 100%; overflow-x: hidden; }
+  
+/* FOOTER MOBILE ACCORDION */
+.footer-section h3{display:flex;justify-content:space-between;align-items:center;}
+.footer-toggle-icon{display:none;width:14px;height:14px;position:relative;flex:none;}
+.footer-toggle-icon::before,.footer-toggle-icon::after{content:'';position:absolute;background:#fff;transition:transform .3s ease;}
+.footer-toggle-icon::before{left:0;top:50%;width:100%;height:1.5px;transform:translateY(-50%);}
+.footer-toggle-icon::after{top:0;left:50%;width:1.5px;height:100%;transform:translateX(-50%);}
+.footer-accordion.open .footer-toggle-icon::after{transform:translateX(-50%) scaleY(0);}
+.footer-content{overflow:hidden;}
+@media (max-width:600px){
+  .footer-grid{grid-template-columns:1fr;text-align:left;}
+  .footer-section:first-child{text-align:center;margin-bottom:.5rem;}
+  .footer-section:first-child .footer-logo-badge{margin-left:auto;margin-right:auto;}
+  .footer-section:first-child .social-links{justify-content:center;}
+  .footer-accordion{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:.9rem;}
+  .footer-accordion h3{cursor:pointer;margin-bottom:0;padding:.4rem 0;}
+  .footer-toggle-icon{display:block;}
+  .footer-accordion .footer-content{max-height:0;transition:max-height .4s ease;}
+  .footer-accordion.open .footer-content{max-height:400px;padding-top:.8rem;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+}
+</style>
 </head>
 <body>
-
-  <!-- Site Header -->
-  <!-- Site Header (Exact Match to Approved Home Page) -->
-  <header class="site-header">
-    <div class="container">
-      <div class="header-inner">
-        <!-- Navigation Left -->
-        <nav class="nav-desktop-left" aria-label="Main Navigation">
-          <a href="about.html" class="nav-link">HOME</a>
-          <a href="products.html" class="nav-link">PRODUCTS</a>
-          <a href="about.html" class="nav-link">ABOUT</a>
-          <a href="blog.html" class="nav-link">BLOG</a>
-          <a href="contact.html" class="nav-link active">CONTACT</a>
-        </nav>
-
-        <!-- Centered Logo -->
-        <div class="header-brand-center">
-          <a href="about.html" aria-label="Caspian &amp; Sun Food Home">
-            <img src="images/logo.png" alt="Caspian &amp; Sun Food Trading LLC" class="header-logo">
-          </a>
-        </div>
-
-        <!-- Header Actions Right -->
-        <div class="header-actions-right">
-          <a href="tel:+971585616040" class="header-phone-link">
-            <svg width="18" height="18" viewBox="0 0 24 24">
-              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-            </svg>
-            <span>+971 58 561 6040</span>
-          </a>
-          <a href="contact.html" class="btn-header-touch">Get In Touch</a>
-          <button class="menu-toggle" id="menuToggle" aria-label="Open mobile menu">
-            <span class="menu-toggle-icon">
-              <span class="menu-toggle-line"></span>
-              <span class="menu-toggle-line"></span>
-              <span class="menu-toggle-line"></span>
-            </span>
-          </button>
-        </div>
-      </div>
+  <!-- HEADER — shared component (matches about.html) -->
+  <header>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="products.html">PRODUCTS</a>
+      <a href="about.html">ABOUT</a>
+      <a href="blog.html">BLOG</a>
+      <a href="contact.html" class="active">CONTACT</a>
+    </nav>
+    <div class="logo"><img src="casplogo.png" alt="Caspian"></div>
+    <div class="header-right">
+      <span class="phone-cta"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="none" stroke-width="1.5"/></svg> +971 58 561 6040</span>
+      <button class="cta-btn">Get In Touch</button>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <!-- Mobile Drawer Backdrop & Menu -->
   <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <aside class="mobile-nav-drawer" id="navDrawer" aria-label="Mobile Navigation">
-    <div>
-      <div class="drawer-header">
-        <img src="images/logo.png" alt="Caspian Logo" class="drawer-logo">
-        <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
-      </div>
-      <nav class="drawer-links">
-        <a href="about.html" class="drawer-link">About Us</a>
-        <a href="products.html" class="drawer-link">Products</a>
-        <a href="blog.html" class="drawer-link">Journal</a>
-        <a href="contact.html" class="drawer-link active">Contact</a>
-        <a href="privacy-policy.html" class="drawer-link">Privacy Policy</a>
-      </nav>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile navigation">
+    <div class="drawer-top">
+      <img class="drawer-logo" src="casplogo.png" alt="Caspian">
+      <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
     </div>
+    <nav class="drawer-nav">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
     <div class="drawer-footer">
-      <p style="font-size: 14px; color: var(--body-muted); margin-bottom: 12px;">Direct Inquiries:</p>
-      <a href="tel:+971585616040" style="font-weight: 700; color: var(--deep-teal); display: block; margin-bottom: 16px;">+971 58 561 6040</a>
-      <a href="contact.html" class="btn btn-primary" style="width: 100%;">Inquire Now</a>
+      <span class="phone-cta"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="none" stroke-width="1.5"/></svg> +971 58 561 6040</span>
+      <button class="cta-btn-solid">Get In Touch</button>
     </div>
   </aside>
 
-  <main>
-    <!-- Page Hero -->
-    <section class="page-hero">
-      <div class="container">
-        <nav class="hero-breadcrumbs" aria-label="Breadcrumb">
-          <a href="about.html">Home</a>
-          <span class="breadcrumb-separator">/</span>
-          <span class="breadcrumb-current">Contact Us</span>
-        </nav>
-        <div class="hero-content">
-          <p class="eyebrow-text">Commercial Desk &amp; Inquiries</p>
-          <h1 class="main-title">Partner With Caspian &amp; Sun Food Trading LLC</h1>
-          <p class="sub-text">Whether you are sourcing premium caviar allocations for luxury hospitality, securing wholesale frozen seafood containers, or exploring regional distribution, our Dubai commercial team is at your disposal.</p>
-        </div>
-      </div>
-    </section>
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <h1>CONTACT US</h1>
+      <p>Connecting the finest seafood from pristine waters to discerning markets around the world.</p>
+    </div>
+  </section>
 
-    <!-- Contact Details & Form Section -->
-    <section class="section section-light">
-      <div class="container">
-        <div class="contact-layout">
-          <!-- Left: Structured Corporate Contact Information -->
-          <div class="contact-info-panel">
-            <span class="gold-badge" style="background: rgba(215, 187, 81, 0.2); color: var(--rich-gold); border-color: var(--rich-gold); margin-bottom: 24px;">Global Trade Office</span>
-            <h2 style="font-family: var(--font-serif); font-size: 32px; color: #FFF; margin-bottom: 28px; line-height: 1.25;">Direct Communication Channels</h2>
-
-            <div class="contact-card-item">
-              <div class="contact-icon-box">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-              </div>
-              <div>
-                <h3 class="contact-card-title">Corporate Headquarters</h3>
-                <p class="contact-card-text">
-                  Caspian &amp; Sun Food Trading LLC<br>
-                  Dubai Commercial City, United Arab Emirates
-                </p>
-              </div>
+  <!-- CONTACT FORM & INFO -->
+  <section class="contact-section">
+    <div class="contact-grid">
+      <!-- FORM LEFT -->
+      <div class="form-section">
+        <h2>GET IN TOUCH</h2>
+        <p>For inquiries or further information, please contact us. We’re here to help.</p>
+        <form>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" required>
             </div>
-
-            <div class="contact-card-item">
-              <div class="contact-icon-box">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-              </div>
-              <div>
-                <h3 class="contact-card-title">Direct Telephone &amp; WhatsApp</h3>
-                <p class="contact-card-text">
-                  <a href="tel:+971585616040">+971 58 561 6040</a><br>
-                  <span style="font-size: 13px; color: var(--rich-gold);">Dedicated Wholesaler &amp; Chef Hotline</span>
-                </p>
-              </div>
-            </div>
-
-            <div class="contact-card-item">
-              <div class="contact-icon-box">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-              </div>
-              <div>
-                <h3 class="contact-card-title">Electronic Mail</h3>
-                <p class="contact-card-text">
-                  <a href="mailto:info@caspiansunfood.com">info@caspiansunfood.com</a><br>
-                  <a href="mailto:sales@caspiansunfood.com">sales@caspiansunfood.com</a>
-                </p>
-              </div>
-            </div>
-
-            <div class="contact-card-item" style="margin-bottom: 0;">
-              <div class="contact-icon-box">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-              </div>
-              <div>
-                <h3 class="contact-card-title">Commercial Trading Hours</h3>
-                <p class="contact-card-text">
-                  Monday – Friday: 08:30 AM – 06:30 PM (GST)<br>
-                  Saturday: 09:00 AM – 02:00 PM (GST)<br>
-                  Sunday: Closed (Emergency cold-chain dispatch on call)
-                </p>
-              </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel">
             </div>
           </div>
-
-          <!-- Right: Formal Contact & Quotation Form -->
-          <div class="contact-form-panel">
-            <h2 style="font-family: var(--font-serif); font-size: 32px; color: var(--charcoal-black); margin-bottom: 8px;">Trade Inquiry Form</h2>
-            <p style="font-size: 15px; color: var(--body-muted); margin-bottom: 28px;">Complete the form below and an assigned trade representative will respond with customized technical sheets and quotes within 24 business hours.</p>
-
-            <!-- Success Alert simulation -->
-            <div id="formSuccessMessage" style="display: none; padding: 18px 24px; background: rgba(30, 73, 81, 0.1); border-left: 4px solid var(--deep-teal); border-radius: var(--radius-sm); margin-bottom: 24px;">
-              <h4 style="font-family: var(--font-serif); color: var(--deep-teal); font-size: 18px; margin-bottom: 4px;">Thank you for your inquiry</h4>
-              <p style="font-size: 14px; color: var(--charcoal-black);">Your trade request has been registered. Our representative will contact you via email/phone shortly.</p>
-            </div>
-
-            <form id="caspianContactForm" action="#" method="POST">
-              <div class="form-grid">
-                <div class="form-group">
-                  <label class="form-label" for="contactName">Your Full Name <span class="req">*</span></label>
-                  <input class="form-control" type="text" id="contactName" name="name" required placeholder="e.g. Alexander Vance">
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label" for="contactEmail">Business Email <span class="req">*</span></label>
-                  <input class="form-control" type="email" id="contactEmail" name="email" required placeholder="e.g. alexander@hotelgroup.com">
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label" for="contactPhone">Phone / WhatsApp Number <span class="req">*</span></label>
-                  <input class="form-control" type="tel" id="contactPhone" name="phone" required placeholder="+971 50 000 0000">
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label" for="contactCompany">Company / Establishment Name</label>
-                  <input class="form-control" type="text" id="contactCompany" name="company" placeholder="e.g. Grand Resort &amp; Spa">
-                </div>
-
-                <div class="form-group form-group-full">
-                  <label class="form-label" for="contactInquiryType">Inquiry Category <span class="req">*</span></label>
-                  <select class="form-control" id="contactInquiryType" name="inquiry_type" required>
-                    <option value="">Please Select an Option</option>
-                    <option value="caviar">Royal Caspian Sturgeon &amp; Caviar Wholesale</option>
-                    <option value="seafood">Frozen Seafood Portions &amp; Container Loads</option>
-                    <option value="butchery">Halal Butchery (Beef &amp; Lamb Cuts)</option>
-                    <option value="poultry">Grade-A Poultry Supply</option>
-                    <option value="distribution">Regional GCC Distribution Partnership</option>
-                    <option value="other">General Hospitality Inquiry</option>
-                  </select>
-                </div>
-
-                <div class="form-group form-group-full">
-                  <label class="form-label" for="contactMessage">Message / Specific Requirements <span class="req">*</span></label>
-                  <textarea class="form-control" id="contactMessage" name="message" required placeholder="Please outline product volumes, target destination, delivery frequency, or custom packaging preferences..."></textarea>
-                </div>
-
-                <div class="form-group form-group-full" style="margin-top: 10px;">
-                  <button type="submit" class="btn btn-primary" style="width: auto; align-self: flex-start;">
-                    <span>Send Inquiry</span>
-                    <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                  </button>
-                </div>
-              </div>
-            </form>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" required>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Location & Global Hubs Visual Section -->
-    <section class="section section-white" style="padding-top: 0;">
-      <div class="container">
-        <div style="background-color: var(--bg-cream-tint); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: clamp(32px, 5vw, 60px); position: relative; overflow: hidden;">
-          <div style="max-width: 680px; position: relative; z-index: 2;">
-            <span class="gold-badge" style="margin-bottom: 12px;">Strategic Hub</span>
-            <h2 class="section-title">Dubai, United Arab Emirates</h2>
-            <p class="sub-text" style="margin-bottom: 24px;">
-              Our UAE logistics center connects cold-chain routes between our Caspian Sea sturgeon facilities and the world's primary gastronomic capitals. Every container undergoes uninterrupted automated temperature recording from warehouse to destination port.
-            </p>
-            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-              <div style="background: #FFF; padding: 14px 20px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
-                <span style="font-size: 11px; text-transform: uppercase; color: var(--antique-gold); font-weight: 700; display: block;">Air Freight</span>
-                <span style="font-size: 14px; font-weight: 600; color: var(--charcoal-black);">Direct Cargo via DXB &amp; DWC</span>
-              </div>
-              <div style="background: #FFF; padding: 14px 20px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
-                <span style="font-size: 11px; text-transform: uppercase; color: var(--antique-gold); font-weight: 700; display: block;">Maritime Port</span>
-                <span style="font-size: 14px; font-weight: 600; color: var(--charcoal-black);">Jebel Ali Deep Sea Re-export</span>
-              </div>
-              <div style="background: #FFF; padding: 14px 20px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
-                <span style="font-size: 11px; text-transform: uppercase; color: var(--antique-gold); font-weight: 700; display: block;">Reefer Fleet</span>
-                <span style="font-size: 14px; font-weight: 600; color: var(--charcoal-black);">GCC Daily Temperature-Tracked Delivery</span>
-              </div>
-            </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea required></textarea>
           </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Site Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand-info">
-          <img src="images/logo.png" alt="Caspian &amp; Sun Food Trading LLC" class="footer-logo">
-          <p class="footer-desc">
-            Caspian &amp; Sun Food Trading LLC — Purveyors of the world’s finest sturgeon caviar, premium seafood, gourmet butchery, and poultry. Established on the shores of the Caspian Sea in 1981.
-          </p>
-        </div>
-
-        <div>
-          <h4 class="footer-col-title">Navigation</h4>
-          <ul class="footer-links">
-            <li><a href="about.html" class="footer-link">About Us</a></li>
-            <li><a href="products.html" class="footer-link">Product Catalogue</a></li>
-            <li><a href="blog.html" class="footer-link">Gastronomy Journal</a></li>
-            <li><a href="contact.html" class="footer-link">Contact Desk</a></li>
-            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-col-title">Categories</h4>
-          <ul class="footer-links">
-            <li><a href="products.html" class="footer-link">Caspian Sturgeon &amp; Caviar</a></li>
-            <li><a href="products.html" class="footer-link">Frozen Seafood Selections</a></li>
-            <li><a href="products.html" class="footer-link">Prime Butchery Cuts</a></li>
-            <li><a href="products.html" class="footer-link">Gourmet Poultry Products</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-col-title">Dubai Headquarters</h4>
-          <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Caspian &amp; Sun Food Trading LLC, Dubai, United Arab Emirates</span>
-          </div>
-          <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-            <span>+971 58 561 6040</span>
-          </div>
-          <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            <span>info@caspiansunfood.com</span>
-          </div>
-        </div>
+          <div class="btn-shop"><button type="submit" class="form-submit">Let’s Talk</button></div>
+        </form>
       </div>
 
-      <div class="footer-bottom">
-        <p>&copy; 2026 Caspian &amp; Sun Food Trading LLC. All rights reserved.</p>
-        <div class="footer-legal-links">
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="contact.html">Terms of Service</a>
-          <a href="contact.html">Wholesale Inquiries</a>
+      <!-- INFO BOX RIGHT -->
+      <div class="info-box">
+        <h2>CONTACT INFO</h2>
+        <div class="info-item">
+          <div class="info-label">Phones</div>
+          <div class="info-value"><a href="tel:+97158561604">+971 58 561 6040</a></div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Email</div>
+          <div class="info-value"><a href="mailto:vurgun@caspiansunfood.com">vurgun@caspiansunfood.com</a></div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Location</div>
+          <div class="info-value">Office C-08, Belselah Building,<br>Dubai - UAE</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Open Hours</div>
+          <div class="info-value">Mon-Fri: 9:00AM - 5:00PM<br>Sat: 11:00AM - 4:00PM</div>
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- MAP SECTION -->
+  <section class="map-section">
+    <h2>LOCATE US</h2>
+    <p>Conveniently located and easy to reach. Find us on the map.</p>
+    <div class="map-container">
+      <div class="map-placeholder">
+        <div class="map-marker">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="#D7BB51"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+        </div>
+      </div>
+      <div class="location-card">
+        <div class="location-name">Dubai-UAE</div>
+        <div class="location-details">Office C-08, Belselah Building,<br>Dubai - UAE</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section">
+    <div class="cta-grid">
+      <div class="cta-image">
+        <img src="images/pdf_extracted/extracted_6_2000x1488.jpeg" alt="Premium Seafood">
+      </div>
+      <div class="cta-content">
+        <img src="images/watermark-fish.png" class="cta-watermark" alt="" aria-hidden="true">
+        <h2>DELIVERING THE<br>BEST THE SEA<br>HAS TO OFFER.</h2>
+        <p>We deliver the finest seafood with a commitment to quality, hygiene, and sustainability.</p>
+        <div class="btn-shop"><button class="cta-button-alt">Shop Now</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER — shared component (matches about.html) -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-section">
+        <img class="footer-logo-badge" src="casplogo.png" alt="Caspian">
+        <h3>SOCIAL MEDIA</h3>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.45 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg></a>
+          <a href="#" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.5h3.3l-7.2 8.23 8.47 11.27h-6.63l-5.2-6.8-5.94 6.8H1.72l7.7-8.8L1.3 2.5h6.8l4.7 6.22zm-1.16 17.6h1.83L6.9 4.4H4.94z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.07 2.07 0 110-4.13 2.07 2.07 0 010 4.13zM7.12 20.45H3.56V9h3.56z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-section footer-accordion">
+      <h3><span>ABOUT</span><span class="footer-toggle-icon"></span></h3>
+      <div class="footer-content">
+        <p>Our story began in 1981 with a caviar farm on the shores of the Caspian Sea in Azerbaijan. What started as a small family initiative soon grew into a passion-driven journey,</p>
+      </div>
+    </div>
+      <div class="footer-section footer-accordion">
+      <h3><span>QUICK LINKS</span><span class="footer-toggle-icon"></span></h3>
+      <div class="footer-content">
+        <ul style="list-style:none;">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+      <div class="footer-section footer-accordion">
+      <h3><span>PRODUCTS</span><span class="footer-toggle-icon"></span></h3>
+      <div class="footer-content">
+        <ul style="list-style:none;">
+          <li><a href="#">Frozen Seafood Product</a></li>
+          <li><a href="#">Poultry Product</a></li>
+          <li><a href="#">Butchery</a></li>
+        </ul>
+      </div>
+    </div>
+      <div class="footer-section footer-accordion">
+      <h3><span>CONTACT US</span><span class="footer-toggle-icon"></span></h3>
+      <div class="footer-content">
+        <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" stroke-width="1.5"/></svg><a href="tel:+97158561604">+971 58 561 6040</a></div>
+    </div>
+        <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z" stroke-width="1.5"/><path d="M4 6l8 6 8-6" stroke-width="1.5"/></svg><a href="mailto:vurgun@caspiansunfood.com">vurgun@caspiansunfood.com</a></div>
+        <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-11.5a7 7 0 10-14 0C5 14.5 12 21 12 21z" stroke-width="1.5"/><circle cx="12" cy="9.5" r="2.3" stroke-width="1.5"/></svg><span>Office C-08, Belselah Building, Dubai - UAE</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© Caspian. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+      <p>Designed & Developed by: <strong>intersmart</strong></p>
+    </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script>
+  (function(){
+    var header=document.querySelector('header');
+    var hero=document.querySelector('.hero');
+    var lastY=window.scrollY;
+    function onScroll(){
+      var y=window.scrollY;
+      var threshold=hero?hero.offsetHeight-80:200;
+      if(y>threshold){
+        header.classList.add('scrolled');
+        if(y>lastY+4){header.classList.add('hide');}
+        else if(y<lastY-4){header.classList.remove('hide');}
+      }else{
+        header.classList.remove('scrolled');
+        header.classList.remove('hide');
+      }
+      lastY=y<0?0:y;
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll);
+    onScroll();
+  })();
+
+  (function(){
+    var btn=document.getElementById('hamburgerBtn');
+    var drawer=document.getElementById('mobileDrawer');
+    var backdrop=document.getElementById('drawerBackdrop');
+    var closeBtn=document.getElementById('drawerClose');
+    var links=drawer.querySelectorAll('a');
+    function open(){
+      drawer.classList.add('open');
+      backdrop.classList.add('open');
+      document.body.classList.add('drawer-open');
+      btn.setAttribute('aria-expanded','true');
+    }
+    function close(){
+      drawer.classList.remove('open');
+      backdrop.classList.remove('open');
+      document.body.classList.remove('drawer-open');
+      btn.setAttribute('aria-expanded','false');
+    }
+    btn.addEventListener('click',open);
+    closeBtn.addEventListener('click',close);
+    backdrop.addEventListener('click',close);
+    links.forEach(function(a){a.addEventListener('click',close);});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  })();
+
+  (function(){
+    var selectors='.form-section h2, .form-section p, .form-group, .form-submit, .info-box, .map-section h2, .map-section > p, .map-container, .cta-image, .cta-content h2, .cta-content p, .btn-shop, .footer-grid > *';
+    var targets=Array.prototype.slice.call(document.querySelectorAll(selectors));
+    targets.forEach(function(el,i){
+      el.classList.add('reveal');
+      el.style.transitionDelay=(i%4*90)+'ms';
+    });
+    if(!('IntersectionObserver' in window)){
+      targets.forEach(function(el){el.classList.add('in-view');});
+      return;
+    }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    },{threshold:.15,rootMargin:'0px 0px -60px 0px'});
+    targets.forEach(function(el){io.observe(el);});
+  })();
+  </script>
+<script>
+(function(){
+  document.querySelectorAll('.footer-accordion h3').forEach(function(h3){
+    h3.addEventListener('click',function(){
+      h3.closest('.footer-accordion').classList.toggle('open');
+    });
+  });
+})();
+</script>
 </body>
 </html>

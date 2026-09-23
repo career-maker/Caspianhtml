@@ -1,360 +1,499 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Catalogue | Caspian &amp; Sun Food Trading LLC</title>
-  <meta name="description" content="Explore our premier wholesale selection of Caspian caviar, premium frozen seafood, prime butchery cuts, and certified poultry products.">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/png" href="images/logo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop | Caspian & Sun Food Trading LLC</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Alex+Brush&display=swap" rel="stylesheet">
+<style>
+:root{--deep-teal:#1E4951;--rich-gold:#D7BB51;--antique-gold:#AA8D3F;--charcoal:#171813;--cream:#F7F3EC;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Manrope',sans-serif;color:var(--charcoal);background:#fff;line-height:1.7;}
+img{max-width:100%;display:block;}
+
+/* HEADER — shared component (matches about.html) */
+header{position:fixed;top:0;left:0;right:0;background:transparent;padding:clamp(1rem,1.8vw,1.8rem) clamp(1.5rem,4vw,5.5rem);display:flex;justify-content:space-between;align-items:center;z-index:200;gap:clamp(.6rem,1.5vw,1.5rem);flex-wrap:nowrap;transform:translateY(0);transition:background .4s ease,padding .4s ease,box-shadow .4s ease,border-color .4s ease,transform .35s ease;border-bottom:1px solid transparent;}
+header.hide{transform:translateY(-100%);}
+header.scrolled{background:rgba(255,255,255,.68);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);box-shadow:0 4px 30px rgba(0,0,0,.06);border-bottom:1px solid rgba(0,0,0,.06);padding:clamp(.6rem,1.1vw,1rem) clamp(1.5rem,4vw,5.5rem);}
+.logo{display:flex;align-items:center;min-width:fit-content;}
+.logo img{height:clamp(48px,5vw,96px);width:auto;transition:height .4s ease;}
+header.scrolled .logo img{height:clamp(42px,4.2vw,74px);}
+nav{display:flex;gap:clamp(.7rem,1.5vw,2.6rem);align-items:center;flex:1;justify-content:flex-start;flex-wrap:nowrap;min-width:0;}
+nav a{position:relative;font-family:'Playfair Display',serif;color:#fff;text-decoration:none;font-size:clamp(.68rem,1vw,1.05rem);font-weight:500;transition:color .35s ease;text-transform:uppercase;letter-spacing:.6px;white-space:nowrap;text-shadow:0 1px 4px rgba(0,0,0,.25);padding-bottom:4px;}
+nav a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;background:currentColor;transition:width .35s cubic-bezier(.65,0,.35,1);}
+header.scrolled nav a{color:var(--charcoal);text-shadow:none;}
+nav a:hover,nav a.active{color:var(--rich-gold);}
+nav a:hover::after,nav a.active::after{width:100%;}
+.header-right{display:flex;align-items:center;gap:clamp(.6rem,1.3vw,1.8rem);justify-content:flex-end;flex:1;}
+.phone-cta{display:flex;align-items:center;gap:.4rem;color:#fff;font-size:clamp(.68rem,.9vw,.95rem);font-weight:500;white-space:nowrap;transition:color .4s ease;text-shadow:0 1px 4px rgba(0,0,0,.25);}
+.phone-cta svg{width:14px;height:14px;stroke:#fff;fill:none;transition:stroke .4s ease;flex:none;}
+header.scrolled .phone-cta{color:var(--charcoal);text-shadow:none;}
+header.scrolled .phone-cta svg{stroke:var(--charcoal);}
+.cta-btn{background:transparent;border:1px solid #fff;color:#fff;padding:clamp(.45rem,.9vw,.8rem) clamp(.8rem,1.6vw,1.8rem);font-family:'Manrope',sans-serif;font-size:clamp(.68rem,.85vw,.9rem);font-weight:500;cursor:pointer;transition:background .35s ease,color .35s ease,border-color .35s ease,transform .3s ease,box-shadow .3s ease;text-decoration:none;display:inline-block;white-space:nowrap;}
+.cta-btn:hover{background:#fff;color:var(--deep-teal);transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.18);}
+header.scrolled .cta-btn{border-color:var(--charcoal);color:var(--charcoal);}
+header.scrolled .cta-btn:hover{background:var(--deep-teal);color:#fff;border-color:var(--deep-teal);box-shadow:0 10px 24px rgba(30,73,81,.25);}
+
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;background:none;border:none;cursor:pointer;padding:0;z-index:210;}
+.hamburger span{display:block;width:26px;height:2px;background:#fff;transition:background .4s ease,transform .3s ease,opacity .3s ease;}
+header.scrolled .hamburger span{background:var(--charcoal);}
+
+/* MOBILE DRAWER */
+.drawer-backdrop{position:fixed;inset:0;background:rgba(10,15,15,.45);z-index:290;opacity:0;pointer-events:none;transition:opacity .35s ease;}
+.drawer-backdrop.open{opacity:1;pointer-events:auto;}
+.mobile-drawer{position:fixed;top:0;right:0;height:100vh;height:100dvh;width:min(320px,82vw);background:#fff;z-index:300;box-shadow:-10px 0 35px rgba(0,0,0,.18);transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:1.6rem 1.8rem 2rem;overflow-y:auto;}
+.mobile-drawer.open{transform:translateX(0);}
+.drawer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:2.2rem;}
+.drawer-logo{height:48px;width:auto;}
+.drawer-close{background:none;border:none;font-size:1.8rem;line-height:1;cursor:pointer;color:var(--charcoal);padding:.2rem .4rem;}
+.drawer-nav{display:flex;flex-direction:column;gap:1.3rem;margin-bottom:auto;}
+.drawer-nav a{display:block;font-family:'Playfair Display',serif;font-size:1.15rem;text-transform:uppercase;letter-spacing:1px;color:var(--charcoal);text-decoration:none;transition:color .3s ease,padding-left .3s ease;border-left:2px solid transparent;padding-left:0;}
+.drawer-nav a.active,.drawer-nav a:hover{color:var(--deep-teal);padding-left:.7rem;border-left-color:var(--rich-gold);}
+.drawer-footer{display:flex;flex-direction:column;gap:1rem;padding-top:1.5rem;margin-top:1.5rem;border-top:1px solid #eee;}
+.drawer-footer .phone-cta{color:var(--charcoal);text-shadow:none;font-size:.95rem;}
+.drawer-footer .phone-cta svg{stroke:var(--charcoal);}
+.cta-btn-solid{background:var(--deep-teal);color:#fff;border:none;padding:.9rem 1.5rem;font-family:'Manrope',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;text-align:center;width:100%;transition:background .3s ease,transform .3s ease,box-shadow .3s ease;}
+.cta-btn-solid:hover{background:#0f3a46;transform:translateY(-2px);box-shadow:0 10px 22px rgba(30,73,81,.3);}
+body.drawer-open{overflow:hidden;}
+
+/* SCROLL-REVEAL ENTRANCE ANIMATIONS */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+@media (prefers-reduced-motion: reduce){.reveal{opacity:1!important;transform:none!important;transition:none!important;}}
+
+/* HERO — identical to about.html */
+.hero{position:relative;height:clamp(320px,40vw,760px);background:linear-gradient(to top, rgba(10,15,15,.55) 0%, rgba(10,15,15,.15) 45%, rgba(0,0,0,0) 70%), url('images/pdf_extracted/extracted_3_2208x3936.jpeg') center 25%/cover;display:flex;align-items:flex-end;padding:clamp(1.5rem,4vw,3.5rem) clamp(2.5rem,7vw,5.5rem);color:#fff;}
+.hero-inner{max-width:1400px;margin:0 auto;width:100%;padding-bottom:clamp(.5rem,1.5vw,1rem);}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6.5vw,4.2rem);font-weight:500;margin-bottom:.4rem;text-shadow:0 2px 12px rgba(0,0,0,.25);opacity:0;animation:heroFadeUp 1s cubic-bezier(.16,1,.3,1) .2s forwards;}
+.hero p{font-size:clamp(.8rem,1.6vw,1rem);max-width:480px;color:#fff;opacity:0;animation:heroFadeUp 1s cubic-bezier(.16,1,.3,1) .45s forwards;}
+@keyframes heroFadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+@media (prefers-reduced-motion: reduce){.hero h1,.hero p{animation:none;opacity:1;}}
+
+/* SHOP LAYOUT */
+.shop-wrap{max-width:1500px;margin:0 auto;padding:clamp(3rem,6vw,5rem) clamp(2.5rem,7vw,5.5rem) clamp(4rem,7vw,6rem);}
+.search-row{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;flex-wrap:wrap;margin-bottom:clamp(2.5rem,5vw,4rem);}
+.search-row h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.6vw,3rem);font-weight:500;letter-spacing:-.5px;color:var(--charcoal);}
+.search-controls{display:flex;gap:.9rem;flex-wrap:wrap;}
+.search-box{position:relative;}
+.search-box svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:#999;fill:none;}
+.search-box input{width:220px;padding:.75rem 1rem .75rem 2.4rem;border:1px solid #ddd;font-family:'Manrope',sans-serif;font-size:.88rem;color:var(--charcoal);background:#fff;transition:border-color .3s ease,box-shadow .3s ease;}
+.search-box input:focus{outline:none;border-color:var(--rich-gold);box-shadow:0 0 0 3px rgba(215,187,81,.2);}
+.sort-select{padding:.75rem 2.2rem .75rem 1rem;border:1px solid #ddd;font-family:'Manrope',sans-serif;font-size:.88rem;color:var(--charcoal);background:#fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23171813" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>') no-repeat right 12px center/14px;appearance:none;cursor:pointer;}
+
+.shop-grid{display:grid;grid-template-columns:280px 1fr;gap:clamp(2rem,4vw,3.5rem);align-items:start;}
+
+/* SIDEBAR */
+.sidebar{background:var(--cream);padding:clamp(1.8rem,3vw,2.5rem);}
+.sidebar-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:500;color:var(--deep-teal);margin-bottom:1.6rem;}
+.cat-group{border-bottom:1px solid rgba(0,0,0,.08);}
+.cat-group:last-child{border-bottom:none;}
+.cat-toggle{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;padding:1rem 0;cursor:pointer;text-align:left;font-family:'Manrope',sans-serif;font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--charcoal);}
+.cat-toggle .plus{width:18px;height:18px;flex:none;position:relative;}
+.cat-toggle .plus::before,.cat-toggle .plus::after{content:'';position:absolute;background:var(--deep-teal);transition:transform .3s ease;}
+.cat-toggle .plus::before{left:0;top:50%;width:100%;height:1.5px;transform:translateY(-50%);}
+.cat-toggle .plus::after{top:0;left:50%;width:1.5px;height:100%;transform:translateX(-50%);}
+.cat-group.open .plus::after{transform:translateX(-50%) rotate(90deg) scaleY(0);}
+.cat-list{list-style:none;max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.cat-group.open .cat-list{max-height:600px;padding-bottom:1.2rem;}
+.cat-list li{margin-bottom:.7rem;}
+.cat-list label{display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:#4a4a45;cursor:pointer;}
+.cat-list input[type="checkbox"]{appearance:none;width:15px;height:15px;flex:none;border:1.5px solid var(--rich-gold);background:#fff;cursor:pointer;position:relative;transition:background .2s ease;}
+.cat-list input[type="checkbox"]:checked{background:var(--rich-gold);}
+.cat-list input[type="checkbox"]:checked::after{content:'';position:absolute;left:4px;top:1px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}
+
+/* PRODUCT GRID */
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,2.5vw,2rem);}
+.product-card{background:#fff;border:1px solid #eee;padding:clamp(1.8rem,3vw,2.5rem) 1.2rem 1.6rem;display:flex;flex-direction:column;align-items:center;transition:box-shadow .35s ease,transform .35s ease;}
+.product-card:hover{box-shadow:0 18px 40px rgba(0,0,0,.08);transform:translateY(-4px);}
+.product-icon{width:100%;aspect-ratio:1/1;overflow:hidden;margin-bottom:1.4rem;}
+.product-icon img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1);}
+.product-card:hover .product-icon img{transform:scale(1.08);}
+.product-divider{width:36px;height:1px;background:var(--rich-gold);margin-bottom:1rem;}
+.product-name{font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--charcoal);text-align:center;}
+
+/* FOOTER — shared component (matches about.html) */
+footer{background:var(--deep-teal);color:#fff;padding:clamp(2.5rem,5vw,4rem) clamp(2.5rem,7vw,5.5rem) clamp(1.5rem,3vw,2rem);}
+.footer-grid{display:grid;grid-template-columns:.85fr 1.15fr 1fr 1fr 1.15fr;gap:clamp(1.5rem,3vw,2.5rem);max-width:1400px;margin:0 auto clamp(2.5rem,4vw,3.5rem);}
+.footer-section h3{font-family:'Playfair Display',serif;font-size:clamp(1rem,1.6vw,1.15rem);font-weight:500;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.8px;}
+.footer-section p,.footer-section a,.footer-section li{font-size:clamp(.82rem,1.4vw,.92rem);line-height:1.8;color:rgba(255,255,255,.85);}
+.footer-section a{text-decoration:none;transition:color .3s;}
+.footer-section a:hover{color:var(--rich-gold);}
+.footer-logo-badge{width:clamp(90px,9vw,115px);height:clamp(90px,9vw,115px);margin-bottom:clamp(1.5rem,3vw,2.2rem);}
+.social-links{display:flex;gap:.6rem;margin-top:.9rem;}
+.social-links a{width:34px;height:34px;background:rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;color:#fff;}
+.social-links a svg{width:16px;height:16px;transition:transform .3s;}
+.social-links a:hover svg{transform:scale(1.15);}
+.social-links a:hover{background:var(--rich-gold);color:var(--deep-teal);}
+.footer-contact-item{display:flex;align-items:flex-start;gap:.6rem;margin-bottom:.9rem;}
+.footer-contact-item svg{width:16px;height:16px;stroke:#fff;fill:none;flex:none;margin-top:.2rem;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:clamp(1.3rem,2.5vw,1.7rem);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;max-width:1400px;margin:0 auto;font-size:clamp(.78rem,1.2vw,.88rem);}
+.footer-bottom p{color:rgba(255,255,255,.75);margin:0;}
+.footer-bottom a{color:rgba(255,255,255,.75);text-decoration:none;}
+.footer-bottom a:hover{color:var(--rich-gold);}
+.footer-bottom strong{color:#fff;}
+
+/* RESPONSIVE */
+@media (max-width:1024px){
+  nav{display:none;}
+  .phone-cta{display:none;}
+  .hamburger{display:flex;}
+  .shop-grid{grid-template-columns:1fr;}
+  .sidebar{max-width:100%;}
+  .product-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:600px){
+  .product-grid{grid-template-columns:1fr;}
+  .search-row{align-items:flex-start;}
+  .search-controls{width:100%;}
+  .search-box,.search-box input{width:100%;}
+}
+@media (max-width:480px){
+  header{padding:1rem 1.25rem;}
+  header.scrolled{padding:.7rem 1.25rem;}
+  .cta-btn{display:none;}
+  .hero{padding:1.5rem 1.25rem;}
+  .hero p{max-width:100%;}
+  .shop-wrap{padding:2.5rem 1.25rem 3rem;}
+  footer{padding:2.5rem 1.25rem 1.5rem;}
+  .footer-grid{grid-template-columns:1fr;text-align:center;}
+  .social-links{justify-content:center;}
+  .footer-contact-item{justify-content:center;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+}
+html,body{max-width:100%;overflow-x:hidden;}
+
+/* FOOTER MOBILE ACCORDION */
+.footer-section h3{display:flex;justify-content:space-between;align-items:center;}
+.footer-toggle-icon{display:none;width:14px;height:14px;position:relative;flex:none;}
+.footer-toggle-icon::before,.footer-toggle-icon::after{content:'';position:absolute;background:#fff;transition:transform .3s ease;}
+.footer-toggle-icon::before{left:0;top:50%;width:100%;height:1.5px;transform:translateY(-50%);}
+.footer-toggle-icon::after{top:0;left:50%;width:1.5px;height:100%;transform:translateX(-50%);}
+.footer-accordion.open .footer-toggle-icon::after{transform:translateX(-50%) scaleY(0);}
+.footer-content{overflow:hidden;}
+@media (max-width:600px){
+  .footer-grid{grid-template-columns:1fr;text-align:left;}
+  .footer-section:first-child{text-align:center;margin-bottom:.5rem;}
+  .footer-section:first-child .footer-logo-badge{margin-left:auto;margin-right:auto;}
+  .footer-section:first-child .social-links{justify-content:center;}
+  .footer-accordion{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:.9rem;}
+  .footer-accordion h3{cursor:pointer;margin-bottom:0;padding:.4rem 0;}
+  .footer-toggle-icon{display:block;}
+  .footer-accordion .footer-content{max-height:0;transition:max-height .4s ease;}
+  .footer-accordion.open .footer-content{max-height:400px;padding-top:.8rem;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+}
+</style>
 </head>
 <body>
 
-  <!-- Site Header -->
-  <!-- Site Header (Exact Match to Approved Home Page) -->
-  <header class="site-header">
-    <div class="container">
-      <div class="header-inner">
-        <!-- Navigation Left -->
-        <nav class="nav-desktop-left" aria-label="Main Navigation">
-          <a href="about.html" class="nav-link">HOME</a>
-          <a href="products.html" class="nav-link active">PRODUCTS</a>
-          <a href="about.html" class="nav-link">ABOUT</a>
-          <a href="blog.html" class="nav-link">BLOG</a>
-          <a href="contact.html" class="nav-link">CONTACT</a>
-        </nav>
+<header>
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="products.html" class="active">PRODUCTS</a>
+    <a href="about.html">ABOUT</a>
+    <a href="blog.html">BLOG</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+  <div class="logo"><img src="casplogo.png" alt="Caspian"></div>
+  <div class="header-right">
+    <span class="phone-cta"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="none" stroke-width="1.5"/></svg> +971 58 561 6040</span>
+    <button class="cta-btn">Get In Touch</button>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-        <!-- Centered Logo -->
-        <div class="header-brand-center">
-          <a href="about.html" aria-label="Caspian &amp; Sun Food Home">
-            <img src="images/logo.png" alt="Caspian &amp; Sun Food Trading LLC" class="header-logo">
-          </a>
-        </div>
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile navigation">
+  <div class="drawer-top">
+    <img class="drawer-logo" src="casplogo.png" alt="Caspian">
+    <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+  </div>
+  <nav class="drawer-nav">
+    <a href="index.html">Home</a>
+    <a href="products.html" class="active">Products</a>
+    <a href="about.html">About</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="drawer-footer">
+    <span class="phone-cta"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="none" stroke-width="1.5"/></svg> +971 58 561 6040</span>
+    <button class="cta-btn-solid">Get In Touch</button>
+  </div>
+</aside>
 
-        <!-- Header Actions Right -->
-        <div class="header-actions-right">
-          <a href="tel:+971585616040" class="header-phone-link">
-            <svg width="18" height="18" viewBox="0 0 24 24">
-              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-            </svg>
-            <span>+971 58 561 6040</span>
-          </a>
-          <a href="contact.html" class="btn-header-touch">Get In Touch</a>
-          <button class="menu-toggle" id="menuToggle" aria-label="Open mobile menu">
-            <span class="menu-toggle-icon">
-              <span class="menu-toggle-line"></span>
-              <span class="menu-toggle-line"></span>
-              <span class="menu-toggle-line"></span>
-            </span>
-          </button>
-        </div>
+<section class="hero">
+  <div class="hero-inner">
+    <h1>SHOP</h1>
+    <p>Connecting the finest seafood from pristine waters to discerning markets around the world.</p>
+  </div>
+</section>
+
+<div class="shop-wrap">
+  <div class="search-row reveal">
+    <h1>SEARCH PRODUCTS</h1>
+    <div class="search-controls">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" placeholder="Search...">
+      </div>
+      <select class="sort-select">
+        <option>Default Sorting</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+        <option>Name: A–Z</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="shop-grid">
+    <aside class="sidebar reveal">
+      <div class="sidebar-title">Product Categories</div>
+
+      <div class="cat-group open">
+        <button class="cat-toggle"><span>Frozen Seafood Product</span><span class="plus"></span></button>
+        <ul class="cat-list">
+          <li><label><input type="checkbox" checked> Carabinaro Shrimp</label></li>
+          <li><label><input type="checkbox" checked> Calluga Hybrid Caviar</label></li>
+          <li><label><input type="checkbox"> Osetra Caviar</label></li>
+          <li><label><input type="checkbox" checked> Belluga Caviar</label></li>
+          <li><label><input type="checkbox" checked> Frozen Yellow Tail Hamachi</label></li>
+          <li><label><input type="checkbox"> Hokkaido Scallops</label></li>
+          <li><label><input type="checkbox" checked> King Crab Legs</label></li>
+          <li><label><input type="checkbox" checked> Lobster Tail</label></li>
+          <li><label><input type="checkbox" checked> Premium Saku Tuna</label></li>
+          <li><label><input type="checkbox" checked> Premium Tuna Loin</label></li>
+          <li><label><input type="checkbox"> Salmon Roe Ikura Chum Keta</label></li>
+          <li><label><input type="checkbox" checked> Sushi EBI</label></li>
+          <li><label><input type="checkbox" checked> Unagi</label></li>
+          <li><label><input type="checkbox" checked> Black Cod Sable Fish H&G</label></li>
+        </ul>
+      </div>
+
+      <div class="cat-group">
+        <button class="cat-toggle"><span>Butchery</span><span class="plus"></span></button>
+        <ul class="cat-list">
+          <li><label><input type="checkbox"> Prime Beef Cuts</label></li>
+          <li><label><input type="checkbox"> Lamb Chops</label></li>
+        </ul>
+      </div>
+
+      <div class="cat-group">
+        <button class="cat-toggle"><span>Poultry Products</span><span class="plus"></span></button>
+        <ul class="cat-list">
+          <li><label><input type="checkbox"> Grade-A Chicken</label></li>
+          <li><label><input type="checkbox"> Duck Breast</label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <div class="product-grid">
+
+      <div class="product-card reveal">
+        <div class="product-icon"><img src="images/tiger-prawns.jpg" alt="Carabinaro Shrimp"></div>
+        <div class="product-divider"></div>
+        <div class="product-name">Carabinaro Shrimp</div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon"><img src="images/pdf_extracted/extracted_3_2208x3936.jpeg" alt="Calluga Hybrid Caviar"></div>
+        <div class="product-divider"></div>
+        <div class="product-name">Calluga Hybrid Caviar</div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon"><img src="images/sturgeon-caviar.jpg" alt="Osetra Caviar"></div>
+        <div class="product-divider"></div>
+        <div class="product-name">Osetra Caviar</div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon"><img src="images/hero-seafood.jpg" alt="Belluga Caviar"></div>
+        <div class="product-divider"></div>
+        <div class="product-name">Belluga Caviar</div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon"><img src="images/pdf_extracted/extracted_6_2000x1488.jpeg" alt="Frozen Yellow Tail Hamachi"></div>
+        <div class="product-divider"></div>
+        <div class="product-name">Frozen Yellow Tail Hamachi</div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon"><img src="images/pdf_extracted/extracted_4_2000x1499.jpeg" alt="King Crab Legs"></div>
+        <div class="product-divider"></div>
+        <div class="product-name">King Crab Legs</div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon"><img src="images/pdf_extracted/extracted_1_2000x2500.jpeg" alt="Lobster Tail"></div>
+        <div class="product-divider"></div>
+        <div class="product-name">Lobster Tail</div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon"><img src="images/salmon-fillet.jpg" alt="Premium Saku Tuna"></div>
+        <div class="product-divider"></div>
+        <div class="product-name">Premium Saku Tuna</div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon"><img src="images/pdf_extracted/extracted_5_2000x1331.jpeg" alt="Premium Tuna Loin"></div>
+        <div class="product-divider"></div>
+        <div class="product-name">Premium Tuna Loin</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-section">
+      <img class="footer-logo-badge" src="casplogo.png" alt="Caspian">
+      <h3>SOCIAL MEDIA</h3>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.45 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg></a>
+        <a href="#" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.5h3.3l-7.2 8.23 8.47 11.27h-6.63l-5.2-6.8-5.94 6.8H1.72l7.7-8.8L1.3 2.5h6.8l4.7 6.22zm-1.16 17.6h1.83L6.9 4.4H4.94z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.07 2.07 0 110-4.13 2.07 2.07 0 010 4.13zM7.12 20.45H3.56V9h3.56z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
       </div>
     </div>
-  </header>
-
-  <!-- Mobile Drawer Backdrop & Menu -->
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <aside class="mobile-nav-drawer" id="navDrawer" aria-label="Mobile Navigation">
-    <div>
-      <div class="drawer-header">
-        <img src="images/logo.png" alt="Caspian Logo" class="drawer-logo">
-        <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
-      </div>
-      <nav class="drawer-links">
-        <a href="about.html" class="drawer-link">About Us</a>
-        <a href="products.html" class="drawer-link active">Products</a>
-        <a href="blog.html" class="drawer-link">Journal</a>
-        <a href="contact.html" class="drawer-link">Contact</a>
-        <a href="privacy-policy.html" class="drawer-link">Privacy Policy</a>
-      </nav>
+    <div class="footer-section footer-accordion">
+      <h3><span>ABOUT</span><span class="footer-toggle-icon"></span></h3>
+      <div class="footer-content">
+      <p>Our story began in 1981 with a caviar farm on the shores of the Caspian Sea in Azerbaijan. What started as a small family initiative soon grew into a passion-driven journey,</p>
     </div>
-    <div class="drawer-footer">
-      <p style="font-size: 14px; color: var(--body-muted); margin-bottom: 12px;">Direct Inquiries:</p>
-      <a href="tel:+971585616040" style="font-weight: 700; color: var(--deep-teal); display: block; margin-bottom: 16px;">+971 58 561 6040</a>
-      <a href="contact.html" class="btn btn-primary" style="width: 100%;">Inquire Now</a>
     </div>
-  </aside>
-
-  <main>
-    <!-- Page Hero -->
-    <section class="page-hero">
-      <div class="container">
-        <nav class="hero-breadcrumbs" aria-label="Breadcrumb">
-          <a href="about.html">Home</a>
-          <span class="breadcrumb-separator">/</span>
-          <span class="breadcrumb-current">Product Catalogue</span>
-        </nav>
-        <div class="hero-content">
-          <p class="eyebrow-text">Curated Gastronomy</p>
-          <h1 class="main-title">Finest Sourced Seafood &amp; Gourmet Selections</h1>
-          <p class="sub-text">From sustainably farmed royal Caspian sturgeon and pristine Atlantic salmon to certified halal butchery and poultry, each product represents meticulous origin selection and rigorous cold-chain management.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Product Catalogue Section -->
-    <section class="section section-light">
-      <div class="container">
-        <!-- Category Filter -->
-        <div class="filter-bar" role="tablist" aria-label="Product categories">
-          <button class="filter-btn active" data-filter="all">All Products (8)</button>
-          <button class="filter-btn" data-filter="seafood">Frozen Seafood (5)</button>
-          <button class="filter-btn" data-filter="butchery">Gourmet Butchery (2)</button>
-          <button class="filter-btn" data-filter="poultry">Premium Poultry (1)</button>
-        </div>
-
-        <!-- Product Grid (4 columns desktop, 2 columns tablet, 1 column mobile) -->
-        <div class="card-grid" id="productGrid">
-          <!-- Product 1: Sturgeon Caviar -->
-          <article class="product-card" data-category="seafood">
-            <div class="product-card-thumb">
-              <span class="product-badge">Signature</span>
-              <span class="product-origin">Caspian Sea Basin</span>
-              <img src="images/sturgeon-caviar.jpg" alt="Royal Caspian Sturgeon Caviar" loading="lazy">
-            </div>
-            <div class="product-card-body">
-              <span class="product-category">Frozen Seafood / Caviar</span>
-              <h2 class="product-title">Royal Beluga &amp; Baerii Caviar</h2>
-              <p class="product-desc">Traditional Malossol cured royal sturgeon roe with a lustrous dark pearl sheen, buttery mouthfeel, and delicate ocean finish.</p>
-              <div class="product-card-footer">
-                <span style="font-size: 13px; color: var(--body-muted);">50g &bull; 250g &bull; 1kg</span>
-                <a href="product-detail.html" class="product-link">
-                  <span>View Details</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Product 2: Salmon Fillet -->
-          <article class="product-card" data-category="seafood">
-            <div class="product-card-thumb">
-              <span class="product-badge">IQF Frozen</span>
-              <span class="product-origin">Atlantic Fjords</span>
-              <img src="images/salmon-fillet.jpg" alt="Atlantic Salmon Fillet Portion" loading="lazy">
-            </div>
-            <div class="product-card-body">
-              <span class="product-category">Frozen Seafood</span>
-              <h2 class="product-title">Atlantic Salmon Portions</h2>
-              <p class="product-desc">Skin-on, pin-bone removed Atlantic salmon portions flash frozen within hours of harvest to lock in Omega-3 richness and firm texture.</p>
-              <div class="product-card-footer">
-                <span style="font-size: 13px; color: var(--body-muted);">200g &bull; Master 10kg</span>
-                <a href="product-detail.html" class="product-link">
-                  <span>View Details</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Product 3: Tiger Prawns -->
-          <article class="product-card" data-category="seafood">
-            <div class="product-card-thumb">
-              <span class="product-badge">Wild-Caught</span>
-              <span class="product-origin">Indian Ocean</span>
-              <img src="images/tiger-prawns.jpg" alt="Black Tiger Jumbo Prawns" loading="lazy">
-            </div>
-            <div class="product-card-body">
-              <span class="product-category">Frozen Seafood</span>
-              <h2 class="product-title">Jumbo Black Tiger Prawns</h2>
-              <p class="product-desc">Head-on, shell-on giant tiger prawns renowned for their sweet crisp bite, vibrant coral pigmentation, and exceptional grill performance.</p>
-              <div class="product-card-footer">
-                <span style="font-size: 13px; color: var(--body-muted);">U6 / U8 &bull; 1kg Box</span>
-                <a href="product-detail.html" class="product-link">
-                  <span>View Details</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Product 4: Mediterranean Seabass -->
-          <article class="product-card" data-category="seafood">
-            <div class="product-card-thumb">
-              <span class="product-badge">Whole / G&amp;S</span>
-              <span class="product-origin">Aegean Sea</span>
-              <img src="images/seabass.jpg" alt="Whole Mediterranean Seabass" loading="lazy">
-            </div>
-            <div class="product-card-body">
-              <span class="product-category">Frozen Seafood</span>
-              <h2 class="product-title">Mediterranean Sea Bass</h2>
-              <p class="product-desc">Scaled and gutted pristine sea bass featuring delicate white flaky meat, mild sweet taste, and clean ocean aroma tailored for fine dining.</p>
-              <div class="product-card-footer">
-                <span style="font-size: 13px; color: var(--body-muted);">400-600g &bull; 5kg Case</span>
-                <a href="product-detail.html" class="product-link">
-                  <span>View Details</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Product 5: Calamari Squid Rings -->
-          <article class="product-card" data-category="seafood">
-            <div class="product-card-thumb">
-              <span class="product-badge">Tenderized</span>
-              <span class="product-origin">Pacific Harvest</span>
-              <img src="images/calamari.jpg" alt="Tender Calamari Rings and Tubes" loading="lazy">
-            </div>
-            <div class="product-card-body">
-              <span class="product-category">Frozen Seafood</span>
-              <h2 class="product-title">Pacific Calamari Tubes &amp; Rings</h2>
-              <p class="product-desc">Carefully cleaned and tenderized squid rings and tubes, individually quick-frozen for immediate culinary versatility in frying and saut&eacute;ing.</p>
-              <div class="product-card-footer">
-                <span style="font-size: 13px; color: var(--body-muted);">1kg Pack &bull; 10kg Master</span>
-                <a href="product-detail.html" class="product-link">
-                  <span>View Details</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Product 6: Prime Beef Steak -->
-          <article class="product-card" data-category="butchery">
-            <div class="product-card-thumb">
-              <span class="product-badge">Halal Certified</span>
-              <span class="product-origin">Australian Pastures</span>
-              <img src="images/butchery-beef.jpg" alt="Prime Black Angus Ribeye Steak" loading="lazy">
-            </div>
-            <div class="product-card-body">
-              <span class="product-category">Gourmet Butchery</span>
-              <h2 class="product-title">Prime Black Angus Ribeye</h2>
-              <p class="product-desc">Grain-fed Black Angus beef marbled to perfection (MB 4+). Hand-trimmed steaks vacuum-sealed for consistent tenderness and depth of beef flavor.</p>
-              <div class="product-card-footer">
-                <span style="font-size: 13px; color: var(--body-muted);">300g Cut &bull; Chilled / Frozen</span>
-                <a href="product-detail.html" class="product-link">
-                  <span>View Details</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Product 7: Lamb Chops -->
-          <article class="product-card" data-category="butchery">
-            <div class="product-card-thumb">
-              <span class="product-badge">Grass-Fed Halal</span>
-              <span class="product-origin">New Zealand</span>
-              <img src="images/lamb-chops.jpg" alt="French Trimmed Lamb Cutlets" loading="lazy">
-            </div>
-            <div class="product-card-body">
-              <span class="product-category">Gourmet Butchery</span>
-              <h2 class="product-title">French-Trimmed Lamb Rack</h2>
-              <p class="product-desc">Naturally grass-fed spring lamb cutlets impeccably frenched by master butchers. Distinctively sweet, succulent, and tender profile.</p>
-              <div class="product-card-footer">
-                <span style="font-size: 13px; color: var(--body-muted);">8-Rib Rack &bull; 800g avg</span>
-                <a href="product-detail.html" class="product-link">
-                  <span>View Details</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Product 8: Grade-A Poultry -->
-          <article class="product-card" data-category="poultry">
-            <div class="product-card-thumb">
-              <span class="product-badge">Halal Grade A</span>
-              <span class="product-origin">Certified Farms</span>
-              <img src="images/poultry.jpg" alt="Premium Fresh &amp; Frozen Poultry" loading="lazy">
-            </div>
-            <div class="product-card-body">
-              <span class="product-category">Premium Poultry</span>
-              <h2 class="product-title">Corn-Fed Whole Poultry &amp; Cuts</h2>
-              <p class="product-desc">100% vegetarian grain-fed poultry produced under stringent hygienic controls. Available in whole bird, boneless skinless breasts, and tenderloins.</p>
-              <div class="product-card-footer">
-                <span style="font-size: 13px; color: var(--body-muted);">1.2kg Whole &bull; IQF Cuts</span>
-                <a href="product-detail.html" class="product-link">
-                  <span>View Details</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Supply Specifications CTA -->
-    <section class="section section-white">
-      <div class="container">
-        <div class="cta-banner">
-          <div class="cta-grid">
-            <div>
-              <p class="eyebrow-text" style="font-size: 26px; color: var(--rich-gold); margin-bottom: 6px;">Bespoke Specifications</p>
-              <h2 style="font-family: var(--font-serif); font-size: clamp(28px, 3.5vw, 42px); color: #FFF; line-height: 1.25; margin-bottom: 14px;">Need Custom Packaging, Private Labeling, or Bulk Volume?</h2>
-              <p style="font-size: 16px; color: var(--cream-ivory); opacity: 0.9; max-width: 580px;">We collaborate directly with airline catering, commercial distributors, and fine dining groups to fulfill specific cut sizes, weight tolerances, and customized labeling.</p>
-            </div>
-            <div class="cta-actions">
-              <a href="contact.html" class="btn btn-gold">Request Spec Sheet</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Site Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand-info">
-          <img src="images/logo.png" alt="Caspian &amp; Sun Food Trading LLC" class="footer-logo">
-          <p class="footer-desc">
-            Caspian &amp; Sun Food Trading LLC — Purveyors of the world’s finest sturgeon caviar, premium seafood, gourmet butchery, and poultry. Established on the shores of the Caspian Sea in 1981.
-          </p>
-        </div>
-
-        <div>
-          <h4 class="footer-col-title">Navigation</h4>
-          <ul class="footer-links">
-            <li><a href="about.html" class="footer-link">About Us</a></li>
-            <li><a href="products.html" class="footer-link">Product Catalogue</a></li>
-            <li><a href="blog.html" class="footer-link">Gastronomy Journal</a></li>
-            <li><a href="contact.html" class="footer-link">Contact Desk</a></li>
-            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-col-title">Categories</h4>
-          <ul class="footer-links">
-            <li><a href="products.html" class="footer-link">Caspian Sturgeon &amp; Caviar</a></li>
-            <li><a href="products.html" class="footer-link">Frozen Seafood Selections</a></li>
-            <li><a href="products.html" class="footer-link">Prime Butchery Cuts</a></li>
-            <li><a href="products.html" class="footer-link">Gourmet Poultry Products</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-col-title">Dubai Headquarters</h4>
-          <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Caspian &amp; Sun Food Trading LLC, Dubai, United Arab Emirates</span>
-          </div>
-          <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-            <span>+971 58 561 6040</span>
-          </div>
-          <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            <span>info@caspiansunfood.com</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 Caspian &amp; Sun Food Trading LLC. All rights reserved.</p>
-        <div class="footer-legal-links">
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="contact.html">Terms of Service</a>
-          <a href="contact.html">Wholesale Inquiries</a>
-        </div>
-      </div>
+    <div class="footer-section footer-accordion">
+      <h3><span>QUICK LINKS</span><span class="footer-toggle-icon"></span></h3>
+      <div class="footer-content">
+      <ul style="list-style:none;">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </div>
-  </footer>
+    </div>
+    <div class="footer-section footer-accordion">
+      <h3><span>PRODUCTS</span><span class="footer-toggle-icon"></span></h3>
+      <div class="footer-content">
+      <ul style="list-style:none;">
+        <li><a href="#">Frozen Seafood Product</a></li>
+        <li><a href="#">Poultry Product</a></li>
+        <li><a href="#">Butchery</a></li>
+      </ul>
+    </div>
+    </div>
+    <div class="footer-section footer-accordion">
+      <h3><span>CONTACT US</span><span class="footer-toggle-icon"></span></h3>
+      <div class="footer-content">
+      <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" stroke-width="1.5"/></svg><a href="tel:+97158561604">+971 58 561 6040</a></div>
+    </div>
+      <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z" stroke-width="1.5"/><path d="M4 6l8 6 8-6" stroke-width="1.5"/></svg><a href="mailto:vurgun@caspiansunfood.com">vurgun@caspiansunfood.com</a></div>
+      <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-11.5a7 7 0 10-14 0C5 14.5 12 21 12 21z" stroke-width="1.5"/><circle cx="12" cy="9.5" r="2.3" stroke-width="1.5"/></svg><span>Office C-08, Belselah Building, Dubai - UAE</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© Caspian. All rights reserved.</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+    <p>Designed & Developed by: <strong>intersmart</strong></p>
+  </div>
+</footer>
 
-  <script src="js/main.js"></script>
+<script>
+(function(){
+  var header=document.querySelector('header');
+  var hero=document.querySelector('.hero');
+  var lastY=window.scrollY;
+  function onScroll(){
+    var y=window.scrollY;
+    var threshold=hero?hero.offsetHeight-80:200;
+    if(y>threshold){
+      header.classList.add('scrolled');
+      if(y>lastY+4){header.classList.add('hide');}
+      else if(y<lastY-4){header.classList.remove('hide');}
+    }else{
+      header.classList.remove('scrolled');
+      header.classList.remove('hide');
+    }
+    lastY=y<0?0:y;
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  onScroll();
+})();
+
+(function(){
+  var btn=document.getElementById('hamburgerBtn');
+  var drawer=document.getElementById('mobileDrawer');
+  var backdrop=document.getElementById('drawerBackdrop');
+  var closeBtn=document.getElementById('drawerClose');
+  var links=drawer.querySelectorAll('a');
+  function open(){
+    drawer.classList.add('open');
+    backdrop.classList.add('open');
+    document.body.classList.add('drawer-open');
+    btn.setAttribute('aria-expanded','true');
+  }
+  function close(){
+    drawer.classList.remove('open');
+    backdrop.classList.remove('open');
+    document.body.classList.remove('drawer-open');
+    btn.setAttribute('aria-expanded','false');
+  }
+  btn.addEventListener('click',open);
+  closeBtn.addEventListener('click',close);
+  backdrop.addEventListener('click',close);
+  links.forEach(function(a){a.addEventListener('click',close);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+})();
+
+(function(){
+  document.querySelectorAll('.cat-toggle').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      btn.closest('.cat-group').classList.toggle('open');
+    });
+  });
+})();
+
+(function(){
+  var targets=Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  targets.forEach(function(el,i){
+    el.style.transitionDelay=(i%4*80)+'ms';
+  });
+  if(!('IntersectionObserver' in window)){
+    targets.forEach(function(el){el.classList.add('in-view');});
+    return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  },{threshold:.1,rootMargin:'0px 0px -60px 0px'});
+  targets.forEach(function(el){io.observe(el);});
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.footer-accordion h3').forEach(function(h3){
+    h3.addEventListener('click',function(){
+      h3.closest('.footer-accordion').classList.toggle('open');
+    });
+  });
+})();
+</script>
 </body>
 </html>

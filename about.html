@@ -1,332 +1,539 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | Caspian &amp; Sun Food Trading LLC</title>
-  <meta name="description" content="Discover Caspian & Sun Food Trading LLC — purveyors of world-class Caspian caviar, premium frozen seafood, and gourmet food distribution since 1981.">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/png" href="images/logo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | Caspian & Sun Food Trading LLC</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Alex+Brush&display=swap" rel="stylesheet">
+<style>
+:root{--deep-teal:#1E4951;--rich-gold:#D7BB51;--antique-gold:#AA8D3F;--charcoal:#171813;--cream:#F7F3EC;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Manrope',sans-serif;color:var(--charcoal);background:#fff;line-height:1.7;}
+img{max-width:100%;display:block;}
+
+/* HEADER — transparent overlay on hero; liquid-glass white on scroll */
+header{position:fixed;top:0;left:0;right:0;background:transparent;padding:clamp(1rem,1.8vw,1.8rem) clamp(1.5rem,4vw,5.5rem);display:flex;justify-content:space-between;align-items:center;z-index:200;gap:clamp(.6rem,1.5vw,1.5rem);flex-wrap:nowrap;transform:translateY(0);transition:background .4s ease,padding .4s ease,box-shadow .4s ease,border-color .4s ease,transform .35s ease;border-bottom:1px solid transparent;}
+header.hide{transform:translateY(-100%);}
+header.scrolled{background:rgba(255,255,255,.68);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);box-shadow:0 4px 30px rgba(0,0,0,.06);border-bottom:1px solid rgba(0,0,0,.06);padding:clamp(.6rem,1.1vw,1rem) clamp(1.5rem,4vw,5.5rem);}
+.logo{display:flex;align-items:center;min-width:fit-content;}
+.logo img{height:clamp(48px,5vw,96px);width:auto;transition:height .4s ease;}
+header.scrolled .logo img{height:clamp(42px,4.2vw,74px);}
+nav{display:flex;gap:clamp(.7rem,1.5vw,2.6rem);align-items:center;flex:1;justify-content:flex-start;flex-wrap:nowrap;min-width:0;}
+nav a{position:relative;font-family:'Playfair Display',serif;color:#fff;text-decoration:none;font-size:clamp(.68rem,1vw,1.05rem);font-weight:500;transition:color .35s ease;text-transform:uppercase;letter-spacing:.6px;white-space:nowrap;text-shadow:0 1px 4px rgba(0,0,0,.25);padding-bottom:4px;}
+nav a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;background:currentColor;transition:width .35s cubic-bezier(.65,0,.35,1);}
+header.scrolled nav a{color:var(--charcoal);text-shadow:none;}
+nav a:hover,nav a.active{color:var(--rich-gold);}
+nav a:hover::after,nav a.active::after{width:100%;}
+.header-right{display:flex;align-items:center;gap:clamp(.6rem,1.3vw,1.8rem);justify-content:flex-end;flex:1;}
+.phone-cta{display:flex;align-items:center;gap:.4rem;color:#fff;font-size:clamp(.68rem,.9vw,.95rem);font-weight:500;white-space:nowrap;transition:color .4s ease;text-shadow:0 1px 4px rgba(0,0,0,.25);}
+.phone-cta svg{width:14px;height:14px;stroke:#fff;fill:none;transition:stroke .4s ease;flex:none;}
+header.scrolled .phone-cta{color:var(--charcoal);text-shadow:none;}
+header.scrolled .phone-cta svg{stroke:var(--charcoal);}
+.cta-btn{background:transparent;border:1px solid #fff;color:#fff;padding:clamp(.45rem,.9vw,.8rem) clamp(.8rem,1.6vw,1.8rem);font-family:'Manrope',sans-serif;font-size:clamp(.68rem,.85vw,.9rem);font-weight:500;cursor:pointer;transition:background .35s ease,color .35s ease,border-color .35s ease,transform .3s ease,box-shadow .3s ease;text-decoration:none;display:inline-block;white-space:nowrap;}
+.cta-btn:hover{background:#fff;color:var(--deep-teal);transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.18);}
+header.scrolled .cta-btn{border-color:var(--charcoal);color:var(--charcoal);}
+header.scrolled .cta-btn:hover{background:var(--deep-teal);color:#fff;border-color:var(--deep-teal);box-shadow:0 10px 24px rgba(30,73,81,.25);}
+
+/* HAMBURGER — hidden on desktop, shown only ≤1024px (tablet + phone) */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;background:none;border:none;cursor:pointer;padding:0;z-index:210;}
+.hamburger span{display:block;width:26px;height:2px;background:#fff;transition:background .4s ease,transform .3s ease,opacity .3s ease;}
+header.scrolled .hamburger span{background:var(--charcoal);}
+
+/* MOBILE DRAWER */
+.drawer-backdrop{position:fixed;inset:0;background:rgba(10,15,15,.45);z-index:290;opacity:0;pointer-events:none;transition:opacity .35s ease;}
+.drawer-backdrop.open{opacity:1;pointer-events:auto;}
+.mobile-drawer{position:fixed;top:0;right:0;height:100vh;height:100dvh;width:min(320px,82vw);background:#fff;z-index:300;box-shadow:-10px 0 35px rgba(0,0,0,.18);transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:1.6rem 1.8rem 2rem;overflow-y:auto;}
+.mobile-drawer.open{transform:translateX(0);}
+.drawer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:2.2rem;}
+.drawer-logo{height:48px;width:auto;}
+.drawer-close{background:none;border:none;font-size:1.8rem;line-height:1;cursor:pointer;color:var(--charcoal);padding:.2rem .4rem;}
+.drawer-nav{display:flex;flex-direction:column;gap:1.3rem;margin-bottom:auto;}
+.drawer-nav a{display:block;font-family:'Playfair Display',serif;font-size:1.15rem;text-transform:uppercase;letter-spacing:1px;color:var(--charcoal);text-decoration:none;transition:color .3s ease,padding-left .3s ease;border-left:2px solid transparent;padding-left:0;}
+.drawer-nav a.active,.drawer-nav a:hover{color:var(--deep-teal);padding-left:.7rem;border-left-color:var(--rich-gold);}
+.drawer-footer{display:flex;flex-direction:column;gap:1rem;padding-top:1.5rem;margin-top:1.5rem;border-top:1px solid #eee;}
+.drawer-footer .phone-cta{color:var(--charcoal);text-shadow:none;font-size:.95rem;}
+.drawer-footer .phone-cta svg{stroke:var(--charcoal);}
+.cta-btn-solid{background:var(--deep-teal);color:#fff;border:none;padding:.9rem 1.5rem;font-family:'Manrope',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;text-align:center;width:100%;transition:background .3s ease,transform .3s ease,box-shadow .3s ease;}
+.cta-btn-solid:hover{background:#0f3a46;transform:translateY(-2px);box-shadow:0 10px 22px rgba(30,73,81,.3);}
+body.drawer-open{overflow:hidden;}
+
+/* HERO */
+.hero{position:relative;height:clamp(320px,40vw,760px);background:linear-gradient(to top, rgba(10,15,15,.55) 0%, rgba(10,15,15,.15) 45%, rgba(0,0,0,0) 70%), url('images/pdf_extracted/extracted_5_2000x1331.jpeg') center/cover;display:flex;align-items:flex-end;padding:clamp(1.5rem,4vw,3.5rem);color:#fff;}
+.hero-inner{max-width:1400px;margin:0 auto;width:100%;padding-bottom:clamp(.5rem,1.5vw,1rem);}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6.5vw,4.2rem);font-weight:500;margin-bottom:.4rem;text-shadow:0 2px 12px rgba(0,0,0,.25);opacity:0;animation:heroFadeUp 1s cubic-bezier(.16,1,.3,1) .2s forwards;}
+.hero p{font-size:clamp(.8rem,1.6vw,1rem);max-width:480px;color:#fff;opacity:0;animation:heroFadeUp 1s cubic-bezier(.16,1,.3,1) .45s forwards;}
+@keyframes heroFadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+@media (prefers-reduced-motion: reduce){.hero h1,.hero p{animation:none;opacity:1;}}
+
+/* SCROLL-REVEAL ENTRANCE ANIMATIONS */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+.reveal-scale{opacity:0;transform:scale(.94);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
+.reveal-scale.in-view{opacity:1;transform:scale(1);}
+@media (prefers-reduced-motion: reduce){
+  .reveal,.reveal-scale{opacity:1!important;transform:none!important;transition:none!important;}
+}
+
+/* SECTION BASE */
+.wrap{max-width:1400px;margin:0 auto;padding:0 clamp(1.5rem,5vw,3rem);}
+section{padding:clamp(3rem,6vw,5.5rem) 0;}
+.cream{background:var(--cream);}
+.eyebrow{font-family:'Alex Brush','Playfair Display',cursive;font-size:clamp(1.4rem,2.8vw,2.1rem);font-weight:400;color:#9FB4BC;margin-bottom:.6rem;font-style:italic;}
+h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.6vw,3.75rem);font-weight:500;line-height:1.22;letter-spacing:-.5px;color:var(--charcoal);}
+p{font-size:clamp(.85rem,1.6vw,1rem);color:#5a5a56;}
+
+/* WHO WE ARE */
+.who-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;}
+.who-heading{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.6vw,3.75rem);font-weight:500;margin-bottom:1.1rem;letter-spacing:-.5px;}
+.who-text p{margin-bottom:.9rem;}
+.who-images{position:relative;height:clamp(320px,32vw,460px);}
+.who-img-back{position:absolute;top:0;left:0;width:78%;height:80%;object-fit:cover;transition:transform .6s ease;}
+.who-img-front{position:absolute;bottom:0;right:0;width:52%;height:72%;object-fit:cover;box-shadow:0 12px 30px rgba(0,0,0,.15);transition:transform .6s ease;}
+.who-images:hover .who-img-back{transform:scale(1.04);}
+.who-images:hover .who-img-front{transform:scale(1.04);}
+
+/* WHY CHOOSE US */
+.why-section{padding:0;}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:clamp(380px,75vh,640px);}
+.why-img{width:100%;height:100%;object-fit:cover;}
+.why-content{background:var(--cream);display:flex;flex-direction:column;justify-content:center;padding:clamp(1.5rem,3.2vw,2.8rem);}
+.why-content h2{margin-bottom:.7rem;}
+.why-content>p{max-width:520px;margin-bottom:clamp(1.1rem,2vw,1.6rem);}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;row-gap:clamp(1.6rem,3vw,2.4rem);column-gap:clamp(2rem,4vw,3.5rem);}
+.feature{display:flex;gap:1.2rem;align-items:center;}
+.feature-icon{flex:none;width:clamp(64px,6vw,76px);height:clamp(64px,6vw,76px);border-radius:50%;background:rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;}
+.feature-icon svg{width:30px;height:30px;stroke:var(--deep-teal);}
+.feature h4{font-size:clamp(.98rem,1.8vw,1.15rem);font-weight:600;margin-bottom:.35rem;color:var(--charcoal);}
+.feature p{font-size:clamp(.8rem,1.4vw,.9rem);line-height:1.5;color:#6b6b66;}
+
+/* PROCESS */
+.process-head{text-align:center;margin-bottom:clamp(3rem,6vw,5rem);}
+.process-head h2{margin-top:.4rem;}
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);row-gap:clamp(3.5rem,7vw,5.5rem);column-gap:1rem;}
+.process-item{display:flex;align-items:center;gap:clamp(1.2rem,2vw,1.6rem);position:relative;padding:0 clamp(.5rem,2vw,1.5rem);}
+.process-circle{flex:none;width:clamp(96px,9.5vw,142px);height:clamp(96px,9.5vw,142px);border-radius:50%;background:var(--deep-teal);display:flex;align-items:center;justify-content:center;overflow:hidden;transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s ease;}
+.process-item:hover .process-circle{transform:scale(1.08);box-shadow:0 14px 28px rgba(30,73,81,.3);}
+.process-circle img{width:100%;height:100%;object-fit:cover;}
+.process-circle svg{width:clamp(38px,4vw,54px);height:clamp(38px,4vw,54px);stroke:#fff;fill:none;}
+.process-item h4{font-size:clamp(1rem,1.8vw,1.2rem);font-weight:700;color:var(--deep-teal);margin-bottom:.35rem;}
+.process-item p{font-size:clamp(.85rem,1.5vw,.95rem);line-height:1.55;color:#6b6b66;}
+.process-item::after{content:'';position:absolute;top:50%;right:calc(-1 * clamp(1rem,3vw,2.5rem));width:clamp(2rem,4.5vw,3.5rem);height:0;border-top:2px dotted var(--rich-gold);}
+.process-grid>.process-item:nth-child(3n)::after{display:none;}
+
+/* BEST SOURCING (full bg image + overlay card — top gap, flush right/bottom) */
+.best-section{position:relative;padding:0;min-height:clamp(440px,50vw,700px);}
+.best-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;}
+.best-card{position:relative;z-index:1;margin-left:auto;margin-top:clamp(2.5rem,6vw,5.5rem);width:clamp(300px,39%,580px);min-height:calc(clamp(440px,50vw,700px) - clamp(2.5rem,6vw,5.5rem));background:var(--cream);display:flex;flex-direction:column;justify-content:center;padding:clamp(2.2rem,4vw,3.5rem);}
+.best-card .eyebrow{font-size:clamp(1rem,1.8vw,1.35rem);margin-bottom:1rem;}
+.best-card h2{margin-bottom:1.2rem;}
+.best-card p{margin-bottom:1rem;}
+
+/* SUSTAINING */
+.sustain-grid{display:grid;grid-template-columns:.85fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;}
+.sustain-img{width:100%;aspect-ratio:1/1;object-fit:cover;}
+.sustain-content h2{margin-bottom:1rem;}
+.sustain-content p{margin-bottom:1.6rem;max-width:420px;}
+.btn-shop{position:relative;display:inline-block;}
+.btn-shop::after{content:'';position:absolute;bottom:-8px;right:-8px;width:100%;height:100%;border:1.5px solid var(--rich-gold);z-index:0;transition:transform .35s cubic-bezier(.34,1.56,.64,1);}
+.btn-shop:hover::after{transform:translate(4px,4px);}
+.btn-shop button{position:relative;z-index:1;background:var(--deep-teal);color:#fff;border:none;padding:.85rem 2.2rem;font-size:.9rem;font-weight:600;cursor:pointer;text-transform:uppercase;letter-spacing:.5px;transition:background .3s ease,transform .35s cubic-bezier(.34,1.56,.64,1);}
+.btn-shop:hover button{background:#0f3a46;transform:translate(-3px,-3px);}
+
+/* FOOTER — 5 columns: logo+social / about / quick links / products / contact */
+footer{background:var(--deep-teal);color:#fff;padding:clamp(2.5rem,5vw,4rem) clamp(1.5rem,5vw,3rem) clamp(1.5rem,3vw,2rem);}
+.footer-grid{display:grid;grid-template-columns:.85fr 1.15fr 1fr 1fr 1.15fr;gap:clamp(1.5rem,3vw,2.5rem);max-width:1400px;margin:0 auto clamp(2.5rem,4vw,3.5rem);}
+.footer-section h3{font-family:'Playfair Display',serif;font-size:clamp(1rem,1.6vw,1.15rem);font-weight:500;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.8px;}
+.footer-section p,.footer-section a,.footer-section li{font-size:clamp(.82rem,1.4vw,.92rem);line-height:1.8;color:rgba(255,255,255,.85);}
+.footer-section a{text-decoration:none;transition:color .3s;}
+.footer-section a:hover{color:var(--rich-gold);}
+.footer-logo-badge{width:clamp(90px,9vw,115px);height:clamp(90px,9vw,115px);margin-bottom:clamp(1.5rem,3vw,2.2rem);}
+.social-links{display:flex;gap:.6rem;margin-top:.9rem;}
+.social-links a{width:34px;height:34px;background:rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;color:#fff;}
+.social-links a svg{width:16px;height:16px;transition:transform .3s;}
+.social-links a:hover svg{transform:scale(1.15);}
+.social-links a:hover{background:var(--rich-gold);color:var(--deep-teal);}
+.footer-contact-item{display:flex;align-items:flex-start;gap:.6rem;margin-bottom:.9rem;}
+.footer-contact-item svg{width:16px;height:16px;stroke:#fff;fill:none;flex:none;margin-top:.2rem;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:clamp(1.3rem,2.5vw,1.7rem);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;max-width:1400px;margin:0 auto;font-size:clamp(.78rem,1.2vw,.88rem);}
+.footer-bottom p{color:rgba(255,255,255,.75);}
+.footer-bottom a{color:rgba(255,255,255,.75);text-decoration:none;}
+.footer-bottom a:hover{color:var(--rich-gold);}
+.footer-bottom strong{color:#fff;}
+
+/* RESPONSIVE — 1440/1366/1280 desktop (fluid via clamp above), 1024/768 tablet, 480/390/375/360 mobile */
+
+/* ≤1300px — hamburger kicks in BEFORE nav+logo+actions run out of room and wrap (decoupled from the 1024px content-stacking breakpoint below) */
+/* ≤1024px — tablet + phone: hamburger nav kicks in, two-column sections stack */
+@media (max-width:1024px){
+  nav{display:none;}
+  .phone-cta{display:none;}
+  .hamburger{display:flex;}
+  .who-grid,.sustain-grid{grid-template-columns:1fr;}
+  .why-grid{grid-template-columns:1fr;}
+  .why-img{height:360px;}
+  .process-grid{grid-template-columns:repeat(2,1fr);row-gap:2.5rem;column-gap:1.5rem;}
+  .process-item::after{display:none;}
+  .best-card{position:static;width:100%;margin-top:0;min-height:auto;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+
+/* ≤768px — tablet portrait */
+@media (max-width:768px){
+  .wrap{padding:0 1.25rem;}
+  .who-images{height:300px;}
+  .feature-grid{grid-template-columns:1fr;gap:1.5rem;}
+  .process-grid{grid-template-columns:1fr;row-gap:2rem;}
+  .footer-grid{grid-template-columns:1fr 1fr;text-align:left;}
+}
+
+/* ≤480px — large phones */
+@media (max-width:480px){
+  header{padding:1rem 1.25rem;}
+  header.scrolled{padding:.7rem 1.25rem;}
+  .cta-btn{display:none;}
+  .hero{padding:1.5rem 1.25rem;}
+  .hero p{max-width:100%;}
+  section{padding:2.5rem 0;}
+  .wrap{padding:0 1.25rem;}
+  .who-images{height:260px;}
+  .who-img-back{width:72%;height:76%;}
+  .who-img-front{width:58%;height:66%;}
+  .why-content{padding:2rem 1.25rem;}
+  .best-card{padding:1.75rem 1.25rem;}
+  .sustain-img{aspect-ratio:4/3;}
+  .footer-grid{grid-template-columns:1fr;text-align:center;}
+  .social-links{justify-content:center;}
+  .footer-contact-item{justify-content:center;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+}
+
+/* ≤390px — standard small phones */
+@media (max-width:390px){
+  .hero h1{font-size:2.1rem;}
+  h2,.who-heading{font-size:1.7rem;}
+  .who-images{height:230px;}
+  .process-circle{width:76px;height:76px;}
+  .process-circle svg{width:30px;height:30px;}
+}
+
+/* ≤360px — smallest phones */
+@media (max-width:360px){
+  .logo img{height:52px;}
+  .drawer-logo{height:42px;}
+  .mobile-drawer{width:88vw;padding:1.3rem 1.4rem 1.6rem;}
+  .hero h1{font-size:1.85rem;}
+  .footer-logo-badge{width:80px;height:80px;}
+}
+
+/* no-JS / narrow safety: prevent horizontal scroll anywhere */
+html,body{max-width:100%;overflow-x:hidden;}
+
+/* FOOTER MOBILE ACCORDION */
+.footer-section h3{display:flex;justify-content:space-between;align-items:center;}
+.footer-toggle-icon{display:none;width:14px;height:14px;position:relative;flex:none;}
+.footer-toggle-icon::before,.footer-toggle-icon::after{content:'';position:absolute;background:#fff;transition:transform .3s ease;}
+.footer-toggle-icon::before{left:0;top:50%;width:100%;height:1.5px;transform:translateY(-50%);}
+.footer-toggle-icon::after{top:0;left:50%;width:1.5px;height:100%;transform:translateX(-50%);}
+.footer-accordion.open .footer-toggle-icon::after{transform:translateX(-50%) scaleY(0);}
+.footer-content{overflow:hidden;}
+@media (max-width:600px){
+  .footer-grid{grid-template-columns:1fr;text-align:left;}
+  .footer-section:first-child{text-align:center;margin-bottom:.5rem;}
+  .footer-section:first-child .footer-logo-badge{margin-left:auto;margin-right:auto;}
+  .footer-section:first-child .social-links{justify-content:center;}
+  .footer-accordion{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:.9rem;}
+  .footer-accordion h3{cursor:pointer;margin-bottom:0;padding:.4rem 0;}
+  .footer-toggle-icon{display:block;}
+  .footer-accordion .footer-content{max-height:0;transition:max-height .4s ease;}
+  .footer-accordion.open .footer-content{max-height:400px;padding-top:.8rem;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+}
+</style>
 </head>
 <body>
 
-  <!-- Site Header -->
-  <!-- Site Header (Exact Match to Approved Home Page) -->
-  <header class="site-header">
-    <div class="container">
-      <div class="header-inner">
-        <!-- Navigation Left -->
-        <nav class="nav-desktop-left" aria-label="Main Navigation">
-          <a href="about.html" class="nav-link">HOME</a>
-          <a href="products.html" class="nav-link">PRODUCTS</a>
-          <a href="about.html" class="nav-link active">ABOUT</a>
-          <a href="blog.html" class="nav-link">BLOG</a>
-          <a href="contact.html" class="nav-link">CONTACT</a>
-        </nav>
+<header>
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="products.html">PRODUCTS</a>
+    <a href="about.html" class="active">ABOUT</a>
+    <a href="blog.html">BLOG</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+  <div class="logo"><img src="casplogo.png" alt="Caspian"></div>
+  <div class="header-right">
+    <span class="phone-cta"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="none" stroke-width="1.5"/></svg> +971 58 561 6040</span>
+    <button class="cta-btn">Get In Touch</button>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-        <!-- Centered Logo -->
-        <div class="header-brand-center">
-          <a href="about.html" aria-label="Caspian &amp; Sun Food Home">
-            <img src="images/logo.png" alt="Caspian &amp; Sun Food Trading LLC" class="header-logo">
-          </a>
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile navigation">
+  <div class="drawer-top">
+    <img class="drawer-logo" src="casplogo.png" alt="Caspian">
+    <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+  </div>
+  <nav class="drawer-nav">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="about.html" class="active">About</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="drawer-footer">
+    <span class="phone-cta"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="none" stroke-width="1.5"/></svg> +971 58 561 6040</span>
+    <button class="cta-btn-solid">Get In Touch</button>
+  </div>
+</aside>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>ABOUT US</h1>
+    <p>Delivering exceptional seafood through quality, integrity, and trusted global partnerships.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="who-grid">
+      <div class="who-text">
+        <div class="eyebrow">Beyond the Ocean</div>
+        <h2 class="who-heading">WHO WE ARE</h2>
+        <p>Our story began in 1981 with a caviar farm on the shores of the Caspian Sea in Azerbaijan. What started as a small family initiative soon grew into a passion-driven journey, combining traditional expertise with modern innovation in seafood production. Today, with our headquarters in Istanbul, we proudly deliver premium seafood and gourmet delicacies to customers across the globe. Every product reflects decades of experience, care, and a deep respect for the oceans. In 2015, under the vision and leadership of Vurghun Sevdimaliyev, our company established its corporate structure in Turkey. With a strong focus on quality and sustainability, we quickly gained nationwide recognition through the Sun Caspian Seafood brands, becoming a trusted name in the seafood industry. Our journey continues as we strive to bring the finest flavors of the Caspian to dining tables worldwide, always committed to excellence, innovation, and responsible practices.</p>
+      </div>
+      <div class="who-images">
+        <img class="who-img-back" src="images/pdf_extracted/extracted_6_2000x1488.jpeg" alt="Fresh seafood selection">
+        <img class="who-img-front" src="images/pdf_extracted/extracted_3_2208x3936.jpeg" alt="Premium fish and caviar">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-section">
+  <div class="why-grid">
+    <img class="why-img" src="images/pdf_extracted/extracted_1_2000x2500.jpeg" alt="Fresh fish on blue cloth">
+    <div class="why-content">
+      <div class="eyebrow">Why Choose Us</div>
+      <h2>WITH YEARS OF EXPERTISE, WE LEAD THE SEAFOOD INDUSTRY.</h2>
+      <p>Fresh, high-quality seafood, responsibly sourced and delivered with care for a premium dining experience.</p>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9c2-3 5-4 8-2 2 1.3 3 1.3 5-.3"/><circle cx="16.5" cy="6.3" r=".6" fill="#1E4951" stroke="none"/><path d="M4 9l2.2 2M4 9l1-2.6"/><path d="M2 16.5c1.8 1.6 3.6 1.6 5.4 0s3.6-1.6 5.4 0 3.6 1.6 5.4 0"/><path d="M2 19.8c1.8 1.6 3.6 1.6 5.4 0s3.6-1.6 5.4 0 3.6 1.6 5.4 0"/></svg></div>
+          <div><h4>Natural & Reliable</h4><p>We always provide natural and reliable seafood</p></div>
         </div>
-
-        <!-- Header Actions Right -->
-        <div class="header-actions-right">
-          <a href="tel:+971585616040" class="header-phone-link">
-            <svg width="18" height="18" viewBox="0 0 24 24">
-              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-            </svg>
-            <span>+971 58 561 6040</span>
-          </a>
-          <a href="contact.html" class="btn-header-touch">Get In Touch</a>
-          <button class="menu-toggle" id="menuToggle" aria-label="Open mobile menu">
-            <span class="menu-toggle-icon">
-              <span class="menu-toggle-line"></span>
-              <span class="menu-toggle-line"></span>
-              <span class="menu-toggle-line"></span>
-            </span>
-          </button>
+        <div class="feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="12" r="8"/><ellipse cx="11" cy="12" rx="3.4" ry="8"/><path d="M3 12h16M4.5 7h13M4.5 17h13"/><path d="M18.5 6.5c2 1 3 2.8 3 4.5M21.5 11c0 1-.4 2-1 2.8"/><path d="M20.6 13.6l1 .4-.3-1.1"/></svg></div>
+          <div><h4>Worldwide Service</h4><p>We deliver quickly and reliably from Dubai to the world</p></div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10l4 5-9 13L2 8z"/><path d="M2 8h19M9 3l2.5 5L14 3M6.5 8L11.5 21M17.5 8L12.5 21"/><circle cx="17.5" cy="16.5" r="4.6" fill="#F7F3EC" stroke="#1E4951" stroke-width="1.3"/><path d="M15.6 16.6l1.3 1.3 2.3-2.6" stroke="#1E4951"/></svg></div>
+          <div><h4>High Standard</h4><p>Our products are manufactured according to international standards.</p></div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5c1.1-1.7 3.2-2.3 4.9-1.1 1.8 1.3 2.1 3.8.6 5.6L12 17.2l-5.5-6.2c-1.5-1.8-1.2-4.3.6-5.6C8.8 4.2 10.9 4.8 12 6.5z"/><path d="M4 20c1.5-2.2 3.4-3 6-3h4c1.6 0 2.6.5 2.6 1.8 0 1-1 1.6-2 1.6h-3.2"/><path d="M4 17.4h2.4c1.2 0 2 .5 2.8 1.2"/></svg></div>
+          <div><h4>Satisfaction First</h4><p>Customer satisfaction is always our top priority.</p></div>
         </div>
       </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- Mobile Drawer Backdrop & Menu -->
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <aside class="mobile-nav-drawer" id="navDrawer" aria-label="Mobile Navigation">
-    <div>
-      <div class="drawer-header">
-        <img src="images/logo.png" alt="Caspian Logo" class="drawer-logo">
-        <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
-      </div>
-      <nav class="drawer-links">
-        <a href="about.html" class="drawer-link active">About Us</a>
-        <a href="products.html" class="drawer-link">Products</a>
-        <a href="blog.html" class="drawer-link">Journal</a>
-        <a href="contact.html" class="drawer-link">Contact</a>
-        <a href="privacy-policy.html" class="drawer-link">Privacy Policy</a>
-      </nav>
+<section class="cream">
+  <div class="wrap">
+    <div class="process-head">
+      <div class="eyebrow">From Nature to Table</div>
+      <h2>OUR PRODUCTION PROCESS</h2>
     </div>
-    <div class="drawer-footer">
-      <p style="font-size: 14px; color: var(--body-muted); margin-bottom: 12px;">Direct Inquiries:</p>
-      <a href="tel:+971585616040" style="font-weight: 700; color: var(--deep-teal); display: block; margin-bottom: 16px;">+971 58 561 6040</a>
-      <a href="contact.html" class="btn btn-primary" style="width: 100%;">Inquire Now</a>
-    </div>
-  </aside>
-
-  <main>
-    <!-- Page Hero -->
-    <section class="page-hero">
-      <div class="container">
-        <nav class="hero-breadcrumbs" aria-label="Breadcrumb">
-          <span>Home</span>
-          <span class="breadcrumb-separator">/</span>
-          <span class="breadcrumb-current">About Us</span>
-        </nav>
-        <div class="hero-content">
-          <p class="eyebrow-text">Heritage &amp; Excellence</p>
-          <h1 class="main-title">A Legacy of Pure Ocean Delicacies &amp; Global Trade</h1>
-          <p class="sub-text">From pioneering sturgeon aquaculture on the Caspian Sea in 1981 to supplying five-star hotels and premium markets worldwide, we curate exceptional gastronomic treasures with uncompromising integrity.</p>
-        </div>
+    <div class="process-grid">
+      <div class="process-item">
+        <div class="process-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6z"/><circle cx="15" cy="12" r="1.2" fill="#fff"/></svg></div>
+        <div><h4>Raw Material Selection</h4><p>Only high-quality and fresh seafood is selected.</p></div>
       </div>
-    </section>
-
-    <!-- Company Story Section -->
-    <section class="section section-white">
-      <div class="container">
-        <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(36px, 6vw, 72px); align-items: center;">
-          <div>
-            <span class="gold-badge">Established 1981</span>
-            <div style="margin-top: 14px;">
-              <p class="eyebrow-text" style="font-size: 32px;">Beyond the Ocean</p>
-              <h2 class="section-title">Rooted in Tradition, Driven by International Innovation</h2>
-            </div>
-            <div class="gold-line"></div>
-            <p class="sub-text" style="margin-bottom: 20px;">
-              Our story began in 1981 with a dedicated sturgeon caviar farm on the pristine shores of the Caspian Sea in Azerbaijan. What began as an artisanal family craft evolved into a lifelong devotion to sustainable aquaculture, gastronomic mastery, and responsible ocean stewardship.
-            </p>
-            <p class="sub-text sub-text-muted" style="margin-bottom: 24px;">
-              In 2015, under the vision and leadership of <strong>Vurghun Sevdimaliyev</strong>, the company reinforced its global corporate operations, establishing key strategic hubs in Istanbul and Dubai. Through our distinguished Sun Caspian Seafood brand, we established new benchmarks for cold-chain precision, freshness, and culinary pedigree.
-            </p>
-            <div style="display: flex; gap: 36px; padding-top: 12px; border-top: 1px solid var(--border-subtle);">
-              <div>
-                <span style="font-family: var(--font-serif); font-size: 38px; color: var(--deep-teal); font-weight: 600; display: block; line-height: 1;">40+</span>
-                <span style="font-size: 13px; color: var(--antique-gold); font-weight: 700; text-transform: uppercase;">Years Heritage</span>
-              </div>
-              <div>
-                <span style="font-family: var(--font-serif); font-size: 38px; color: var(--deep-teal); font-weight: 600; display: block; line-height: 1;">25+</span>
-                <span style="font-size: 13px; color: var(--antique-gold); font-weight: 700; text-transform: uppercase;">Export Countries</span>
-              </div>
-              <div>
-                <span style="font-family: var(--font-serif); font-size: 38px; color: var(--deep-teal); font-weight: 600; display: block; line-height: 1;">100%</span>
-                <span style="font-size: 13px; color: var(--antique-gold); font-weight: 700; text-transform: uppercase;">Certified Origin</span>
-              </div>
-            </div>
-          </div>
-          <div style="position: relative;">
-            <div style="border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-hover); border: 1px solid var(--border-subtle);">
-              <img src="images/about-heritage.jpg" alt="Caspian Sea coastal heritage" style="width: 100%; height: 500px; object-fit: cover;">
-            </div>
-            <div style="position: absolute; bottom: -24px; left: -24px; background: var(--bg-cream-tint); padding: 20px 26px; border-radius: var(--radius-sm); border: 1px solid var(--antique-gold); max-width: 260px; box-shadow: var(--shadow-subtle);">
-              <p style="font-family: var(--font-serif); font-size: 18px; color: var(--charcoal-black); font-style: italic;">“True luxury lies in absolute respect for nature’s rarest harvests.”</p>
-            </div>
-          </div>
-        </div>
+      <div class="process-item">
+        <div class="process-circle"><img src="images/pdf_extracted/extracted_0_2000x1121.jpeg" alt="Processing"></div>
+        <div><h4>Processing</h4><p>Raw materials are processed hygienically and controlled.</p></div>
       </div>
-    </section>
-
-    <!-- Editorial Composition: Who We Are & What We Do -->
-    <section class="section section-light">
-      <div class="container">
-        <div style="text-align: center; max-width: 780px; margin: 0 auto 54px;">
-          <p class="eyebrow-text">Our Purpose</p>
-          <h2 class="section-title">Bridging World Gastronomy with Controlled Cold-Chain Logistics</h2>
-          <p class="sub-text" style="margin: 0 auto;">Caspian &amp; Sun Food Trading LLC operates at the intersection of artisanal sourcing, cutting-edge refrigeration engineering, and international distribution.</p>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
-          <!-- Who We Are -->
-          <div style="background: var(--bg-white); padding: clamp(32px, 5vw, 48px); border-radius: var(--radius-md); border: 1px solid var(--border-subtle); display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-              <span class="gold-badge" style="margin-bottom: 18px;">Who We Are</span>
-              <h3 style="font-family: var(--font-serif); font-size: 28px; margin-bottom: 16px; color: var(--deep-teal);">Global Purveyors of Refined Taste</h3>
-              <p class="sub-text" style="margin-bottom: 16px;">
-                We are seasoned food specialists, marine biologists, culinary partners, and logistics experts unified by a singular purpose: connecting distinguished chefs, hotel operators, and gourmet retailers with the finest seafood and butchery products available.
-              </p>
-              <p class="sub-text sub-text-muted">
-                Our Middle East headquarters in Dubai, United Arab Emirates, positions Caspian &amp; Sun Food Trading LLC as the premier gateway for rapid temperature-controlled distribution across the GCC, Europe, and Asia.
-              </p>
-            </div>
-            <div style="margin-top: 32px; border-radius: var(--radius-sm); overflow: hidden; height: 220px;">
-              <img src="images/about-craft.jpg" alt="Artisanal marine sourcing" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-          </div>
-
-          <!-- What We Do -->
-          <div style="background: var(--bg-white); padding: clamp(32px, 5vw, 48px); border-radius: var(--radius-md); border: 1px solid var(--border-subtle); display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-              <span class="gold-badge" style="margin-bottom: 18px;">What We Do</span>
-              <h3 style="font-family: var(--font-serif); font-size: 28px; margin-bottom: 16px; color: var(--deep-teal);">Full-Spectrum Gourmet Trading &amp; Supply</h3>
-              <p class="sub-text" style="margin-bottom: 16px;">
-                We manage every step of the value chain. From proprietary caviar extraction and individual quick freezing (IQF) of prime seafood to vacuum-sealed cuts of beef, lamb, and poultry, our protocols guarantee pristine peak flavor.
-              </p>
-              <ul style="margin-top: 14px; display: flex; flex-direction: column; gap: 10px;">
-                <li style="display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500;">
-                  <span style="color: var(--antique-gold); font-weight: 700;">&#10003;</span>
-                  Sustainable Caspian sturgeon caviar &amp; wild-caught seafood
-                </li>
-                <li style="display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500;">
-                  <span style="color: var(--antique-gold); font-weight: 700;">&#10003;</span>
-                  Halal-certified premium butchery &amp; poultry selections
-                </li>
-                <li style="display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500;">
-                  <span style="color: var(--antique-gold); font-weight: 700;">&#10003;</span>
-                  Uninterrupted -18&deg;C cold-chain freight and localized GCC warehousing
-                </li>
-                <li style="display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500;">
-                  <span style="color: var(--antique-gold); font-weight: 700;">&#10003;</span>
-                  Tailored specifications for luxury hospitality (HoReCa) &amp; supermarket retail
-                </li>
-              </ul>
-            </div>
-            <div style="margin-top: 32px; border-radius: var(--radius-sm); overflow: hidden; height: 220px;">
-              <img src="images/processing-facility.jpg" alt="Modern food processing standards" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-          </div>
-        </div>
+      <div class="process-item">
+        <div class="process-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="5" y="3" width="14" height="14" rx="1"/><path d="M9 21v-4M15 21v-4M9 9h6M9 12h4"/></svg></div>
+        <div><h4>Thermal Control</h4><p>Products are processed at optimal temperatures to preserve quality.</p></div>
       </div>
-    </section>
-
-    <!-- Core Values Section -->
-    <section class="section section-white">
-      <div class="container">
-        <div style="text-align: center; max-width: 760px; margin: 0 auto 56px;">
-          <p class="eyebrow-text">Pillars of Distinction</p>
-          <h2 class="section-title">Our Guiding Values</h2>
-          <p class="sub-text" style="margin: 0 auto;">Every contract, shipment, and harvest is governed by foundational standards honed through four decades of commercial trust.</p>
-        </div>
-
-        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
-          <div class="value-card">
-            <div class="value-number">01</div>
-            <h3 class="value-title">Uncompromising Quality</h3>
-            <p class="value-desc">We subject all harvests to rigorous biochemical, sensory, and microbiological tests, complying strictly with HACCP, ISO 22000, and global food safety mandates.</p>
-          </div>
-
-          <div class="value-card">
-            <div class="value-number">02</div>
-            <h3 class="value-title">Absolute Trust</h3>
-            <p class="value-desc">Long-term relationships with international hotel chains, chefs, and trade partners built upon complete batch traceability and transparent origin documentation.</p>
-          </div>
-
-          <div class="value-card">
-            <div class="value-number">03</div>
-            <h3 class="value-title">Global Reach</h3>
-            <p class="value-desc">Integrated logistics hubs in the UAE, Turkey, and Central Asia providing swift air and maritime supply corridors to every primary commercial market.</p>
-          </div>
-
-          <div class="value-card">
-            <div class="value-number">04</div>
-            <h3 class="value-title">Reliability</h3>
-            <p class="value-desc">Year-round quota consistency and strict temperature tracking guarantee scheduled deliveries without supply interruptions, even during peak festive cycles.</p>
-          </div>
-
-          <div class="value-card">
-            <div class="value-number">05</div>
-            <h3 class="value-title">Sustainability</h3>
-            <p class="value-desc">Pioneers in eco-responsible aquaculture and non-invasive harvesting that actively relieves ecological pressure on delicate natural marine habitats.</p>
-          </div>
-
-          <div class="value-card">
-            <div class="value-number">06</div>
-            <h3 class="value-title">Culinary Passion</h3>
-            <p class="value-desc">We respect gastronomy as an art form, collaborating directly with Michelin-starred culinary teams to curate textures and flavors that captivate connoisseurs.</p>
-          </div>
-        </div>
+      <div class="process-item">
+        <div class="process-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg></div>
+        <div><h4>Packaging</h4><p>Products are packed safely and hygienically.</p></div>
       </div>
-    </section>
-
-    <!-- Closing Call-To-Action (Consistent with Home Page Language) -->
-    <section class="section section-light" style="padding-top: 0;">
-      <div class="container">
-        <div class="cta-banner">
-          <div class="cta-grid">
-            <div>
-              <p class="eyebrow-text" style="font-size: 26px; color: var(--rich-gold); margin-bottom: 6px;">Wholesale &amp; Institutional Supply</p>
-              <h2 style="font-family: var(--font-serif); font-size: clamp(28px, 3.5vw, 42px); color: #FFF; line-height: 1.25; margin-bottom: 14px;">Elevate Your Kitchen with the World’s Finest Sourced Ingredients</h2>
-              <p style="font-size: 16px; color: var(--cream-ivory); opacity: 0.9; max-width: 580px;">Speak directly with our Dubai trade representatives to request product specifications, custom packaging options, and contract pricing.</p>
-            </div>
-            <div class="cta-actions">
-              <a href="products.html" class="btn btn-outline-white">Explore Catalogue</a>
-              <a href="contact.html" class="btn btn-gold">Contact Trading Desk</a>
-            </div>
-          </div>
-        </div>
+      <div class="process-item">
+        <div class="process-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="1" y="7" width="13" height="9" rx="1"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></div>
+        <div><h4>Distribution</h4><p>Fast delivery across Dubai and global markets</p></div>
       </div>
-    </section>
-  </main>
-
-  <!-- Site Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand-info">
-          <img src="images/logo.png" alt="Caspian &amp; Sun Food Trading LLC" class="footer-logo">
-          <p class="footer-desc">
-            Caspian &amp; Sun Food Trading LLC — Purveyors of the world’s finest sturgeon caviar, premium seafood, gourmet butchery, and poultry. Established on the shores of the Caspian Sea in 1981.
-          </p>
-        </div>
-
-        <div>
-          <h4 class="footer-col-title">Navigation</h4>
-          <ul class="footer-links">
-            <li><a href="about.html" class="footer-link">About Us</a></li>
-            <li><a href="products.html" class="footer-link">Product Catalogue</a></li>
-            <li><a href="blog.html" class="footer-link">Gastronomy Journal</a></li>
-            <li><a href="contact.html" class="footer-link">Contact Desk</a></li>
-            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-col-title">Categories</h4>
-          <ul class="footer-links">
-            <li><a href="products.html" class="footer-link">Caspian Sturgeon &amp; Caviar</a></li>
-            <li><a href="products.html" class="footer-link">Frozen Seafood Selections</a></li>
-            <li><a href="products.html" class="footer-link">Prime Butchery Cuts</a></li>
-            <li><a href="products.html" class="footer-link">Gourmet Poultry Products</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-col-title">Dubai Headquarters</h4>
-          <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Caspian &amp; Sun Food Trading LLC, Dubai, United Arab Emirates</span>
-          </div>
-          <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-            <span>+971 58 561 6040</span>
-          </div>
-          <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            <span>info@caspiansunfood.com</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 Caspian &amp; Sun Food Trading LLC. All rights reserved.</p>
-        <div class="footer-legal-links">
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="contact.html">Terms of Service</a>
-          <a href="contact.html">Wholesale Inquiries</a>
-        </div>
+      <div class="process-item">
+        <div class="process-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div><h4>Quality Control</h4><p>Quality and safety checks are performed at every step.</p></div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script src="js/main.js"></script>
+<section class="best-section">
+  <img class="best-bg" src="images/pdf_extracted/extracted_4_2000x1499.jpeg" alt="Fresh fish on ice">
+  <div class="best-card">
+    <div class="eyebrow">Fresh. Trusted. Premium</div>
+    <h2>BEST SUNGLASSES STORE FOR YOUR STYLISH & CLASSY LOOK</h2>
+    <p>Our production processes are environmentally conscious and fully sustainable, reflecting our commitment to protecting marine ecosystems. From the careful selection of high-quality raw materials to processing supported by modern technologies, we apply safe and responsible methods at every step.</p>
+    <p>Sustainability is as much a priority as quality. Our practices ensure the protection of oceans and allow future generations to enjoy fresh, healthy, and responsibly sourced seafood. Through innovative solutions, we minimize environmental impact while delivering our premium products to the world.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sustain-grid">
+      <img class="sustain-img" src="images/pdf_extracted/extracted_8_1920x1080.jpeg" alt="Underwater ocean scene">
+      <div class="sustain-content">
+        <h2>SUSTAINING THE OCEAN, PROTECTING OUR FUTURE.</h2>
+        <p>Each of our premium products reflects our respect for nature. We protect the future through sustainably sourced seafood.</p>
+        <div class="btn-shop"><button>Shop Now</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-section">
+      <img class="footer-logo-badge" src="casplogo.png" alt="Caspian">
+      <h3>SOCIAL MEDIA</h3>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.45 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg></a>
+        <a href="#" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.5h3.3l-7.2 8.23 8.47 11.27h-6.63l-5.2-6.8-5.94 6.8H1.72l7.7-8.8L1.3 2.5h6.8l4.7 6.22zm-1.16 17.6h1.83L6.9 4.4H4.94z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.07 2.07 0 110-4.13 2.07 2.07 0 010 4.13zM7.12 20.45H3.56V9h3.56z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-section footer-accordion">
+      <h3><span>ABOUT</span><span class="footer-toggle-icon"></span></h3>
+      <div class="footer-content">
+      <p>Our story began in 1981 with a caviar farm on the shores of the Caspian Sea in Azerbaijan. What started as a small family initiative soon grew into a passion-driven journey,</p>
+    </div>
+    </div>
+    <div class="footer-section footer-accordion">
+      <h3><span>QUICK LINKS</span><span class="footer-toggle-icon"></span></h3>
+      <div class="footer-content">
+      <ul style="list-style:none;">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    </div>
+    <div class="footer-section footer-accordion">
+      <h3><span>PRODUCTS</span><span class="footer-toggle-icon"></span></h3>
+      <div class="footer-content">
+      <ul style="list-style:none;">
+        <li><a href="#">Frozen Seafood Product</a></li>
+        <li><a href="#">Poultry Product</a></li>
+        <li><a href="#">Butchery</a></li>
+      </ul>
+    </div>
+    </div>
+    <div class="footer-section footer-accordion">
+      <h3><span>CONTACT US</span><span class="footer-toggle-icon"></span></h3>
+      <div class="footer-content">
+      <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" stroke-width="1.5"/></svg><a href="tel:+97158561604">+971 58 561 6040</a></div>
+    </div>
+      <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z" stroke-width="1.5"/><path d="M4 6l8 6 8-6" stroke-width="1.5"/></svg><a href="mailto:vurgun@caspiansunfood.com">vurgun@caspiansunfood.com</a></div>
+      <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-11.5a7 7 0 10-14 0C5 14.5 12 21 12 21z" stroke-width="1.5"/><circle cx="12" cy="9.5" r="2.3" stroke-width="1.5"/></svg><span>Office C-08, Belselah Building, Dubai - UAE</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© Caspian. All rights reserved.</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+    <p>Designed & Developed by: <strong>intersmart</strong></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var header=document.querySelector('header');
+  var hero=document.querySelector('.hero');
+  var lastY=window.scrollY;
+  function onScroll(){
+    var y=window.scrollY;
+    var threshold=hero?hero.offsetHeight-80:200;
+    if(y>threshold){
+      header.classList.add('scrolled');
+      if(y>lastY+4){header.classList.add('hide');}
+      else if(y<lastY-4){header.classList.remove('hide');}
+    }else{
+      header.classList.remove('scrolled');
+      header.classList.remove('hide');
+    }
+    lastY=y<0?0:y;
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  onScroll();
+})();
+
+(function(){
+  var btn=document.getElementById('hamburgerBtn');
+  var drawer=document.getElementById('mobileDrawer');
+  var backdrop=document.getElementById('drawerBackdrop');
+  var closeBtn=document.getElementById('drawerClose');
+  var links=drawer.querySelectorAll('a');
+  function open(){
+    drawer.classList.add('open');
+    backdrop.classList.add('open');
+    document.body.classList.add('drawer-open');
+    btn.setAttribute('aria-expanded','true');
+  }
+  function close(){
+    drawer.classList.remove('open');
+    backdrop.classList.remove('open');
+    document.body.classList.remove('drawer-open');
+    btn.setAttribute('aria-expanded','false');
+  }
+  btn.addEventListener('click',open);
+  closeBtn.addEventListener('click',close);
+  backdrop.addEventListener('click',close);
+  links.forEach(function(a){a.addEventListener('click',close);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+})();
+
+(function(){
+  var selectors='.eyebrow, h2, .who-heading, .who-images, .feature, .process-item, .best-card, .sustain-img, .sustain-content > *, .location-card, .form-section > *, .info-box, .cta-image, .cta-content > *';
+  var targets=Array.prototype.slice.call(document.querySelectorAll(selectors));
+  targets.forEach(function(el,i){
+    el.classList.add('reveal');
+    el.style.transitionDelay=(i%4*90)+'ms';
+  });
+  if(!('IntersectionObserver' in window)){
+    targets.forEach(function(el){el.classList.add('in-view');});
+    return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  },{threshold:.15,rootMargin:'0px 0px -60px 0px'});
+  targets.forEach(function(el){io.observe(el);});
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.footer-accordion h3').forEach(function(h3){
+    h3.addEventListener('click',function(){
+      h3.closest('.footer-accordion').classList.toggle('open');
+    });
+  });
+})();
+</script>
 </body>
 </html>
