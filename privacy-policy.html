@@ -74,27 +74,13 @@
     .footer-bottom strong{color:#fff;}
 
     @media (max-width:1024px){
-      header nav{display:none;}
-      .header-right .phone-cta{display:none;}
-      .hamburger{display:flex;}
-      .footer-grid{grid-template-columns:1fr 1fr;}
-    }
-    @media (max-width:768px){
-      .footer-grid{grid-template-columns:1fr 1fr;}
-    }
-    @media (max-width:480px){
-      header{padding:1rem 1.25rem;}
-      header.scrolled{padding:.7rem 1.25rem;}
-      .cta-btn{display:none;}
-      .footer-grid{grid-template-columns:1fr;text-align:center;}
-      .social-links{justify-content:center;}
-      .footer-contact-item{justify-content:center;}
-      .footer-bottom{flex-direction:column;text-align:center;}
-    }
+      header       .header-right             }
+    
+    
     html,body{max-width:100%;overflow-x:hidden;}
   
     /* COMING SOON */
-    .coming-soon{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(180deg,#fff 0%,var(--cream) 100%);padding:clamp(6rem,12vw,9rem) clamp(1.5rem,5vw,3rem) clamp(4rem,8vw,6rem);position:relative;overflow:hidden;}
+    .coming-soon{height:100vh;height:100dvh;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(180deg,#fff 0%,var(--cream) 100%);padding:clamp(6rem,12vw,9rem) clamp(1.5rem,5vw,3rem) clamp(4rem,8vw,6rem);position:relative;overflow:auto;box-sizing:border-box;}
     .coming-soon::before{content:'';position:absolute;top:50%;left:50%;width:clamp(320px,60vw,700px);height:clamp(320px,60vw,700px);transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle, rgba(215,187,81,.08) 0%, rgba(215,187,81,0) 70%);pointer-events:none;}
     .coming-soon-inner{position:relative;z-index:1;max-width:640px;}
     .coming-soon .eyebrow{font-family:'Alex Brush','Playfair Display',cursive;font-size:clamp(1.4rem,2.8vw,2.1rem);font-weight:400;color:#9FB4BC;margin-bottom:.6rem;font-style:italic;opacity:0;transform:translateY(24px);animation:csFadeUp .9s cubic-bezier(.16,1,.3,1) .1s forwards;}
@@ -111,69 +97,21 @@
     @keyframes csFadeUp{to{opacity:1;transform:translateY(0);}}
     @media (prefers-reduced-motion: reduce){.coming-soon *{animation:none!important;opacity:1!important;transform:none!important;}}
   
-/* FOOTER MOBILE ACCORDION */
-.footer-section h3{display:flex;justify-content:space-between;align-items:center;}
-.footer-toggle-icon{display:none;width:14px;height:14px;position:relative;flex:none;}
-.footer-toggle-icon::before,.footer-toggle-icon::after{content:'';position:absolute;background:#fff;transition:transform .3s ease;}
-.footer-toggle-icon::before{left:0;top:50%;width:100%;height:1.5px;transform:translateY(-50%);}
-.footer-toggle-icon::after{top:0;left:50%;width:1.5px;height:100%;transform:translateX(-50%);}
-.footer-accordion.open .footer-toggle-icon::after{transform:translateX(-50%) scaleY(0);}
-.footer-content{overflow:hidden;}
+
 @media (max-width:600px){
-  .footer-grid{grid-template-columns:1fr;text-align:left;}
-  .footer-section:first-child{text-align:center;margin-bottom:.5rem;}
-  .footer-section:first-child .footer-logo-badge{margin-left:auto;margin-right:auto;}
-  .footer-section:first-child .social-links{justify-content:center;}
-  .footer-accordion{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:.9rem;}
-  .footer-accordion h3{cursor:pointer;margin-bottom:0;padding:.4rem 0;}
-  .footer-toggle-icon{display:block;}
-  .footer-accordion .footer-content{max-height:0;transition:max-height .4s ease;}
-  .footer-accordion.open .footer-content{max-height:400px;padding-top:.8rem;}
-  .footer-bottom{flex-direction:column;text-align:center;}
-}
+  .footer-section:first-child }
 </style>
 
   <link rel="icon" type="image/png" href="images/logo.png">
+  <link href="components.css" rel="stylesheet">
 </head>
 <body>
 
   <!-- HEADER — shared component (matches about.html) -->
-  <header>
-    <nav>
-      <a href="index.html">HOME</a>
-      <a href="products.html">PRODUCTS</a>
-      <a href="about.html">ABOUT</a>
-      <a href="blog.html">BLOG</a>
-      <a href="contact.html">CONTACT</a>
-    </nav>
-    <div class="logo"><img src="casplogo.png" alt="Caspian"></div>
-    <div class="header-right">
-      <span class="phone-cta"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="none" stroke-width="1.5"/></svg> +971 58 561 6040</span>
-      <button class="cta-btn">Get In Touch</button>
-      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
+  <div id="header-placeholder"></div>
 
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile navigation">
-    <div class="drawer-top">
-      <img class="drawer-logo" src="casplogo.png" alt="Caspian">
-      <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
-    </div>
-    <nav class="drawer-nav">
-      <a href="index.html">Home</a>
-      <a href="products.html">Products</a>
-      <a href="about.html">About</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="drawer-footer">
-      <span class="phone-cta"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="none" stroke-width="1.5"/></svg> +971 58 561 6040</span>
-      <button class="cta-btn-solid">Get In Touch</button>
-    </div>
-  </aside>
+  
+  
 
   <main>
     <section class="coming-soon">
@@ -249,63 +187,8 @@
 
   <script src="js/main.js"></script>
 
-  <script>
-  (function(){
-    var header=document.querySelector('header');
-    var hero=document.querySelector('.hero, .page-hero');
-    var lastY=window.scrollY;
-    function onScroll(){
-      var y=window.scrollY;
-      var threshold=hero?hero.offsetHeight-80:200;
-      if(y>threshold){
-        header.classList.add('scrolled');
-        if(y>lastY+4){header.classList.add('hide');}
-        else if(y<lastY-4){header.classList.remove('hide');}
-      }else{
-        header.classList.remove('scrolled');
-        header.classList.remove('hide');
-      }
-      lastY=y<0?0:y;
-    }
-    window.addEventListener('scroll',onScroll,{passive:true});
-    window.addEventListener('resize',onScroll);
-    onScroll();
-  })();
+  
 
-  (function(){
-    var btn=document.getElementById('hamburgerBtn');
-    var drawer=document.getElementById('mobileDrawer');
-    var backdrop=document.getElementById('drawerBackdrop');
-    var closeBtn=document.getElementById('drawerClose');
-    if(!btn||!drawer||!backdrop||!closeBtn)return;
-    var links=drawer.querySelectorAll('a');
-    function open(){
-      drawer.classList.add('open');
-      backdrop.classList.add('open');
-      document.body.classList.add('drawer-open');
-      btn.setAttribute('aria-expanded','true');
-    }
-    function close(){
-      drawer.classList.remove('open');
-      backdrop.classList.remove('open');
-      document.body.classList.remove('drawer-open');
-      btn.setAttribute('aria-expanded','false');
-    }
-    btn.addEventListener('click',open);
-    closeBtn.addEventListener('click',close);
-    backdrop.addEventListener('click',close);
-    links.forEach(function(a){a.addEventListener('click',close);});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-  })();
-  </script>
-<script>
-(function(){
-  document.querySelectorAll('.footer-accordion h3').forEach(function(h3){
-    h3.addEventListener('click',function(){
-      h3.closest('.footer-accordion').classList.toggle('open');
-    });
-  });
-})();
-</script>
+<script src="components.js"></script>
 </body>
 </html>
