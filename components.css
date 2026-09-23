@@ -45,7 +45,7 @@ header.scrolled .hamburger span{background:var(--charcoal);}
 body.drawer-open{overflow:hidden;}
 
 /* FOOTER — 5 columns: logo+social / about / quick links / products / contact */
-footer{background:var(--deep-teal);color:#fff;padding:clamp(2.5rem,5vw,4rem) clamp(1.5rem,5vw,3rem) clamp(1.5rem,3vw,2rem);}
+footer{background:var(--deep-teal);color:#fff;padding:clamp(2.5rem,5vw,4rem) clamp(1.5rem,5vw,3rem) clamp(1.5rem,3vw,2rem);overflow:hidden;}
 .footer-grid{display:grid;grid-template-columns:.85fr 1.15fr 1fr 1fr 1.15fr;gap:clamp(1.5rem,3vw,2.5rem);max-width:1400px;margin:0 auto clamp(2.5rem,4vw,3.5rem);}
 .footer-section h3{font-family:'Playfair Display',serif;font-size:clamp(1rem,1.6vw,1.15rem);font-weight:500;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.8px;}
 .footer-section p,.footer-section a,.footer-section li{font-size:clamp(.82rem,1.4vw,.92rem);line-height:1.8;color:rgba(255,255,255,.85);}
@@ -60,7 +60,7 @@ footer{background:var(--deep-teal);color:#fff;padding:clamp(2.5rem,5vw,4rem) cla
 .footer-contact-item{display:flex;align-items:flex-start;gap:.6rem;margin-bottom:.9rem;}
 .footer-contact-item svg{width:16px;height:16px;stroke:#fff;fill:none;flex:none;margin-top:.2rem;}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:clamp(1.3rem,2.5vw,1.7rem);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;max-width:1400px;margin:0 auto;font-size:clamp(.78rem,1.2vw,.88rem);}
-.footer-bottom p{color:rgba(255,255,255,.75);}
+.footer-bottom p{color:rgba(255,255,255,.75);margin:0;}
 .footer-bottom a{color:rgba(255,255,255,.75);text-decoration:none;}
 .footer-bottom a:hover{color:var(--rich-gold);}
 .footer-bottom strong{color:#fff;}
