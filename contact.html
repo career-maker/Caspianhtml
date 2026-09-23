@@ -278,7 +278,7 @@
       background: #fff;
       position: relative;
       overflow: hidden;
-      height: 100vh; height: 100dvh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;
+      min-height: 100vh; min-height: 100dvh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;
     }
     .cta-grid {
       display: grid;
@@ -383,10 +383,16 @@
       
       header.scrolled { padding: .7rem 1.25rem; }
       .cta-btn { display: none; }
-      .btn-shop, .form-submit { width: 100%; }
-      .cta-button-alt { width: auto; }
+      .btn-shop, .form-submit, .cta-button-alt { width: 100%; }
       .map-placeholder { height: 280px; }
-      
+      .location-card {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+        margin-top: 1.5rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      }
       .social-links { justify-content: center; }
       
       
