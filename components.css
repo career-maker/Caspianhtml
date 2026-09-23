@@ -117,7 +117,7 @@ footer{background:var(--deep-teal);color:#fff;padding:clamp(2.5rem,5vw,4rem) cla
 }
 
 /* Custom Scrollbar */
-::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: #fcfaf8; }
 ::-webkit-scrollbar-thumb { background: #1E4951; border-radius: 5px; }
 ::-webkit-scrollbar-thumb:hover { background: #D7BB51; }
