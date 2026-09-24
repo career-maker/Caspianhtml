@@ -113,12 +113,15 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
   .why-img{height:360px;}
   .process-grid{grid-template-columns:repeat(2,1fr);row-gap:2.5rem;column-gap:1.5rem;}
   .process-item::after{display:none;}
-  .best-card{position:static;width:100%;margin-top:0;min-height:auto;}
+  .best-section { min-height: auto; flex-direction: column-reverse; }
+    .best-bg { position: static; height: 400px; }
+    .best-card{position:static;width:100%;margin-top:0;min-height:auto;}
 }
 
 /* ≤768px — tablet portrait */
 @media (max-width:768px){
-  .wrap{padding:0 1.25rem;}
+  .wrap{padding:0 1.25rem;    .best-bg { height: 250px; }
+  }
   .who-images{height:300px;}
   .feature-grid{grid-template-columns:1fr;gap:1.5rem;}
   .process-grid{grid-template-columns:1fr;row-gap:2rem;}
@@ -264,7 +267,7 @@ html,body{max-width:100%;overflow-x:hidden;}
   <img class="best-bg" src="images/pdf_extracted/extracted_4_2000x1499.jpeg" alt="Fresh fish on ice">
   <div class="best-card">
     <div class="eyebrow">Fresh. Trusted. Premium</div>
-    <h2>BEST SUNGLASSES STORE FOR YOUR STYLISH & CLASSY LOOK</h2>
+    <h2>SUSTAINABLE PRODUCTION PROCESS</h2>
     <p>Our production processes are environmentally conscious and fully sustainable, reflecting our commitment to protecting marine ecosystems. From the careful selection of high-quality raw materials to processing supported by modern technologies, we apply safe and responsible methods at every step.</p>
     <p>Sustainability is as much a priority as quality. Our practices ensure the protection of oceans and allow future generations to enjoy fresh, healthy, and responsibly sourced seafood. Through innovative solutions, we minimize environmental impact while delivering our premium products to the world.</p>
   </div>
