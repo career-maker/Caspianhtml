@@ -3,6 +3,7 @@ header{position:fixed;top:0;left:0;right:0;background:transparent;padding:clamp(
 header.hide{transform:translateY(-100%);}
 header.scrolled{background:rgba(255,255,255,.68);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);box-shadow:0 4px 30px rgba(0,0,0,.06);border-bottom:1px solid rgba(0,0,0,.06);padding:clamp(.6rem,1.1vw,1rem) clamp(1.5rem,4vw,5.5rem);}
 .logo{display:flex;align-items:center;min-width:fit-content;}
+.logo a{display:flex;align-items:center;}
 .logo img{height:clamp(80px,8vw,140px);width:auto;transition:height .4s ease;}
 header.scrolled .logo img{height:clamp(50px,5vw,80px);}
 nav{display:flex;gap:clamp(1.5rem,3vw,4rem);align-items:center;flex:1;justify-content:flex-start;flex-wrap:nowrap;min-width:0;}
@@ -64,6 +65,14 @@ footer{background:var(--deep-teal);color:#fff;padding:clamp(2.5rem,5vw,4rem) cla
 .footer-bottom a{color:rgba(255,255,255,.75);text-decoration:none;}
 .footer-bottom a:hover{color:var(--rich-gold);}
 .footer-bottom strong{color:#fff;}
+
+/* logo links */
+.drawer-logo-link{display:flex;align-items:center;}
+.footer-section a.footer-logo-link{display:inline-block;line-height:0;font-size:0;}
+.footer-logo-link img{transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
+.footer-logo-link:hover img{transform:scale(1.05);}
+.logo a img{transition:height .4s ease,transform .4s cubic-bezier(.34,1.56,.64,1);}
+.logo a:hover img{transform:scale(1.04);}
 
 /* FOOTER MOBILE ACCORDION */
 .footer-section h3{display:flex;justify-content:space-between;align-items:center;}
