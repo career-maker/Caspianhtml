@@ -29,8 +29,8 @@ header.scrolled .hamburger span{background:var(--charcoal);}
 /* MOBILE DRAWER */
 .drawer-backdrop{position:fixed;inset:0;background:rgba(10,15,15,.45);z-index:290;opacity:0;pointer-events:none;transition:opacity .35s ease;}
 .drawer-backdrop.open{opacity:1;pointer-events:auto;}
-.mobile-drawer{position:fixed;top:0;right:0;height:100vh;height:100dvh;width:min(320px,82vw);background:#fff;z-index:300;box-shadow:-10px 0 35px rgba(0,0,0,.18);transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:1.6rem 1.8rem 2rem;overflow-y:auto;}
-.mobile-drawer.open{transform:translateX(0);}
+.mobile-drawer{position:fixed;top:0;right:0;height:100vh;height:100dvh;width:min(320px,82vw);background:#fff;z-index:300;box-shadow:none;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s ease;visibility:hidden;display:flex;flex-direction:column;padding:1.6rem 1.8rem 2rem;overflow-y:auto;}
+.mobile-drawer.open{transform:translateX(0);box-shadow:-10px 0 35px rgba(0,0,0,.18);visibility:visible;}
 .drawer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:2.2rem;}
 .drawer-logo{height:48px;width:auto;}
 .drawer-close{background:none;border:none;font-size:1.8rem;line-height:1;cursor:pointer;color:var(--charcoal);padding:.2rem .4rem;}
