@@ -59,8 +59,9 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 
 /* WHY CHOOSE US — Rule 2: no min-height; image fills its column naturally */
 .why-section{padding:0;display:flex;flex-direction:column;justify-content:center;overflow:hidden;box-sizing:border-box;}
-.why-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;}
-.why-img{width:100%;height:100%;min-height:480px;object-fit:cover;}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;align-items:start;}
+/* max-height caps the image on large screens so it doesn't grow with a long content column */
+.why-img{width:100%;height:clamp(480px,70vh,720px);object-fit:cover;object-position:center;}
 .why-content{background:#fff;display:flex;flex-direction:column;justify-content:center;padding:clamp(1rem,min(3.2vw, 2.5vh),2.5rem);}
 .why-content .section-heading{margin-bottom:.7rem;}
 .why-content>p{max-width:520px;margin-bottom:clamp(1.1rem,2vw,1.6rem);font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27px;}
@@ -109,12 +110,25 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 
 
 
+
+/* GOAL + COUNTRIES */
+.process-intro{max-width:760px;margin:0 auto;}
+.process-item h4{text-transform:none;}
+.process-item p strong{color:var(--charcoal);font-weight:600;}
+.goal-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;}
+.goal-text p{margin-bottom:.9rem;}
+.goal-countries{background:var(--cream);padding:clamp(1.5rem,3vw,2.5rem);}
+.goal-countries .eyebrow{font-size:clamp(1.2rem,2vw,1.6rem);}
+.country-list{list-style:none;display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.2rem;}
+.country-list li{border:1px solid var(--rich-gold);color:var(--deep-teal);font-weight:600;font-size:.9rem;padding:.4rem 1rem;background:#fff;}
+.country-list li:last-child{border-style:dashed;font-weight:500;}
+
 /* RESPONSIVE — 1440/1366/1280 desktop (fluid via clamp above), 1024/768 tablet, 480/390/375/360 mobile */
 
 /* ≤1300px — hamburger kicks in BEFORE nav+logo+actions run out of room and wrap (decoupled from the 1024px content-stacking breakpoint below) */
 /* ≤1024px — tablet + phone: hamburger nav kicks in, two-column sections stack */
 @media (max-width:1024px){
-  .who-grid,.sustain-grid{grid-template-columns:1fr;}
+  .who-grid,.sustain-grid,.goal-grid{grid-template-columns:1fr;}
   .why-grid{grid-template-columns:1fr;}
   .why-img{height:360px;}
   .process-grid{grid-template-columns:repeat(2,1fr);row-gap:2.5rem;column-gap:1.5rem;}
@@ -180,7 +194,7 @@ html,body{max-width:100%;overflow-x:hidden;}
 <section class="hero">
   <div class="hero-inner">
     <h1>ABOUT US</h1>
-    <p>Delivering exceptional seafood through quality, integrity, and trusted global partnerships.</p>
+    <p>We connect world-class food manufacturers with businesses throughout the Middle East and international markets.</p>
   </div>
 </section>
 
@@ -193,9 +207,11 @@ html,body{max-width:100%;overflow-x:hidden;}
   <div class="wrap">
     <div class="who-grid">
       <div class="who-text">
-        <div class="eyebrow">Beyond the Ocean</div>
+        <div class="eyebrow">Our Story</div>
         <h2 class="section-heading section-heading--upper">WHO WE ARE</h2>
-        <p>Our story began in 1981 with a caviar farm on the shores of the Caspian Sea in Azerbaijan. What started as a small family initiative soon grew into a passion-driven journey, combining traditional expertise with modern innovation in seafood production. Today, with our headquarters in Istanbul, we proudly deliver premium seafood and gourmet delicacies to customers across the globe. Every product reflects decades of experience, care, and a deep respect for the oceans. In 2015, under the vision and leadership of Vurghun Sevdimaliyev, our company established its corporate structure in Turkey. With a strong focus on quality and sustainability, we quickly gained nationwide recognition through the Sun Caspian Seafood brands, becoming a trusted name in the seafood industry. Our journey continues as we strive to bring the finest flavors of the Caspian to dining tables worldwide, always committed to excellence, innovation, and responsible practices.</p>
+        <p>CASPIAN &amp; SUN FOOD TRADING is an international food trading and distribution company with operations in Türkiye and the United Arab Emirates, specializing in the import, export, sourcing, sales, and distribution of premium food products for the HORECA sector (Hotels, Restaurants, Catering), luxury hospitality businesses, wholesalers, distributors, and retail markets.</p>
+        <p>Our story began in 1981 in Azerbaijan as a family-owned business founded on integrity, trust, and a passion for supplying quality food products. Through decades of continuous growth, we expanded our operations into Türkiye and the United Arab Emirates, building strong international partnerships and an extensive global sourcing network.</p>
+        <p>Today, with our headquarters in Istanbul, Türkiye, and expanding operations in Dubai, UAE, we connect world-class food manufacturers with businesses throughout the Middle East and international markets.</p>
       </div>
       <div class="who-images">
         <img class="who-img-back" src="images/pdf_extracted/extracted_6_2000x1488.jpeg" alt="Fresh seafood selection">
@@ -210,24 +226,24 @@ html,body{max-width:100%;overflow-x:hidden;}
     <img class="why-img" src="images/pdf_extracted/extracted_1_2000x2500.jpeg" alt="Fresh fish on blue cloth">
     <div class="why-content">
       <div class="eyebrow">Why Choose Us</div>
-      <h2 class="section-heading section-heading--upper">WITH YEARS OF EXPERTISE, WE LEAD THE SEAFOOD INDUSTRY.</h2>
-      <p>Fresh, high-quality seafood, responsibly sourced and delivered with care for a premium dining experience.</p>
+      <h2 class="section-heading section-heading--upper">OUR INTERNATIONAL SOURCING EXPERTISE</h2>
+      <p>We work closely with trusted producers across Europe, North America, South America, Asia, Oceania, and other global regions to ensure that every product we supply meets the highest standards of quality, food safety, freshness, consistency, and value.</p>
       <div class="feature-grid">
         <div class="feature">
           <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9c2-3 5-4 8-2 2 1.3 3 1.3 5-.3"/><circle cx="16.5" cy="6.3" r=".6" fill="#1E4951" stroke="none"/><path d="M4 9l2.2 2M4 9l1-2.6"/><path d="M2 16.5c1.8 1.6 3.6 1.6 5.4 0s3.6-1.6 5.4 0 3.6 1.6 5.4 0"/><path d="M2 19.8c1.8 1.6 3.6 1.6 5.4 0s3.6-1.6 5.4 0 3.6 1.6 5.4 0"/></svg></div>
-          <div><h4>Natural & Reliable</h4><p>We always provide natural and reliable seafood</p></div>
+          <div><h4>Trusted Producers</h4><p>Suppliers selected on product quality, certifications, reliability, and production standards.</p></div>
         </div>
         <div class="feature">
           <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="12" r="8"/><ellipse cx="11" cy="12" rx="3.4" ry="8"/><path d="M3 12h16M4.5 7h13M4.5 17h13"/><path d="M18.5 6.5c2 1 3 2.8 3 4.5M21.5 11c0 1-.4 2-1 2.8"/><path d="M20.6 13.6l1 .4-.3-1.1"/></svg></div>
-          <div><h4>Worldwide Service</h4><p>We deliver quickly and reliably from Dubai to the world</p></div>
+          <div><h4>Global Network</h4><p>Sourcing from Europe, North America, South America, Asia, Oceania, and other global regions.</p></div>
         </div>
         <div class="feature">
           <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10l4 5-9 13L2 8z"/><path d="M2 8h19M9 3l2.5 5L14 3M6.5 8L11.5 21M17.5 8L12.5 21"/><circle cx="17.5" cy="16.5" r="4.6" fill="#F7F3EC" stroke="#1E4951" stroke-width="1.3"/><path d="M15.6 16.6l1.3 1.3 2.3-2.6" stroke="#1E4951"/></svg></div>
-          <div><h4>High Standard</h4><p>Our products are manufactured according to international standards.</p></div>
+          <div><h4>Premium Quality</h4><p>Premium products delivered with competitive pricing and dependable supply chains.</p></div>
         </div>
         <div class="feature">
           <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5c1.1-1.7 3.2-2.3 4.9-1.1 1.8 1.3 2.1 3.8.6 5.6L12 17.2l-5.5-6.2c-1.5-1.8-1.2-4.3.6-5.6C8.8 4.2 10.9 4.8 12 6.5z"/><path d="M4 20c1.5-2.2 3.4-3 6-3h4c1.6 0 2.6.5 2.6 1.8 0 1-1 1.6-2 1.6h-3.2"/><path d="M4 17.4h2.4c1.2 0 2 .5 2.8 1.2"/></svg></div>
-          <div><h4>Satisfaction First</h4><p>Customer satisfaction is always our top priority.</p></div>
+          <div><h4>Lasting Partnerships</h4><p>Long-term partnerships built on trust, integrity, transparency, and mutual success.</p></div>
         </div>
       </div>
     </div>
@@ -237,33 +253,22 @@ html,body{max-width:100%;overflow-x:hidden;}
 <section class="cream">
   <div class="wrap">
     <div class="process-head">
-      <div class="eyebrow">From Nature to Table</div>
-      <h2 class="section-heading section-heading--upper">OUR PRODUCTION PROCESS</h2>
+      <div class="eyebrow">Our Operations</div>
+      <h2 class="section-heading section-heading--upper">OUR INTERNATIONAL NETWORK</h2>
+      <p class="process-intro">Our international operations are supported through strategically located companies in Bulgaria, Türkiye, and the United Arab Emirates, allowing us to facilitate sourcing, logistics, trade, and supply activities across key markets.</p>
     </div>
     <div class="process-grid">
       <div class="process-item">
-        <div class="process-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6z"/><circle cx="15" cy="12" r="1.2" fill="#fff"/></svg></div>
-        <div><h4>Raw Material Selection</h4><p>Only high-quality and fresh seafood is selected.</p></div>
+        <div class="process-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <div><h4>Bulgaria</h4><p><strong>ILDE - STIL EOOD</strong><br>Georgi Kirkov 23, Svilengrad 6500, Bulgaria</p></div>
       </div>
       <div class="process-item">
-        <div class="process-circle"><img src="images/pdf_extracted/extracted_0_2000x1121.jpeg" alt="Processing"></div>
-        <div><h4>Processing</h4><p>Raw materials are processed hygienically and controlled.</p></div>
+        <div class="process-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <div><h4>Türkiye</h4><p><strong>SUN SEAFOOD DIŞ TİCARET LİMİTED ŞİRKETİ</strong><br>Yavuz Selim Mah. Gazi Bayram Çavuş Sk. No: 6, İç Kapı No: 1, Beykoz, İstanbul, Türkiye</p></div>
       </div>
       <div class="process-item">
-        <div class="process-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="5" y="3" width="14" height="14" rx="1"/><path d="M9 21v-4M15 21v-4M9 9h6M9 12h4"/></svg></div>
-        <div><h4>Thermal Control</h4><p>Products are processed at optimal temperatures to preserve quality.</p></div>
-      </div>
-      <div class="process-item">
-        <div class="process-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg></div>
-        <div><h4>Packaging</h4><p>Products are packed safely and hygienically.</p></div>
-      </div>
-      <div class="process-item">
-        <div class="process-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="1" y="7" width="13" height="9" rx="1"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></div>
-        <div><h4>Distribution</h4><p>Fast delivery across Dubai and global markets</p></div>
-      </div>
-      <div class="process-item">
-        <div class="process-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <div><h4>Quality Control</h4><p>Quality and safety checks are performed at every step.</p></div>
+        <div class="process-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <div><h4>United Arab Emirates</h4><p><strong>CASPIAN &amp; SUN FOOD TRADING LLC</strong><br>Office C-08, Belselah Building, Dubai, United Arab Emirates</p></div>
       </div>
     </div>
   </div>
@@ -272,10 +277,9 @@ html,body{max-width:100%;overflow-x:hidden;}
 <section class="best-section">
   <img class="best-bg" src="images/pdf_extracted/extracted_4_2000x1499.jpeg" alt="Fresh fish on ice">
   <div class="best-card">
-    <div class="eyebrow">Fresh. Trusted. Premium</div>
-    <h2 class="section-heading section-heading--upper">SUSTAINABLE PRODUCTION PROCESS</h2>
-    <p>Our production processes are environmentally conscious and fully sustainable, reflecting our commitment to protecting marine ecosystems. From the careful selection of high-quality raw materials to processing supported by modern technologies, we apply safe and responsible methods at every step.</p>
-    <p>Sustainability is as much a priority as quality. Our practices ensure the protection of oceans and allow future generations to enjoy fresh, healthy, and responsibly sourced seafood. Through innovative solutions, we minimize environmental impact while delivering our premium products to the world.</p>
+    <div class="eyebrow">Where We Are Headed</div>
+    <h2 class="section-heading section-heading--upper">OUR VISION</h2>
+    <p>To become one of the leading international food trading companies in Türkiye and the United Arab Emirates by connecting premium food manufacturers with luxury hotels, restaurants, catering companies, wholesalers, retailers, and foodservice distributors through reliable sourcing, competitive pricing, and exceptional customer service.</p>
   </div>
 </section>
 
@@ -284,9 +288,28 @@ html,body{max-width:100%;overflow-x:hidden;}
     <div class="sustain-grid">
       <img class="sustain-img" src="images/pdf_extracted/extracted_8_1920x1080.jpeg" alt="Underwater ocean scene">
       <div class="sustain-content">
-        <h2 class="section-heading section-heading--upper">SUSTAINING THE OCEAN, PROTECTING OUR FUTURE.</h2>
-        <p>Each of our premium products reflects our respect for nature. We protect the future through sustainably sourced seafood.</p>
-        <div class="btn-shop"><button>Shop Now</button></div>
+        <div class="eyebrow">What We Do</div>
+        <h2 class="section-heading section-heading--upper">OUR MISSION</h2>
+        <p>To supply premium-quality food products sourced from trusted manufacturers around the world while providing reliable sourcing solutions, competitive pricing, efficient logistics, and exceptional customer service.</p>
+        <p>We are committed to building long-term partnerships based on trust, integrity, transparency, and mutual success while creating lasting value for our customers, suppliers, and business partners.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="goal-grid">
+      <div class="goal-text">
+        <div class="eyebrow">Our Strategic Goal</div>
+        <h2 class="section-heading section-heading--upper">A BRIDGE BETWEEN GLOBAL PRODUCERS AND MARKETS</h2>
+        <p>Our primary goal is to establish Caspian &amp; Sun Food Trading as a leading international sourcing, importing, and food supply company in the UAE and Türkiye, creating a strong bridge between global food producers and the growing hospitality, foodservice, wholesale, and retail markets in both countries.</p>
+        <p>We aim to develop a trusted global supplier network, expand our international product portfolio, and provide customers with access to premium products from the world's leading food-producing regions through a reliable and professionally managed supply chain.</p>
+      </div>
+      <div class="goal-countries">
+        <div class="eyebrow">Countries We Source From</div>
+        <ul class="country-list"><li>Spain</li><li>Russia</li><li>Morocco</li><li>Japan</li><li>China</li><li>Chile</li><li>USA</li><li>Canada</li><li>Hungary</li><li>Australia</li><li>and many other regions around the world</li></ul>
+        <p>Every sourcing decision is made with one objective: To provide our customers with the highest-quality products from the countries best known for producing them.</p>
       </div>
     </div>
   </div>
