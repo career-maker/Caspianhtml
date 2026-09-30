@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carabinaro Shrimp | Caspian & Sun Food Trading LLC</title>
+  <title>Product | Caspian & Sun Food Trading LLC</title>
   <meta name="description" content="Premium Carabinero Shrimp from Spain — responsibly sourced and carefully handled to meet the highest standards of global seafood markets.">
   <link rel="icon" type="image/png" href="images/logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -122,6 +122,8 @@
     @media (max-width:1024px){
       .related-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
     }
+    .origin-item{display:inline-flex;align-items:center;gap:.5rem;margin-right:1.2rem;}
+    .size{min-height:auto;flex-direction:row;padding:.85rem .6rem;justify-content:center;}
     @media (max-width:900px){
       .detail{grid-template-columns:1fr;}
       .gallery{position:static;}
@@ -164,14 +166,14 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-title">SHOP</div>
-      <p>Connecting the finest seafood from pristine waters to discerning markets around the world.</p>
+      <p>We source premium food products from trusted international suppliers based on quality, freshness, and customer requirements.</p>
     </div>
   </section>
 
   <div class="crumbs" role="navigation" aria-label="Breadcrumb">
     <a href="index.html">Home</a><span class="sep"></span>
     <a href="products.html">Products</a><span class="sep"></span>
-    <span class="current">Carabinaro Shrimp</span>
+    <span class="current" id="crumbName">Product</span>
   </div>
 
   <main class="detail">
@@ -179,48 +181,29 @@
     <div class="gallery reveal">
       <div class="gallery-main">
         <span class="badge">Premium Quality</span>
-        <img id="mainImg" src="images/tiger-prawns.jpg" alt="Carabinaro Shrimp">
+        <img id="mainImg" src="" alt="">
       </div>
-      <div class="thumbs" role="tablist" aria-label="Product photos">
-        <button class="thumb active" type="button" data-src="images/tiger-prawns.jpg" aria-label="Show photo 1"><img src="images/tiger-prawns.jpg" alt=""></button>
-        <button class="thumb" type="button" data-src="images/pdf_extracted/extracted_6_2000x1488.jpeg" aria-label="Show photo 2"><img src="images/pdf_extracted/extracted_6_2000x1488.jpeg" alt=""></button>
-        <button class="thumb" type="button" data-src="images/pdf_extracted/extracted_3_2208x3936.jpeg" aria-label="Show photo 3"><img src="images/pdf_extracted/extracted_3_2208x3936.jpeg" alt=""></button>
-      </div>
+      <div class="thumbs" id="thumbs" role="tablist" aria-label="Product photos"></div>
     </div>
-
     <div class="info">
-      <span class="tag reveal">Frozen Seafood Product</span>
-      <h1 class="reveal">Carabinaro Shrimp</h1>
+      <span class="tag reveal" id="pTag"></span>
+      <h1 class="reveal" id="pName"></h1>
       <div class="rule reveal"></div>
-      <p class="desc reveal">Premium Carabinero Shrimp selected for its distinctive flavour, vibrant colour, and superior quality, responsibly sourced and carefully handled to meet the highest standards of global seafood markets.</p>
+      <p class="desc reveal" id="pDesc"></p>
 
       <div class="specs reveal">
         <div class="spec-row">
           <div class="spec-label">Origin</div>
-          <div class="spec-value">
-            <svg class="flag" viewBox="0 0 24 24" role="img" aria-label="Spain flag">
-              <g clip-path="url(#flagClip)">
-                <rect width="24" height="24" fill="#C60B1E"/>
-                <rect y="6" width="24" height="12" fill="#FFC400"/>
-              </g>
-            </svg>
-            Spain
-          </div>
+          <div class="spec-value" id="pOrigin"></div>
         </div>
       </div>
-
       <div class="sizes-block reveal">
         <div class="sizes-head">
-          <div class="spec-label">Sizes Available</div>
-          <div class="sizes-hint" id="sizesHint">Select a size to add it to your enquiry</div>
+          <div class="spec-label">Packing</div>
+          <div class="sizes-hint" id="sizesHint">Select a packing option to add it to your enquiry</div>
         </div>
-        <div class="sizes" role="radiogroup" aria-label="Available sizes">
-          <button class="size" type="button" role="radio" aria-checked="false" data-size="5-7"><svg class="s1" viewBox="0 0 64 44"><use href="#shrimp"/></svg><span>5-7</span></button>
-          <button class="size" type="button" role="radio" aria-checked="false" data-size="8-10"><svg class="s2" viewBox="0 0 64 44"><use href="#shrimp"/></svg><span>8-10</span></button>
-          <button class="size" type="button" role="radio" aria-checked="false" data-size="18-24 SZ"><svg class="s3" viewBox="0 0 64 44"><use href="#shrimp"/></svg><span>18-24 SZ</span></button>
-        </div>
+        <div class="sizes" id="sizes" role="radiogroup" aria-label="Available packing"></div>
       </div>
-
       <div class="cta-row reveal">
         <div class="btn-shop"><a id="enquireBtn" href="contact.html">Enquire Now <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
         <a class="btn-outline" href="products.html">Back to Shop</a>
@@ -240,60 +223,69 @@
       <h2 class="related-title">Related Products</h2>
       <a class="view-all" href="products.html">View All Products <span class="dash"></span></a>
     </div>
-    <div class="related-grid">
-      <a href="product-detail.html" class="rcard reveal">
-        <div class="rimg"><img src="images/sturgeon-caviar.jpg" alt="Osetra Caviar"></div>
-        <div class="rbody"><h3>Osetra Caviar</h3><span class="rmore">View More <span class="dash"></span></span></div>
-      </a>
-      <a href="product-detail.html" class="rcard reveal">
-        <div class="rimg"><img src="images/pdf_extracted/extracted_3_2208x3936.jpeg" alt="Calluga Hybrid Caviar"></div>
-        <div class="rbody"><h3>Calluga Hybrid Caviar</h3><span class="rmore">View More <span class="dash"></span></span></div>
-      </a>
-      <a href="product-detail.html" class="rcard reveal">
-        <div class="rimg"><img src="images/pdf_extracted/extracted_4_2000x1499.jpeg" alt="King Crab Legs"></div>
-        <div class="rbody"><h3>King Crab Legs</h3><span class="rmore">View More <span class="dash"></span></span></div>
-      </a>
-      <a href="product-detail.html" class="rcard reveal">
-        <div class="rimg"><img src="images/pdf_extracted/extracted_1_2000x2500.jpeg" alt="Lobster Tail"></div>
-        <div class="rbody"><h3>Lobster Tail</h3><span class="rmore">View More <span class="dash"></span></span></div>
-      </a>
-    </div>
+    <div class="related-grid" id="related"></div>
   </section>
 
   <div id="footer-placeholder"></div>
 
   <script src="components.js"></script>
+  <script src="js/products-data.js"></script>
   <script>
   (function(){
+    var list=window.PRODUCTS||[];
+    var slug=new URLSearchParams(location.search).get('p');
+    var p=list.filter(function(x){return x.slug===slug;})[0]||list[0];
+    if(!p)return;
+    function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+    var FLAGS={
+      Russia:'<rect width="24" height="8" fill="#fff"/><rect y="8" width="24" height="8" fill="#0039A6"/><rect y="16" width="24" height="8" fill="#D52B1E"/>',
+      Norway:'<rect width="24" height="24" fill="#BA0C2F"/><rect x="6" width="5" height="24" fill="#fff"/><rect y="9.5" width="24" height="5" fill="#fff"/><rect x="7.3" width="2.4" height="24" fill="#00205B"/><rect y="10.8" width="24" height="2.4" fill="#00205B"/>',
+      Canada:'<rect width="24" height="24" fill="#fff"/><rect width="6" height="24" fill="#D80621"/><rect x="18" width="6" height="24" fill="#D80621"/><path d="M12 6l1.6 3.4 2.4-.8-.8 3.2 2 1-3.6 1.6.4 2.6H12h-2.0l.4-2.6L6.8 12.8l2-1-.8-3.2 2.4.8z" fill="#D80621"/>',
+      France:'<rect width="8" height="24" fill="#0055A4"/><rect x="8" width="8" height="24" fill="#fff"/><rect x="16" width="8" height="24" fill="#EF4135"/>',
+      Japan:'<rect width="24" height="24" fill="#fff"/><circle cx="12" cy="12" r="6" fill="#BC002D"/>',
+      Spain:'<rect width="24" height="24" fill="#C60B1E"/><rect y="6" width="24" height="12" fill="#FFC400"/>',
+      USA:'<rect width="24" height="24" fill="#fff"/><g fill="#B22234"><rect y="0" width="24" height="3.4"/><rect y="6.9" width="24" height="3.4"/><rect y="13.7" width="24" height="3.4"/><rect y="20.6" width="24" height="3.4"/></g><rect width="12" height="13.7" fill="#3C3B6E"/>',
+      Australia:'<rect width="24" height="24" fill="#00008B"/><rect width="12" height="12" fill="#00008B"/><path d="M0 0l12 12M12 0L0 12" stroke="#fff" stroke-width="2"/><path d="M6 0v12M0 6h12" stroke="#fff" stroke-width="3.4"/><path d="M6 0v12M0 6h12" stroke="#CC142B" stroke-width="1.8"/><circle cx="8" cy="19" r="1.6" fill="#fff"/><circle cx="18" cy="8" r="1" fill="#fff"/><circle cx="17" cy="19" r="1" fill="#fff"/><circle cx="21" cy="14" r="1" fill="#fff"/>',
+      Argentina:'<rect width="24" height="24" fill="#74ACDF"/><rect y="8" width="24" height="8" fill="#fff"/><circle cx="12" cy="12" r="2" fill="#F6B40E"/>',
+      Hungary:'<rect width="24" height="8" fill="#CE2939"/><rect y="8" width="24" height="8" fill="#fff"/><rect y="16" width="24" height="8" fill="#477050"/>'
+    };
+    FLAGS.Alaska=FLAGS.USA;
+    var defs=document.getElementById('flagClip');
+    function flag(c){
+      var g=FLAGS[c];
+      if(!g)return '';
+      return '<svg class="flag" viewBox="0 0 24 24" role="img" aria-label="'+esc(c)+' flag"><g clip-path="url(#flagClip)">'+g+'</g></svg>';
+    }
+    document.title=p.name+' | Caspian & Sun Food Trading LLC';
+    document.getElementById('crumbName').textContent=p.name;
     var main=document.getElementById('mainImg');
-    var thumbs=document.querySelectorAll('.thumb');
-    thumbs.forEach(function(t){
-      t.addEventListener('click',function(){
-        if(t.classList.contains('active'))return;
-        thumbs.forEach(function(x){x.classList.remove('active');});
-        t.classList.add('active');
-        main.classList.add('swap');
-        setTimeout(function(){main.src=t.getAttribute('data-src');main.classList.remove('swap');},220);
-      });
-    });
-
+    main.src=p.image;main.alt=p.name;
+    document.getElementById('thumbs').style.display='none';
+    document.getElementById('pTag').textContent=p.category;
+    document.getElementById('pName').textContent=p.name;
+    document.getElementById('pDesc').textContent=p.description;
+    document.getElementById('pOrigin').innerHTML=p.origin.map(function(c){return '<span class="origin-item">'+flag(c)+esc(c)+'</span>';}).join('');
+    var sizesEl=document.getElementById('sizes');
+    sizesEl.innerHTML=p.packing.map(function(x){return '<button class="size" type="button" role="radio" aria-checked="false" data-size="'+esc(x)+'"><span>'+esc(x)+'</span></button>';}).join('');
+    var rel=list.filter(function(x){return x.category===p.category&&x.slug!==p.slug;});
+    list.forEach(function(x){if(rel.length<4&&x.slug!==p.slug&&rel.indexOf(x)<0)rel.push(x);});
+    document.getElementById('related').innerHTML=rel.slice(0,4).map(function(x){
+      return '<a href="product-detail.html?p='+x.slug+'" class="rcard reveal in-view"><div class="rimg"><img src="'+x.image+'" alt="'+esc(x.name)+'"></div><div class="rbody"><h3>'+esc(x.name)+'</h3><span class="rmore">View More <span class="dash"></span></span></div></a>';
+    }).join('');
     var sizes=document.querySelectorAll('.size');
     var hint=document.getElementById('sizesHint');
     var enquire=document.getElementById('enquireBtn');
-    var base='contact.html?product='+encodeURIComponent('Carabinaro Shrimp');
+    var base='contact.html?product='+encodeURIComponent(p.name);
+    var idle='Select a packing option to add it to your enquiry';
     sizes.forEach(function(s){
       s.addEventListener('click',function(){
         var on=s.classList.contains('active');
         sizes.forEach(function(x){x.classList.remove('active');x.setAttribute('aria-checked','false');});
-        if(on){
-          hint.innerHTML='Select a size to add it to your enquiry';
-          enquire.setAttribute('href',base);
-          return;
-        }
+        if(on){hint.innerHTML=idle;enquire.setAttribute('href',base);return;}
         s.classList.add('active');
         s.setAttribute('aria-checked','true');
         var v=s.getAttribute('data-size');
-        hint.innerHTML='Selected: <strong>'+v+'</strong>';
+        hint.innerHTML='Selected: <strong>'+esc(v)+'</strong>';
         enquire.setAttribute('href',base+'&size='+encodeURIComponent(v));
       });
     });
