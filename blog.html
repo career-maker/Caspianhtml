@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog | Caspian & Sun Food Trading LLC</title>
+<title>Insights | Caspian & Sun Food Trading LLC</title>
   <link rel="icon" type="image/png" href="images/logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Alex+Brush&display=swap" rel="stylesheet">
 <style>
@@ -56,6 +56,27 @@ img{max-width:100%;display:block;}
 
 
 
+
+/* HERO VIDEO (same clip as home) */
+.hero{background:#0b0f10;overflow:hidden;}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.hero::before{content:'';position:absolute;inset:0;z-index:1;background:radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);}
+.hero-inner{position:relative;z-index:2;}
+
+/* TRUSTED BY */
+.trusted{background:var(--cream);color:var(--charcoal);padding:clamp(3rem,6vw,5rem) 0;}
+.trusted-wrap{max-width:1500px;margin:0 auto;padding:0 clamp(2.5rem,7vw,5.5rem);display:grid;grid-template-columns:minmax(0,520px) 1fr;gap:clamp(2rem,5vw,6rem);align-items:center;}
+.trusted .section-heading{color:var(--charcoal);margin-bottom:1rem;}
+.trusted p{color:#5a5a56;}
+.trusted-logos{display:grid;grid-template-columns:repeat(3,1fr);}
+.trusted-logo{display:flex;align-items:center;justify-content:center;min-height:96px;padding:1rem;border-right:1px solid rgba(30,73,81,.18);border-bottom:1px solid rgba(30,73,81,.18);}
+.trusted-logo:nth-child(3n){border-right:none;}
+.trusted-logo:nth-last-child(-n+3){border-bottom:none;}
+.trusted-logo span{font-family:'Playfair Display',serif;font-size:clamp(1rem,1.6vw,1.35rem);letter-spacing:2px;text-transform:uppercase;color:var(--deep-teal);text-align:center;}
+.trusted-logo img{max-width:140px;max-height:56px;width:auto;height:auto;object-fit:contain;}
+@media (max-width:900px){.trusted-wrap{grid-template-columns:1fr;padding:0 1.25rem;}}
+@media (max-width:480px){.trusted-logos{grid-template-columns:repeat(2,1fr);}.trusted-logo:nth-child(3n){border-right:1px solid rgba(30,73,81,.18);}.trusted-logo:nth-child(2n){border-right:none;}.trusted-logo:nth-last-child(-n+3){border-bottom:1px solid rgba(30,73,81,.18);}.trusted-logo:nth-last-child(-n+2){border-bottom:none;}}
+
 /* RESPONSIVE */
 @media (max-width:1024px){
   .blog-grid{grid-template-columns:repeat(2,1fr);}
@@ -84,84 +105,90 @@ html,body{max-width:100%;overflow-x:hidden;}
 
 
 <section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <source src="videos/hero-salmon.mp4" type="video/mp4">
+  </video>
   <div class="hero-inner">
-    <h1>BLOGS</h1>
-    <p>Connecting the finest seafood from pristine waters to discerning markets around the world.</p>
+    <h1>INSIGHTS</h1>
+    <p>Exploring the world of premium food through industry insights, market trends, sourcing stories, and culinary discoveries.</p>
   </div>
 </section>
 
   <div class="crumbs" role="navigation" aria-label="Breadcrumb">
     <a href="index.html">Home</a><span class="sep"></span>
-    <span class="current">Blog</span>
+    <span class="current">Insights</span>
   </div>
 
 <section class="blog-section">
-  <h2 class="section-heading reveal">EXPLORE OUR LATEST BLOGS</h2>
+  <h2 class="section-heading reveal">FOOD INDUSTRY INSIGHTS</h2>
   <div class="blog-grid">
 
-    <a href="blog-detail.html" class="blog-card reveal">
-      <div class="blog-card-img"><img src="images/hero-seafood.jpg" alt="Why Seafood is the Future of Healthy Eating"></div>
-      <h3>Why Seafood is the Future of Healthy Eating</h3>
-      <p>Seafood has always been recognized as one of the most nutritious foods available.</p>
+    <a href="blog-detail.html?p=rising-demand-premium-seafood" class="blog-card reveal">
+      <div class="blog-card-img"><img src="images/products/king-crab-leg.jpg" alt="The Rising Demand for Premium Seafood in Global Markets" loading="lazy"></div>
+      <h3>The Rising Demand for Premium Seafood in Global Markets</h3>
+      <p>Hotels, restaurants and retailers worldwide are placing greater value on quality, provenance and consistency in seafood.</p>
       <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"><svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
     </a>
 
-    <a href="blog-detail.html" class="blog-card reveal">
-      <div class="blog-card-img"><img src="images/salmon-fillet.jpg" alt="Sauces: The Secret to Culinary Harmony"></div>
-      <h3>Sauces: The Secret to Culinary Harmony</h3>
-      <p>Behind every memorable dish is often a sauce that ties the ingredients together. From creamy textures..</p>
+    <a href="blog-detail.html?p=importance-reliable-food-sourcing" class="blog-card reveal">
+      <div class="blog-card-img"><img src="images/products/lobster.jpg" alt="Understanding the Importance of Reliable Food Sourcing" loading="lazy"></div>
+      <h3>Understanding the Importance of Reliable Food Sourcing</h3>
+      <p>Why consistent supply, verified suppliers and transparent processes matter more than ever to foodservice businesses.</p>
       <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"><svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
     </a>
 
-    <a href="blog-detail.html" class="blog-card reveal">
-      <div class="blog-card-img"><img src="images/sturgeon-caviar.jpg" alt="Spices That Transform Everyday Meal"></div>
-      <h3>Spices That Transform Everyday Meal</h3>
-      <p>Spices are the soul of every kitchen, bringing warmth, aroma, and depth to dishes across cultures.</p>
+    <a href="blog-detail.html?p=origin-to-table-premium-seafood" class="blog-card reveal">
+      <div class="blog-card-img"><img src="images/products/hokkaido-scallops.jpg" alt="From Origin to Table: What Defines Premium Seafood?" loading="lazy"></div>
+      <h3>From Origin to Table: What Defines Premium Seafood?</h3>
+      <p>Species, origin, handling and grading all shape the quality of premium seafood long before it reaches the plate.</p>
       <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"><svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
     </a>
 
-    <a href="blog-detail.html" class="blog-card reveal">
-      <div class="blog-card-img"><img src="images/pdf_extracted/extracted_1_2000x2500.jpeg" alt="Sauces: The Secret to Culinary Harmony"></div>
-      <h3>Sauces: The Secret to Culinary Harmony</h3>
-      <p>Behind every memorable dish is often a sauce that ties the ingredients together.</p>
+    <a href="blog-detail.html?p=global-seafood-trends-horeca" class="blog-card reveal">
+      <div class="blog-card-img"><img src="images/products/carabinero-shrimp.jpg" alt="Global Seafood Trends Shaping the HORECA Industry" loading="lazy"></div>
+      <h3>Global Seafood Trends Shaping the HORECA Industry</h3>
+      <p>From provenance storytelling to specialty species, the trends influencing how hotels, restaurants and caterers buy seafood.</p>
       <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"><svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
     </a>
 
-    <a href="blog-detail.html" class="blog-card reveal">
-      <div class="blog-card-img"><img src="images/tiger-prawns.jpg" alt="Sauces: The Secret to Culinary Harmony"></div>
-      <h3>Sauces: The Secret to Culinary Harmony</h3>
-      <p>Behind every memorable dish is often a sauce that ties the ingredients together.</p>
+    <a href="blog-detail.html?p=international-sourcing-premium-hospitality" class="blog-card reveal">
+      <div class="blog-card-img"><img src="images/products/beluga-caviar.jpg" alt="How International Food Sourcing Supports Premium Hospitality" loading="lazy"></div>
+      <h3>How International Food Sourcing Supports Premium Hospitality</h3>
+      <p>Why luxury hospitality relies on a global network of producers to deliver the products guests expect.</p>
       <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"><svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
     </a>
 
-    <a href="blog-detail.html" class="blog-card reveal">
-      <div class="blog-card-img"><img src="images/pdf_extracted/extracted_4_2000x1499.jpeg" alt="Sauces: The Secret to Culinary Harmony"></div>
-      <h3>Sauces: The Secret to Culinary Harmony</h3>
-      <p>Behind every memorable dish is often a sauce that ties the ingredients together.</p>
+    <a href="blog-detail.html?p=premium-meat-poultry-seafood" class="blog-card reveal">
+      <div class="blog-card-img"><img src="images/products/black-angus-australia.jpg" alt="Inside the World of Premium Meat, Poultry and Seafood" loading="lazy"></div>
+      <h3>Inside the World of Premium Meat, Poultry and Seafood</h3>
+      <p>A look at what sets premium proteins apart, and how origin shapes flavour, texture and value.</p>
       <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"><svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
     </a>
 
-    <a href="blog-detail.html" class="blog-card reveal">
-      <div class="blog-card-img"><img src="images/pdf_extracted/extracted_6_2000x1488.jpeg" alt="Sauces: The Secret to Culinary Harmony"></div>
-      <h3>Sauces: The Secret to Culinary Harmony</h3>
-      <p>Behind every memorable dish is often a sauce that ties the ingredients together.</p>
+    <a href="blog-detail.html?p=food-supply-chains-producer-to-market" class="blog-card reveal">
+      <div class="blog-card-img"><img src="images/products/black-cod.jpg" alt="Understanding Food Supply Chains: From Producer to Market" loading="lazy"></div>
+      <h3>Understanding Food Supply Chains: From Producer to Market</h3>
+      <p>How a premium food product travels from producer to customer, and where quality is won or lost.</p>
       <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"><svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
     </a>
 
-    <a href="blog-detail.html" class="blog-card reveal">
-      <div class="blog-card-img"><img src="images/pdf_extracted/extracted_3_2208x3936.jpeg" alt="Sauces: The Secret to Culinary Harmony"></div>
-      <h3>Sauces: The Secret to Culinary Harmony</h3>
-      <p>Behind every memorable dish is often a sauce that ties the ingredients together.</p>
-      <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"><svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
-    </a>
+  </div>
+</section>
 
-    <a href="blog-detail.html" class="blog-card reveal">
-      <div class="blog-card-img"><img src="images/pdf_extracted/extracted_5_2000x1331.jpeg" alt="Sauces: The Secret to Culinary Harmony"></div>
-      <h3>Sauces: The Secret to Culinary Harmony</h3>
-      <p>Behind every memorable dish is often a sauce that ties the ingredients together.</p>
-      <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"><svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
-    </a>
-
+<section class="trusted">
+  <div class="trusted-wrap">
+    <div class="trusted-text reveal">
+      <h2 class="section-heading section-heading--on-dark">TRUSTED BY</h2>
+      <p>Proud to supply premium food products to internationally recognized restaurants and hospitality establishments, including NOBU, Zuma, Mandarin Oriental, Gigi, Mondaine, and Gaia.</p>
+    </div>
+    <div class="trusted-logos reveal">
+      <div class="trusted-logo" data-client="NOBU"><span>NOBU</span></div>
+      <div class="trusted-logo" data-client="Zuma"><span>Zuma</span></div>
+      <div class="trusted-logo" data-client="Mandarin Oriental"><span>Mandarin Oriental</span></div>
+      <div class="trusted-logo" data-client="Gigi"><span>Gigi</span></div>
+      <div class="trusted-logo" data-client="Mondaine"><span>Mondaine</span></div>
+      <div class="trusted-logo" data-client="Gaia"><span>Gaia</span></div>
+    </div>
   </div>
 </section>
 

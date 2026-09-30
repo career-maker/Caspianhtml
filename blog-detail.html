@@ -78,6 +78,14 @@ img{max-width:100%;display:block;}
   .article-wrap{padding:2.5rem 1.25rem 3rem;}
   
 }
+
+/* REFERENCES */
+.article-meta .meta-ref a{color:var(--deep-teal);text-decoration:underline;text-underline-offset:3px;}
+.article-refs{margin-top:2rem;padding-top:1.4rem;border-top:1px solid rgba(23,24,19,.12);}
+.article-refs h2{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;margin-bottom:.8rem;}
+.article-refs ol{padding-left:1.2rem;}
+.article-refs li{font-size:.9rem;line-height:1.7;color:#5a5a56;margin-bottom:.35rem;}
+.article-refs a{color:var(--deep-teal);word-break:break-word;}
 html,body{max-width:100%;overflow-x:hidden;}
 
 
@@ -93,15 +101,15 @@ html,body{max-width:100%;overflow-x:hidden;}
 
 <section class="hero">
   <div class="hero-inner">
-    <h1>BLOGS</h1>
-    <p>Connecting the finest seafood from pristine waters to discerning markets around the world.</p>
+    <h1>INSIGHTS</h1>
+    <p>Exploring the world of premium food through industry insights, market trends, sourcing stories, and culinary discoveries.</p>
   </div>
 </section>
 
 <div class="article-wrap">
   <article>
-    <div class="article-meta reveal">By <a href="#">John Doe</a> &nbsp;|&nbsp; Aug 23, 2024</div>
-    <h1 class="article-title reveal">Why Seafood is the Future of Healthy Eating</h1>
+    <div class="article-meta reveal" id="aMeta"></div>
+    <h1 class="article-title reveal" id="aTitle"></h1>
     <div class="share-row reveal">
       <span>Share with:</span>
       <div class="share-icons">
@@ -111,38 +119,14 @@ html,body{max-width:100%;overflow-x:hidden;}
         <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.5 15.2L2 22l4.9-1.5A10 10 0 1012 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .9.9-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.6-1.2-1.4-1.4-1.6-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.4-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.4 3.8 3.4.5.2.9.4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg></a>
       </div>
     </div>
-    <img class="article-featured reveal" src="images/hero-seafood.jpg" alt="Why Seafood is the Future of Healthy Eating">
-    <div class="article-body reveal">
-      <p>Seafood has always been recognized as one of the most nutritious foods available. Rich in lean protein, essential vitamins, and omega-3 fatty acids, it supports heart health, brain function, and overall well-being. Unlike many processed foods, seafood offers natural nourishment with fewer calories, making it an ideal choice for a balanced diet.</p>
-      <p>Beyond health, seafood represents sustainability. With responsible fishing and modern preservation methods such as canning, we can enjoy the ocean's treasures without overexploiting them. Choosing seafood means choosing a diet that benefits both people and the planet. From fresh catches to convenient canned options, seafood is shaping the future of healthy living.</p>
-      <p>Our commitment at Caspian & Sun Food Trading LLC goes beyond simply supplying premium seafood — it extends to educating our partners and customers on why these choices matter. Every fillet, every catch, and every shipment reflects decades of expertise passed down since our founding on the shores of the Caspian Sea in 1981.</p>
-      <p>Modern cold-chain logistics mean that the freshness once reserved for coastal communities can now reach discerning kitchens across the globe. From fresh catches to convenient, responsibly sourced options, seafood continues to shape the future of healthy, sustainable living for generations to come.</p>
-    </div>
+    <img class="article-featured reveal" id="aImg" src="" alt="">
+    <div class="article-body reveal" id="aBody"></div>
+    <div class="article-refs reveal" id="aRefs"></div>
   </article>
 
   <aside class="sidebar">
-    <h2 class="section-heading reveal">RELATED BLOGS</h2>
-
-    <a href="blog-detail.html" class="related-card reveal">
-      <div class="related-card-img"><img src="images/tiger-prawns.jpg" alt="The Art of Preserving the Ocean's Bounty"></div>
-      <h3>The Art of Preserving the Ocean's Bounty</h3>
-      <p>Behind every memorable dish is often a sauce that ties the ingredients together.</p>
-      <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"><svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
-    </a>
-
-    <a href="blog-detail.html" class="related-card reveal">
-      <div class="related-card-img"><img src="images/sturgeon-caviar.jpg" alt="The Art of Preserving the Ocean's Bounty"></div>
-      <h3>The Art of Preserving the Ocean's Bounty</h3>
-      <p>Behind every memorable dish is often a sauce that ties the ingredients together.</p>
-      <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"><svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
-    </a>
-
-    <a href="blog-detail.html" class="related-card reveal">
-      <div class="related-card-img"><img src="images/pdf_extracted/extracted_4_2000x1499.jpeg" alt="The Art of Preserving the Ocean's Bounty"></div>
-      <h3>The Art of Preserving the Ocean's Bounty</h3>
-      <p>Behind every memorable dish is often a sauce that ties the ingredients together.</p>
-      <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"><svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
-    </a>
+    <h2 class="section-heading reveal">RELATED INSIGHTS</h2>
+    <div id="aRelated"></div>
   </aside>
 </div>
 
@@ -151,5 +135,26 @@ html,body{max-width:100%;overflow-x:hidden;}
 
 
 <script src="components.js?v=4"></script>
+<script src="js/blog-data.js"></script>
+<script>
+(function(){
+  var list=window.POSTS||[];
+  var slug=new URLSearchParams(location.search).get('p');
+  var p=list.filter(function(x){return x.slug===slug;})[0]||list[0];
+  if(!p)return;
+  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  document.title=p.title+' | Caspian & Sun Food Trading LLC';
+  document.getElementById('aMeta').innerHTML='By '+esc(p.author)+' &nbsp;|&nbsp; '+esc(p.date)+' &nbsp;|&nbsp; <span class="meta-ref">Reference: <a href="'+esc(p.refs[0].url)+'" target="_blank" rel="noopener">'+esc(p.refs[0].text)+'</a></span>';
+  document.getElementById('aTitle').textContent=p.title;
+  var img=document.getElementById('aImg');img.src=p.image;img.alt=p.title;
+  document.getElementById('aBody').innerHTML=p.body.map(function(t){return '<p>'+esc(t)+'</p>';}).join('');
+  document.getElementById('aRefs').innerHTML='<h2>References</h2><ol>'+p.refs.map(function(r){return '<li>'+esc(r.text)+'. <a href="'+esc(r.url)+'" target="_blank" rel="noopener">'+esc(r.url)+'</a></li>';}).join('')+'</ol>';
+  var arrow='<span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"><svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>';
+  document.getElementById('aRelated').innerHTML=list.filter(function(x){return x.slug!==p.slug;}).slice(0,3).map(function(x){
+    return '<a href="blog-detail.html?p='+x.slug+'" class="related-card reveal in-view"><div class="related-card-img"><img src="'+x.image+'" alt="'+esc(x.title)+'"></div><h3>'+esc(x.title)+'</h3><p>'+esc(x.excerpt)+'</p>'+arrow+'</a>';
+  }).join('');
+})();
+</script>
+
 </body>
 </html>
