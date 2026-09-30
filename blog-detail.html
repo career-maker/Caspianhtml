@@ -32,8 +32,8 @@ img{max-width:100%;display:block;}
 @keyframes heroFadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
 @media (prefers-reduced-motion: reduce){.hero h1,.hero p{animation:none;opacity:1;}}
 
-/* ARTICLE LAYOUT */
-.article-wrap{max-width:1500px;margin:0 auto;padding:clamp(3rem,6vw,5rem) clamp(2.5rem,7vw,5.5rem) clamp(4rem,7vw,6rem);display:grid;grid-template-columns:1fr 360px;gap:clamp(2.5rem,5vw,4.5rem);align-items:start;min-height: 100vh;box-sizing:border-box;}
+/* ARTICLE LAYOUT — Rule 2: no artificial min-height; content drives height */
+.article-wrap{max-width:1500px;margin:0 auto;padding:clamp(3rem,6vw,5rem) clamp(2.5rem,7vw,5.5rem) clamp(4rem,7vw,6rem);display:grid;grid-template-columns:1fr 360px;gap:clamp(2.5rem,5vw,4.5rem);align-items:start;box-sizing:border-box;}
 .article-meta{font-size:clamp(.8rem,1.4vw,.9rem);color:#6b6b66;margin-bottom:.9rem;}
 .article-meta a{color:var(--deep-teal);text-decoration:none;font-weight:600;}
 .article-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.6vw,3.75rem);font-weight:500;line-height:1.22;letter-spacing:-.5px;color:var(--charcoal);margin-bottom:min(1.2rem, 2vh);}
@@ -45,8 +45,8 @@ img{max-width:100%;display:block;}
 .article-featured{width:100%;aspect-ratio:16/11;object-fit:cover;margin-bottom:clamp(1.8rem,3vw,2.5rem);}
 .article-body p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27px;color:rgb(90, 90, 86);font-family:'Manrope',sans-serif;font-weight:400;line-height:27px;color:#4a4a45;line-height:1.9;margin-bottom:1.3rem;}
 
-/* SIDEBAR */
-.sidebar h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:500;letter-spacing:-.3px;color:var(--charcoal);margin-bottom:clamp(1.6rem,3vw,2.2rem);}
+/* SIDEBAR — Rule 1: heading style on class, not tag */
+.sidebar .section-heading{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:500;letter-spacing:-.3px;color:var(--charcoal);margin-bottom:clamp(1.6rem,3vw,2.2rem);}
 .related-card{display:block;text-decoration:none;color:inherit;padding-bottom:clamp(1.4rem,2.5vw,1.8rem);margin-bottom:clamp(1.4rem,2.5vw,1.8rem);border-bottom:1px solid #eee;}
 .related-card:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
 .related-card-img{width:100%;aspect-ratio:16/10;overflow:hidden;margin-bottom:min(1rem, 2vh);}
@@ -120,7 +120,7 @@ html,body{max-width:100%;overflow-x:hidden;}
   </article>
 
   <aside class="sidebar">
-    <h2 class="reveal">RELATED BLOGS</h2>
+    <h2 class="section-heading reveal">RELATED BLOGS</h2>
 
     <a href="blog-detail.html" class="related-card reveal">
       <div class="related-card-img"><img src="images/tiger-prawns.jpg" alt="The Art of Preserving the Ocean's Bounty"></div>

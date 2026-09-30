@@ -98,11 +98,10 @@
     @media (prefers-reduced-motion: reduce){.hero h1,.hero p{animation:none;opacity:1;}}
 
 
-    /* CONTACT FORM SECTION */
+    /* CONTACT FORM SECTION — Rule 2: no artificial min-height; section grows with content */
     .contact-section {
       padding: clamp(3rem, 5vw, 4.5rem) clamp(1.5rem, 5vw, 3rem);
       background: #fff;
-      min-height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;
     }
     .contact-grid {
       display: grid;
@@ -112,7 +111,8 @@
       margin: 0 auto;
       align-items: flex-start;
     }
-    h2 {
+    /* Rule 1: heading style lives on the class, not the tag */
+    .section-heading {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.9rem, 4.6vw, 3.75rem);
       font-weight: 500;
@@ -194,7 +194,7 @@
       grid-template-columns: 1fr 1fr;
       gap: clamp(2rem, 3vw, 3rem);
     }
-    .info-box h2 { color: #fff; margin-bottom: 1.5rem; grid-column: 1/-1; }
+    .info-box .section-heading { color: #fff; margin-bottom: 1.5rem; grid-column: 1/-1; }
     .info-item { display: flex; flex-direction: column; }
     .info-label {
       font-size: 0.8rem;
@@ -216,13 +216,12 @@
     }
     .info-value a:hover { color: var(--rich-gold); }
 
-    /* MAP SECTION */
+    /* MAP SECTION — Rule 2: no artificial min-height */
     .map-section {
       padding: clamp(3rem, 5vw, 4.5rem) clamp(1.5rem, 5vw, 3rem);
       background: #fcfaf8;
-      min-height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;
     }
-    .map-section h2 {
+    .map-section .section-heading {
       margin-bottom: 0.5rem;
       color: var(--charcoal-black);
     }
@@ -272,13 +271,12 @@
       line-height: 1.6;
     }
 
-    /* CTA SECTION */
+    /* CTA SECTION — Rule 2: no artificial min-height; section grows with content */
     .cta-section {
       padding: clamp(3rem, 5vw, 4.5rem) clamp(1.5rem, 5vw, 3rem);
       background: #fff;
       position: relative;
       overflow: hidden;
-      min-height: 100vh; min-height: 100dvh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;
     }
     .cta-grid {
       display: grid;
@@ -306,13 +304,7 @@
       z-index: 0;
       mix-blend-mode: multiply;
     }
-    .cta-content h2,
-    .cta-content p,
-    .cta-content .cta-button-alt {
-      position: relative;
-      z-index: 1;
-    }
-    .cta-content h2 {
+    .cta-content .section-heading {
       font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-family: 'Playfair Display', serif;
       line-height: 1.25;
@@ -428,7 +420,7 @@
     <div class="contact-grid">
       <!-- FORM LEFT -->
       <div class="form-section">
-        <h2>GET IN TOUCH</h2>
+        <h2 class="section-heading">GET IN TOUCH</h2>
         <p>For inquiries or further information, please contact us. We’re here to help.</p>
         <form>
           <div class="form-row">
@@ -455,7 +447,7 @@
 
       <!-- INFO BOX RIGHT -->
       <div class="info-box">
-        <h2>CONTACT INFO</h2>
+        <h2 class="section-heading">CONTACT INFO</h2>
         <div class="info-item">
           <div class="info-label">Phones</div>
           <div class="info-value"><a href="tel:+97158561604">+971 58 561 6040</a></div>
@@ -478,7 +470,7 @@
 
   <!-- MAP SECTION -->
   <section class="map-section">
-    <h2>LOCATE US</h2>
+    <h2 class="section-heading">LOCATE US</h2>
     <p>Conveniently located and easy to reach. Find us on the map.</p>
     <div class="map-container">
       <div class="map-placeholder">
@@ -501,7 +493,7 @@
       </div>
       <div class="cta-content">
         <img src="images/watermark-fish.png" class="cta-watermark" alt="" aria-hidden="true">
-        <h2>DELIVERING THE<br>BEST THE SEA<br>HAS TO OFFER.</h2>
+        <h2 class="section-heading">DELIVERING THE<br>BEST THE SEA<br>HAS TO OFFER.</h2>
         <p>We deliver the finest seafood with a commitment to quality, hygiene, and sustainability.</p>
         <div class="btn-shop"><button class="cta-button-alt">Shop Now</button></div>
       </div>

@@ -134,6 +134,49 @@ ul, ol {
   margin-bottom: 16px;
 }
 
+/* ==========================================================================
+   Section Heading — Reusable Component (Rule: styling must not depend on
+   the semantic heading tag; apply this class to any h1–h6 or even a <div>
+   and the visual design remains unchanged)
+   ========================================================================== */
+.section-heading {
+  font-family: var(--font-serif);
+  font-size: var(--fs-section-title);
+  font-weight: 400;
+  color: var(--main-title-color);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+/* Variant: uppercase editorial style used by About / About-page sections */
+.section-heading--upper {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: clamp(32px, 3.2vw, 52px);
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+
+/* Variant: hero-scale (large display heading inside a section) */
+.section-heading--display {
+  font-size: clamp(38px, 4vw, 64px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+/* On dark backgrounds */
+.section-dark .section-heading,
+.section-heading--on-dark {
+  color: var(--bg-white);
+}
+
+/* Centred layout helper */
+.section-heading--center {
+  text-align: center;
+}
+
 .sub-text {
   font-family: var(--font-sans);
   font-size: var(--fs-body);
@@ -1589,12 +1632,14 @@ textarea.form-control {
   border-radius: 2px;
 }
 
-/* Section: Why Choose Us (50/50 Split) */
+/* Section: Why Choose Us (50/50 Split)
+   Note: no min-height — height is driven naturally by the taller of the two
+   columns. The image column carries its own min-height as a visual design
+   requirement for the full-bleed photo fill (see .why-img-col below). */
 .about-why-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
-  min-height: 720px;
   background-color: #fbf8f4;
   overflow: hidden;
 }

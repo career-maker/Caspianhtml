@@ -32,9 +32,10 @@ img{max-width:100%;display:block;}
 @keyframes heroFadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
 @media (prefers-reduced-motion: reduce){.hero h1,.hero p{animation:none;opacity:1;}}
 
-/* BLOG LISTING SECTION */
-.blog-section{padding:clamp(2rem,4vh,4rem) clamp(2.5rem,7vw,5.5rem);max-width:1500px;margin:0 auto;min-height: 100vh;box-sizing:border-box;}
-.blog-section h2{font-family:'Playfair Display',serif;font-size:29px;line-height:36px;font-weight:500;color:var(--charcoal);margin-bottom:clamp(2.5rem,5vw,4rem);}
+/* BLOG LISTING SECTION — Rule 2: grows with content, no artificial min-height */
+.blog-section{padding:clamp(2rem,4vh,4rem) clamp(2.5rem,7vw,5.5rem);max-width:1500px;margin:0 auto;box-sizing:border-box;}
+/* Rule 1: heading class, not tag selector */
+.section-heading{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.8vw,2.2rem);line-height:1.25;font-weight:500;color:var(--charcoal);margin-bottom:clamp(2.5rem,5vw,4rem);}
 .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.8rem,3vw,2.8rem);}
 .blog-card{display:flex;flex-direction:column;text-decoration:none;color:inherit;}
 .blog-card h3,.blog-card p{text-decoration:none;}
@@ -94,7 +95,7 @@ html,body{max-width:100%;overflow-x:hidden;}
   </div>
 
 <section class="blog-section">
-  <h2 class="reveal">EXPLORE OUR LATEST BLOGS</h2>
+  <h2 class="section-heading reveal">EXPLORE OUR LATEST BLOGS</h2>
   <div class="blog-grid">
 
     <a href="blog-detail.html" class="blog-card reveal">
