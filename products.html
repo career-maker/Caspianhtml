@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="description" content="Exceptional seafood, meat, poultry and specialty products, carefully sourced from trusted producers around the world.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Premium Products | Caspian & Sun Food Trading LLC</title>
+<style id="pl-css">#preloader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:#F7F3EC;overflow:hidden;transition:opacity .4s ease .55s,visibility 0s linear .95s;}#preloader .pl-disc{position:absolute;left:50%;top:50%;width:clamp(124px,18vw,190px);height:clamp(124px,18vw,190px);margin:calc(clamp(124px,18vw,190px)/-2) 0 0 calc(clamp(124px,18vw,190px)/-2);border-radius:50%;background:#1E4951;box-shadow:0 10px 40px rgba(30,73,81,.25);transition:transform .8s cubic-bezier(.65,0,.35,1);will-change:transform;}#preloader .pl-logo{position:relative;width:clamp(96px,14vw,150px);height:clamp(96px,14vw,150px);display:flex;align-items:center;justify-content:center;}#preloader .pl-logo img{width:100%;height:100%;object-fit:contain;animation:plPulse 1.8s ease-in-out infinite;}#preloader .pl-ring{position:absolute;inset:-14px;border-radius:50%;border:2px solid rgba(215,187,81,.3);border-top-color:#D7BB51;animation:plSpin 1.1s linear infinite;transition:opacity .3s ease;}@keyframes plPulse{0%,100%{transform:scale(.97);}50%{transform:scale(1.03);}}@keyframes plSpin{to{transform:rotate(360deg);}}#preloader.pl-done{opacity:0;visibility:hidden;pointer-events:none;}#preloader.pl-done .pl-disc{transform:scale(40);}#preloader.pl-done .pl-logo img{animation:none;}#preloader.pl-done .pl-ring{opacity:0;}html.pl-skip #preloader{display:none;}@media (prefers-reduced-motion:reduce){#preloader .pl-logo img,#preloader .pl-ring{animation:none;}#preloader .pl-disc{transition:none;}#preloader{transition:opacity .3s ease,visibility 0s linear .3s;}}</style>
+<script>try{if(sessionStorage.getItem("plSeen"))document.documentElement.classList.add("pl-skip")}catch(e){}</script>
   <link rel="icon" type="image/png" href="images/logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Alex+Brush&display=swap" rel="stylesheet">
 <style>
 :root{--deep-teal:#1E4951;--rich-gold:#D7BB51;--antique-gold:#AA8D3F;--charcoal:#171813;--cream:#F7F3EC;}
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -26,10 +28,10 @@ img{max-width:100%;display:block;}
 @media (prefers-reduced-motion: reduce){.reveal{opacity:1!important;transform:none!important;transition:none!important;}}
 
 /* HERO — identical to about.html */
-.hero{position:relative;height:100vh;height:100dvh;background:radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%), url('images/pdf_extracted/extracted_3_2208x3936.jpeg') center 25%/cover;display:flex;align-items:flex-end;padding:clamp(1.5rem,4vw,3.5rem) clamp(2.5rem,7vw,5.5rem);color:#fff;justify-content:flex-end;flex-direction:column;}
+.hero{position:relative;height:100vh;height:100dvh;background:radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%), url('images/hero/extracted_3_2208x3936.webp') center 25%/cover;display:flex;align-items:flex-end;padding:clamp(1.5rem,4vw,3.5rem) clamp(2.5rem,7vw,5.5rem);color:#fff;justify-content:flex-end;flex-direction:column;}
 .hero-inner{max-width:1400px;margin:0 auto;width:100%;text-align:left;padding:0 clamp(1.5rem,5vw,3rem);padding-bottom:clamp(2rem,4vw,3.5rem);}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6.5vw,4.2rem);font-weight:500;margin-bottom:.4rem;text-shadow:0 2px 12px rgba(0,0,0,.25);opacity:0;animation:heroFadeUp 1s cubic-bezier(.16,1,.3,1) .2s forwards;}
-.hero p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27px;max-width:480px;color:#fff;opacity:0;animation:heroFadeUp 1s cubic-bezier(.16,1,.3,1) .45s forwards;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6.5vw,4.2rem);font-weight:500;margin-bottom:.4rem;text-shadow:0 2px 12px rgba(0,0,0,.25);opacity:0;animation:heroFadeUp .6s cubic-bezier(.16,1,.3,1) .05s forwards;}
+.hero p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27px;max-width:480px;color:#fff;opacity:0;animation:heroFadeUp .6s cubic-bezier(.16,1,.3,1) .12s forwards;}
 @keyframes heroFadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
 @media (prefers-reduced-motion: reduce){.hero h1,.hero p{animation:none;opacity:1;}}
 
@@ -102,14 +104,18 @@ img{max-width:100%;display:block;}
 html,body{max-width:100%;overflow-x:hidden;}
 
 
+@media (max-width:768px){.hero{background:radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%), url('images/hero/extracted_3_2208x3936-sm.webp') center 25%/cover;}}
 </style>
-  <link href="components.css?v=5" rel="stylesheet">
+  <link rel="preload" as="image" href="images/hero/extracted_3_2208x3936.webp" fetchpriority="high" media="(min-width:769px)">
+<link rel="preload" as="image" href="images/hero/extracted_3_2208x3936-sm.webp" fetchpriority="high" media="(max-width:768px)">
+<link href="components.css?v=5" rel="stylesheet">
 </head>
 <body>
-<div id="preloader" aria-hidden="true"><div class="pl-logo"><span class="pl-ring"></span><img src="casplogo.png" alt=""></div></div>
+<div id="preloader" aria-hidden="true"><div class="pl-disc"></div><div class="pl-logo"><span class="pl-ring"></span><img width="360" height="360" src="casplogo.webp" alt=""></div></div>
 
 
 <div id="header-placeholder"></div>
+<main id="main">
 
 
 
@@ -137,12 +143,12 @@ html,body{max-width:100%;overflow-x:hidden;}
     </div>
   </div>
 
-  <div class="cat-tabs reveal" role="tablist" aria-label="Product categories">
-    <button type="button" class="cat-tab active" data-filter="all">All</button>
-    <button type="button" class="cat-tab" data-filter="seafood">Seafood</button>
-    <button type="button" class="cat-tab" data-filter="poultry">Poultry</button>
-    <button type="button" class="cat-tab" data-filter="meat">Meat</button>
-    <button type="button" class="cat-tab" data-filter="other">Other Food Products</button>
+  <div class="cat-tabs reveal" role="group" aria-label="Product categories">
+    <button type="button" class="cat-tab active" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="cat-tab" data-filter="seafood" aria-pressed="false">Seafood</button>
+    <button type="button" class="cat-tab" data-filter="poultry" aria-pressed="false">Poultry</button>
+    <button type="button" class="cat-tab" data-filter="meat" aria-pressed="false">Meat</button>
+    <button type="button" class="cat-tab" data-filter="other" aria-pressed="false">Other Food Products</button>
   </div>
   <div class="shop-grid">
 
@@ -152,86 +158,86 @@ html,body{max-width:100%;overflow-x:hidden;}
       <div class="product-grid">
       <div class="product-card reveal" data-name="king crab leg">
         <div class="product-icon">
-          <img src="images/products/king-crab-leg.jpg" alt="King Crab Leg" loading="lazy">
+          <img width="520" height="340" src="images/products/thumb/king-crab-leg.webp" alt="King Crab Leg" loading="lazy">
           <div class="product-overlay">
             <h3>King Crab Leg</h3>
             <p>Sourced from the cold waters of Russia and Norway, King Crab Legs are prized for their impressive size, succulent meat, and naturally sweet, delicate flavour.</p>
-            <a href="product-detail.html?p=king-crab-leg" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+            <a href="product-detail.html?p=king-crab-leg" class="view-link" aria-label="View more: King Crab Leg">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
           </div>
         </div>
         <div class="product-info">
           <div class="product-name">King Crab Leg</div>
-          <a href="product-detail.html?p=king-crab-leg" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+          <a href="product-detail.html?p=king-crab-leg" class="view-link" aria-label="View more: King Crab Leg">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
         </div>
       </div>
       <div class="product-card reveal" data-name="lobster">
         <div class="product-icon">
-          <img src="images/products/lobster.jpg" alt="Lobster" loading="lazy">
+          <img width="520" height="520" src="images/products/thumb/lobster.webp" alt="Lobster" loading="lazy">
           <div class="product-overlay">
             <h3>Lobster</h3>
             <p>Harvested from the cold Atlantic waters of Canada, Canadian Lobster is valued for its distinctive sweet flavour, tender meat, and rich ocean-fresh character.</p>
-            <a href="product-detail.html?p=lobster" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+            <a href="product-detail.html?p=lobster" class="view-link" aria-label="View more: King Crab Leg">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
           </div>
         </div>
         <div class="product-info">
           <div class="product-name">Lobster</div>
-          <a href="product-detail.html?p=lobster" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+          <a href="product-detail.html?p=lobster" class="view-link" aria-label="View more: King Crab Leg">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
         </div>
       </div>
       <div class="product-card reveal" data-name="beluga caviar">
         <div class="product-icon">
-          <img src="images/products/beluga-caviar.jpg" alt="Beluga Caviar" loading="lazy">
+          <img width="520" height="520" src="images/products/thumb/beluga-caviar.webp" alt="Beluga Caviar" loading="lazy">
           <div class="product-overlay">
             <h3>Beluga Caviar</h3>
             <p>Beluga Caviar represents the pinnacle of gourmet indulgence, celebrated for its delicate pearls, smooth texture, and refined, buttery flavour with subtle notes of the sea.</p>
-            <a href="product-detail.html?p=beluga-caviar" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+            <a href="product-detail.html?p=beluga-caviar" class="view-link" aria-label="View more: King Crab Leg">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
           </div>
         </div>
         <div class="product-info">
           <div class="product-name">Beluga Caviar</div>
-          <a href="product-detail.html?p=beluga-caviar" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+          <a href="product-detail.html?p=beluga-caviar" class="view-link" aria-label="View more: King Crab Leg">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
         </div>
       </div>
       <div class="product-card reveal" data-name="hokkaido scallops">
         <div class="product-icon">
-          <img src="images/products/hokkaido-scallops.jpg" alt="Hokkaido Scallops" loading="lazy">
+          <img width="520" height="623" src="images/products/thumb/hokkaido-scallops.webp" alt="Hokkaido Scallops" loading="lazy">
           <div class="product-overlay">
             <h3>Hokkaido Scallops</h3>
             <p>From the pristine waters surrounding Hokkaido, Japan, these premium scallops are appreciated for their natural sweetness, delicate ocean flavour, and tender, succulent texture.</p>
-            <a href="product-detail.html?p=hokkaido-scallops" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+            <a href="product-detail.html?p=hokkaido-scallops" class="view-link" aria-label="View more: King Crab Leg">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
           </div>
         </div>
         <div class="product-info">
           <div class="product-name">Hokkaido Scallops</div>
-          <a href="product-detail.html?p=hokkaido-scallops" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+          <a href="product-detail.html?p=hokkaido-scallops" class="view-link" aria-label="View more: King Crab Leg">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
         </div>
       </div>
       <div class="product-card reveal" data-name="carabinero shrimp">
         <div class="product-icon">
-          <img src="images/products/carabinero-shrimp.jpg" alt="Carabinero Shrimp" loading="lazy">
+          <img width="520" height="520" src="images/products/thumb/carabinero-shrimp.webp" alt="Carabinero Shrimp" loading="lazy">
           <div class="product-overlay">
             <h3>Carabinero Shrimp</h3>
             <p>Carabinero Shrimp is a prized gourmet seafood delicacy recognised for its striking deep-red shell, intense marine aroma, and remarkably rich flavour.</p>
-            <a href="product-detail.html?p=carabinero-shrimp" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+            <a href="product-detail.html?p=carabinero-shrimp" class="view-link" aria-label="View more: King Crab Leg">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
           </div>
         </div>
         <div class="product-info">
           <div class="product-name">Carabinero Shrimp</div>
-          <a href="product-detail.html?p=carabinero-shrimp" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+          <a href="product-detail.html?p=carabinero-shrimp" class="view-link" aria-label="View more: King Crab Leg">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
         </div>
       </div>
       <div class="product-card reveal" data-name="black cod">
         <div class="product-icon">
-          <img src="images/products/black-cod.jpg" alt="Black Cod" loading="lazy">
+          <img width="520" height="603" src="images/products/thumb/black-cod.webp" alt="Black Cod" loading="lazy">
           <div class="product-overlay">
             <h3>Black Cod</h3>
             <p>Sourced from Alaskan waters, Black Cod, also known as Sablefish, is renowned for its exceptionally rich flavour, silky texture, and naturally high oil content.</p>
-            <a href="product-detail.html?p=black-cod" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+            <a href="product-detail.html?p=black-cod" class="view-link" aria-label="View more: King Crab Leg">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
           </div>
         </div>
         <div class="product-info">
           <div class="product-name">Black Cod</div>
-          <a href="product-detail.html?p=black-cod" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+          <a href="product-detail.html?p=black-cod" class="view-link" aria-label="View more: King Crab Leg">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
         </div>
       </div>
       </div>
@@ -241,58 +247,58 @@ html,body{max-width:100%;overflow-x:hidden;}
       <div class="product-grid">
       <div class="product-card reveal" data-name="yellow chicken">
         <div class="product-icon">
-          <img src="images/products/yellow-chicken.jpg" alt="Yellow Chicken" loading="lazy">
+          <img width="520" height="520" src="images/products/thumb/yellow-chicken.webp" alt="Yellow Chicken" loading="lazy">
           <div class="product-overlay">
             <h3>Yellow Chicken</h3>
             <p>French Yellow Chicken is valued for its distinctive golden-yellow skin, delicate flavour, and tender, succulent meat.</p>
-            <a href="product-detail.html?p=yellow-chicken" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+            <a href="product-detail.html?p=yellow-chicken" class="view-link" aria-label="View more: Yellow Chicken">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
           </div>
         </div>
         <div class="product-info">
           <div class="product-name">Yellow Chicken</div>
-          <a href="product-detail.html?p=yellow-chicken" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+          <a href="product-detail.html?p=yellow-chicken" class="view-link" aria-label="View more: Yellow Chicken">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
         </div>
       </div>
       <div class="product-card reveal" data-name="foie gras escalope (sliced)">
         <div class="product-icon">
-          <img src="images/products/foie-gras-escalope.jpg" alt="Foie Gras Escalope (Sliced)" loading="lazy">
+          <img width="520" height="520" src="images/products/thumb/foie-gras-escalope.webp" alt="Foie Gras Escalope (Sliced)" loading="lazy">
           <div class="product-overlay">
             <h3>Foie Gras Escalope (Sliced)</h3>
             <p>Foie Gras is a distinguished gourmet delicacy celebrated for its exceptionally smooth texture, rich buttery flavour, and refined culinary character.</p>
-            <a href="product-detail.html?p=foie-gras-escalope" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+            <a href="product-detail.html?p=foie-gras-escalope" class="view-link" aria-label="View more: Yellow Chicken">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
           </div>
         </div>
         <div class="product-info">
           <div class="product-name">Foie Gras Escalope (Sliced)</div>
-          <a href="product-detail.html?p=foie-gras-escalope" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+          <a href="product-detail.html?p=foie-gras-escalope" class="view-link" aria-label="View more: Yellow Chicken">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
         </div>
       </div>
       <div class="product-card reveal" data-name="duck breast, legs, whole">
         <div class="product-icon">
-          <img src="images/products/duck.jpg" alt="Duck Breast, Legs, Whole" loading="lazy">
+          <img width="520" height="650" src="images/products/thumb/duck.webp" alt="Duck Breast, Legs, Whole" loading="lazy">
           <div class="product-overlay">
             <h3>Duck Breast, Legs, Whole</h3>
             <p>French and Hungarian Duck offers a rich, distinctive flavour and a tender texture appreciated in European and international cuisine.</p>
-            <a href="product-detail.html?p=duck" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+            <a href="product-detail.html?p=duck" class="view-link" aria-label="View more: Yellow Chicken">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
           </div>
         </div>
         <div class="product-info">
           <div class="product-name">Duck Breast, Legs, Whole</div>
-          <a href="product-detail.html?p=duck" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+          <a href="product-detail.html?p=duck" class="view-link" aria-label="View more: Yellow Chicken">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
         </div>
       </div>
       <div class="product-card reveal" data-name="corn fed baby chicken">
         <div class="product-icon">
-          <img src="images/products/corn-fed-baby-chicken.jpg" alt="Corn Fed Baby Chicken" loading="lazy">
+          <img width="520" height="520" src="images/products/thumb/corn-fed-baby-chicken.webp" alt="Corn Fed Baby Chicken" loading="lazy">
           <div class="product-overlay">
             <h3>Corn Fed Baby Chicken</h3>
             <p>Spanish Corn-Fed Baby Chicken is a premium poultry speciality characterised by its compact size, delicate flavour, and tender meat.</p>
-            <a href="product-detail.html?p=corn-fed-baby-chicken" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+            <a href="product-detail.html?p=corn-fed-baby-chicken" class="view-link" aria-label="View more: Yellow Chicken">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
           </div>
         </div>
         <div class="product-info">
           <div class="product-name">Corn Fed Baby Chicken</div>
-          <a href="product-detail.html?p=corn-fed-baby-chicken" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+          <a href="product-detail.html?p=corn-fed-baby-chicken" class="view-link" aria-label="View more: Yellow Chicken">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
         </div>
       </div>
       </div>
@@ -302,58 +308,58 @@ html,body{max-width:100%;overflow-x:hidden;}
       <div class="product-grid">
       <div class="product-card reveal" data-name="black angus (australia)">
         <div class="product-icon">
-          <img src="images/products/black-angus-australia.jpg" alt="Black Angus (Australia)" loading="lazy">
+          <img width="520" height="520" src="images/products/thumb/black-angus-australia.webp" alt="Black Angus (Australia)" loading="lazy">
           <div class="product-overlay">
             <h3>Black Angus (Australia)</h3>
             <p>Australian Black Angus Beef is valued for its excellent marbling, rich beef flavour, and naturally tender texture.</p>
-            <a href="product-detail.html?p=black-angus-australia" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+            <a href="product-detail.html?p=black-angus-australia" class="view-link" aria-label="View more: Black Angus (Australia)">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
           </div>
         </div>
         <div class="product-info">
           <div class="product-name">Black Angus (Australia)</div>
-          <a href="product-detail.html?p=black-angus-australia" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+          <a href="product-detail.html?p=black-angus-australia" class="view-link" aria-label="View more: Black Angus (Australia)">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
         </div>
       </div>
       <div class="product-card reveal" data-name="lamb">
         <div class="product-icon">
-          <img src="images/products/lamb.jpg" alt="Lamb" loading="lazy">
+          <img width="520" height="520" src="images/products/thumb/lamb.webp" alt="Lamb" loading="lazy">
           <div class="product-overlay">
             <h3>Lamb</h3>
             <p>Australian Lamb is appreciated for its tender texture, delicate flavour, and natural juiciness.</p>
-            <a href="product-detail.html?p=lamb" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+            <a href="product-detail.html?p=lamb" class="view-link" aria-label="View more: Black Angus (Australia)">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
           </div>
         </div>
         <div class="product-info">
           <div class="product-name">Lamb</div>
-          <a href="product-detail.html?p=lamb" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+          <a href="product-detail.html?p=lamb" class="view-link" aria-label="View more: Black Angus (Australia)">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
         </div>
       </div>
       <div class="product-card reveal" data-name="black angus (usa)">
         <div class="product-icon">
-          <img src="images/products/black-angus-usa.jpg" alt="Black Angus (USA)" loading="lazy">
+          <img width="520" height="520" src="images/products/thumb/black-angus-usa.webp" alt="Black Angus (USA)" loading="lazy">
           <div class="product-overlay">
             <h3>Black Angus (USA)</h3>
             <p>American Black Angus Beef is recognised for its rich beef character, attractive marbling, and succulent texture.</p>
-            <a href="product-detail.html?p=black-angus-usa" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+            <a href="product-detail.html?p=black-angus-usa" class="view-link" aria-label="View more: Black Angus (Australia)">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
           </div>
         </div>
         <div class="product-info">
           <div class="product-name">Black Angus (USA)</div>
-          <a href="product-detail.html?p=black-angus-usa" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+          <a href="product-detail.html?p=black-angus-usa" class="view-link" aria-label="View more: Black Angus (Australia)">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
         </div>
       </div>
       <div class="product-card reveal" data-name="black angus (argentina)">
         <div class="product-icon">
-          <img src="images/products/black-angus-argentina.jpg" alt="Black Angus (Argentina)" loading="lazy">
+          <img width="520" height="383" src="images/products/thumb/black-angus-argentina.webp" alt="Black Angus (Argentina)" loading="lazy">
           <div class="product-overlay">
             <h3>Black Angus (Argentina)</h3>
             <p>Argentine Black Angus Beef combines the recognised characteristics of Angus cattle with Argentina&#x27;s long-standing beef-producing tradition.</p>
-            <a href="product-detail.html?p=black-angus-argentina" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+            <a href="product-detail.html?p=black-angus-argentina" class="view-link" aria-label="View more: Black Angus (Australia)">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
           </div>
         </div>
         <div class="product-info">
           <div class="product-name">Black Angus (Argentina)</div>
-          <a href="product-detail.html?p=black-angus-argentina" class="view-link">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
+          <a href="product-detail.html?p=black-angus-argentina" class="view-link" aria-label="View more: Black Angus (Australia)">View More <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg></a>
         </div>
       </div>
       </div>
@@ -367,6 +373,7 @@ html,body{max-width:100%;overflow-x:hidden;}
   </div>
 </div>
 
+</main>
 <div id="footer-placeholder"></div>
 
 
@@ -394,7 +401,7 @@ html,body{max-width:100%;overflow-x:hidden;}
   }
   function setFilter(f){
     filter=f;
-    tabs.forEach(function(t){t.classList.toggle('active',t.dataset.filter===f);});
+    tabs.forEach(function(t){var on=t.dataset.filter===f;t.classList.toggle('active',on);t.setAttribute('aria-pressed',on);});
     apply();
   }
   tabs.forEach(function(t){t.addEventListener('click',function(){setFilter(t.dataset.filter);});});

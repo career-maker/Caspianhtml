@@ -1542,7 +1542,7 @@ textarea.form-control {
   position: relative;
   min-height: clamp(560px, 44vw, 730px);
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.15) 45%, rgba(0, 0, 0, 0.78) 100%),
-              url('../images/about-hero-fish.jpg') center 30%/cover no-repeat;
+              url('../images/about-hero-fish.webp') center 30%/cover no-repeat;
   display: flex;
   align-items: flex-end;
   padding-top: 130px;
@@ -1836,7 +1836,7 @@ textarea.form-control {
   position: relative;
   width: 100%;
   min-height: 680px;
-  background: url('../images/about-sustainability-fish.jpg') center/cover no-repeat;
+  background: url('../images/about-sustainability-fish.webp') center/cover no-repeat;
   display: flex;
   align-items: center;
   padding: clamp(50px, 6vw, 90px) 0;
