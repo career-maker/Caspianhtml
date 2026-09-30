@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const headerResponse = await fetch("header.html?v=3");
+    const headerResponse = await fetch("header.html?v=4");
     const headerHtml = await headerResponse.text();
     const headerPlaceholder = document.getElementById("header-placeholder");
     if (headerPlaceholder) {
         headerPlaceholder.innerHTML = headerHtml;
     }
 
-    const footerResponse = await fetch("footer.html?v=3");
+    const footerResponse = await fetch("footer.html?v=4");
     const footerHtml = await footerResponse.text();
     const footerPlaceholder = document.getElementById("footer-placeholder");
     if (footerPlaceholder) {
@@ -39,32 +39,20 @@ function initActiveLinks() {
 
 function initHeaderScroll() {
   var header = document.querySelector('header');
-  var hero = document.querySelector('.hero');
   if(!header) return;
-  
-  var forceSticky = true; // glass sticky header from the very top, over hero/banner too
-  if (forceSticky) {
-    header.classList.add('scrolled');
-  }
-  
+
+  // Transparent at the very top (over hero/banner); glass + sticky behaviour
+  // starts as soon as the user scrolls, not only after the hero ends.
   var lastY = window.scrollY;
   function onScroll() {
     var y = window.scrollY;
-    var threshold = hero ? hero.offsetHeight - 80 : 200;
-    
-    if (forceSticky) {
-       header.classList.add('scrolled');
-       if (y > lastY + 4 && y > 100) { header.classList.add('hide'); }
-       else if (y < lastY - 4) { header.classList.remove('hide'); }
+    if (y > 10) {
+      header.classList.add('scrolled');
+      if (y > lastY + 4 && y > 100) { header.classList.add('hide'); }
+      else if (y < lastY - 4) { header.classList.remove('hide'); }
     } else {
-      if (y > threshold) {
-        header.classList.add('scrolled');
-        if (y > lastY + 4) { header.classList.add('hide'); }
-        else if (y < lastY - 4) { header.classList.remove('hide'); }
-      } else {
-        header.classList.remove('scrolled');
-        header.classList.remove('hide');
-      }
+      header.classList.remove('scrolled');
+      header.classList.remove('hide');
     }
     lastY = y;
   }

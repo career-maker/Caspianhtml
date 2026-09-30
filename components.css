@@ -138,13 +138,3 @@ footer{background:var(--deep-teal);color:#fff;padding:clamp(2.5rem,5vw,4rem) cla
 .crumbs a:hover { color: var(--deep-teal); }
 .crumbs .sep { width: 5px; height: 5px; border-top: 1.2px solid #b5b5ad; border-right: 1.2px solid #b5b5ad; transform: rotate(45deg); }
 .crumbs .current { color: var(--charcoal); font-weight: 600; }
-
-/* Sticky glass header from the very top (hero/banner included) — no JS dependency */
-header{background:rgba(255,255,255,.68);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);box-shadow:0 4px 30px rgba(0,0,0,.06);border-bottom:1px solid rgba(0,0,0,.06);padding:clamp(.6rem,1.1vw,1rem) clamp(1.5rem,4vw,5.5rem);}
-header .logo img{height:clamp(50px,5vw,80px);}
-header nav a{color:var(--charcoal);text-shadow:none;}
-header .phone-cta{color:var(--charcoal);text-shadow:none;}
-header .phone-cta svg{stroke:var(--charcoal);}
-header .cta-btn{border-color:var(--charcoal);color:var(--charcoal);}
-header .hamburger span{background:var(--charcoal);}
-@media (max-width:600px){header{padding:.7rem 1.25rem;}}
