@@ -7,7 +7,7 @@
   <meta name="description" content="Premium Carabinero Shrimp from Spain — responsibly sourced and carefully handled to meet the highest standards of global seafood markets.">
   <link rel="icon" type="image/png" href="images/logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="components.css" rel="stylesheet">
+  <link href="components.css?v=3" rel="stylesheet">
   <style>
     :root{--deep-teal:#1E4951;--rich-gold:#D7BB51;--antique-gold:#AA8D3F;--charcoal:#171813;--cream:#FBF8F3;--gutter:clamp(1.25rem,6vw,5.5rem);}
     *{margin:0;padding:0;box-sizing:border-box;}
@@ -22,7 +22,7 @@
     @media (prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none!important;}}
 
     /* BANNER */
-    .hero{position:relative;height:clamp(260px,32vw,420px);background:linear-gradient(to top,rgba(10,15,15,.62) 0%,rgba(10,15,15,.2) 50%,rgba(0,0,0,.05) 100%),url('images/hero-seafood.jpg') center 35%/cover;display:flex;align-items:flex-end;padding:clamp(1.5rem,4vw,3.5rem) var(--gutter);color:#fff;}
+    .hero{position:relative;height:100vh;height:100dvh;background:linear-gradient(to top,rgba(10,15,15,.62) 0%,rgba(10,15,15,.2) 50%,rgba(0,0,0,.05) 100%),url('images/hero-seafood.jpg') center 35%/cover;display:flex;align-items:flex-end;padding:clamp(1.5rem,4vw,3.5rem) var(--gutter);color:#fff;}
     .hero-inner{max-width:1500px;margin:0 auto;width:100%;padding-bottom:clamp(.4rem,1.2vw,1rem);}
     .hero .hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6.5vw,4.2rem);font-weight:500;margin-bottom:.4rem;text-shadow:0 2px 12px rgba(0,0,0,.25);opacity:0;animation:heroFadeUp 1s cubic-bezier(.16,1,.3,1) .2s forwards;}
     .hero p{font-size:clamp(.8rem,1.6vw,1rem);max-width:480px;color:#fff;opacity:0;animation:heroFadeUp 1s cubic-bezier(.16,1,.3,1) .45s forwards;}
@@ -33,7 +33,8 @@
     .detail{max-width:1500px;margin:0 auto;padding:clamp(1.5rem,3vw,2.5rem) var(--gutter) clamp(3rem,6vw,5rem);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,5vw,4.5rem);align-items:start;}
 
     /* gallery */
-    .gallery{position:sticky;top:calc(clamp(60px,7vw,100px) + 1rem);}
+    .gallery{position:sticky;top:calc(clamp(60px,7vw,100px) + 1rem);display:flex;flex-direction:row;gap:12px;align-items:flex-start;}
+    .gallery-main{flex:1;min-width:0;}
     .gallery-main{position:relative;background:#fff;aspect-ratio:1.08/1;overflow:hidden;border:1px solid rgba(23,24,19,.06);}
     .gallery-main img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1),opacity .35s ease;}
     .gallery-main{cursor:zoom-in;}
@@ -42,8 +43,8 @@
     .gallery-main img.swap{opacity:0;}
     .badge{position:absolute;top:1rem;left:1rem;background:var(--deep-teal);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;padding:.45rem .8rem;}
     .badge::before{content:'';display:inline-block;width:6px;height:6px;background:var(--rich-gold);border-radius:50%;margin-right:.5rem;vertical-align:middle;}
-    .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.6rem,1.4vw,1rem);margin-top:clamp(.6rem,1.4vw,1rem);}
-    .thumb{position:relative;aspect-ratio:1.3/1;background:#fff;border:1px solid rgba(23,24,19,.08);padding:0;cursor:pointer;overflow:hidden;transition:border-color .3s ease,transform .3s ease,box-shadow .3s ease;}
+    .thumbs{order:-1;display:flex;flex-direction:column;gap:10px;flex:none;width:64px;}
+    .thumb{position:relative;width:64px;height:64px;flex:none;aspect-ratio:1/1;background:#fff;border:1px solid rgba(23,24,19,.08);padding:0;cursor:pointer;overflow:hidden;transition:border-color .3s ease,transform .3s ease,box-shadow .3s ease;}
     .thumb img{width:100%;height:100%;object-fit:cover;opacity:.75;transition:opacity .3s ease,transform .5s ease;}
     .thumb:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.08);}
     .thumb:hover img{opacity:1;transform:scale(1.05);}
@@ -128,7 +129,8 @@
     .size{min-height:auto;flex-direction:row;padding:.85rem .6rem;justify-content:center;}
     @media (max-width:900px){
       .detail{grid-template-columns:1fr;}
-      .gallery{position:static;}
+      .gallery{position:static;flex-direction:column;}
+      .thumbs{order:1;flex-direction:row;width:auto;}
     }
     @media (max-width:600px){
       .spec-row{grid-template-columns:1fr;gap:.4rem;}
@@ -230,7 +232,7 @@
 
   <div id="footer-placeholder"></div>
 
-  <script src="components.js"></script>
+  <script src="components.js?v=3"></script>
   <script src="js/products-data.js"></script>
   <script>
   (function(){
@@ -264,7 +266,6 @@
     main.src=p.image;main.alt=p.name;
     var imgs=p.images&&p.images.length?p.images:[p.image];
     var thumbsEl=document.getElementById('thumbs');
-    thumbsEl.style.gridTemplateColumns='repeat('+Math.min(Math.max(imgs.length,1),4)+',1fr)';
     thumbsEl.innerHTML=imgs.map(function(src,i){return '<button class="thumb'+(i===0?' active':'')+'" type="button" role="tab" aria-selected="'+(i===0)+'" data-src="'+esc(src)+'" aria-label="Show photo '+(i+1)+'"><img src="'+esc(src)+'" alt="'+esc(p.name)+' photo '+(i+1)+'"></button>';}).join('');
     var thumbs=thumbsEl.querySelectorAll('.thumb');
     thumbs.forEach(function(t){
