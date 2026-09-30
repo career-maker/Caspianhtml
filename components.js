@@ -42,7 +42,7 @@ function initHeaderScroll() {
   var hero = document.querySelector('.hero');
   if(!header) return;
   
-  var forceSticky = document.body.classList.contains('force-sticky-header');
+  var forceSticky = true; // glass sticky header from the very top, over hero/banner too
   if (forceSticky) {
     header.classList.add('scrolled');
   }

@@ -11,6 +11,7 @@ window.PRODUCTS=[
    "L4 Cluster"
   ],
   "image": "images/products/king-crab-leg.jpg",
+  "images": ["images/products/king-crab-leg.jpg"],
   "description": "Sourced from the cold waters of Russia and Norway, King Crab Legs are prized for their impressive size, succulent meat, and naturally sweet, delicate flavour. Their firm yet tender texture and rich taste make them a distinguished choice for premium seafood menus, luxury buffets, and fine-dining experiences. Ideal for steaming, grilling, or serving chilled, King Crab Legs bring exceptional presentation and refined seafood appeal to any culinary creation."
  },
  {
@@ -24,6 +25,7 @@ window.PRODUCTS=[
    "KG"
   ],
   "image": "images/products/lobster.jpg",
+  "images": ["images/products/lobster.jpg"],
   "description": "Harvested from the cold Atlantic waters of Canada, Canadian Lobster is valued for its distinctive sweet flavour, tender meat, and rich ocean-fresh character. With its attractive appearance and versatile culinary applications, it is a sought-after ingredient for premium restaurants, hotels, and gourmet seafood establishments. Perfect for grilling, steaming, butter-poaching, or incorporating into signature seafood dishes, Canadian Lobster delivers an elegant touch to every menu."
  },
  {
@@ -39,6 +41,7 @@ window.PRODUCTS=[
    "125g"
   ],
   "image": "images/products/beluga-caviar.jpg",
+  "images": ["images/products/beluga-caviar.jpg"],
   "description": "Beluga Caviar represents the pinnacle of gourmet indulgence, celebrated for its delicate pearls, smooth texture, and refined, buttery flavour with subtle notes of the sea. Its elegant appearance and luxurious character make it a prestigious addition to exclusive dining experiences and sophisticated culinary presentations."
  },
  {
@@ -53,6 +56,7 @@ window.PRODUCTS=[
    "3S"
   ],
   "image": "images/products/hokkaido-scallops.jpg",
+  "images": ["images/products/hokkaido-scallops.jpg"],
   "description": "From the pristine waters surrounding Hokkaido, Japan, these premium scallops are appreciated for their natural sweetness, delicate ocean flavour, and tender, succulent texture. Carefully valued in Japanese cuisine, Hokkaido Scallops offer exceptional versatility for both traditional preparations and contemporary gourmet dishes."
  },
  {
@@ -68,6 +72,7 @@ window.PRODUCTS=[
    "18/24"
   ],
   "image": "images/products/carabinero-shrimp.jpg",
+  "images": ["images/products/carabinero-shrimp.jpg"],
   "description": "Carabinero Shrimp is a prized gourmet seafood delicacy recognised for its striking deep-red shell, intense marine aroma, and remarkably rich flavour. Its distinctive character and concentrated head juices make it particularly valued in Spanish and Mediterranean gastronomy."
  },
  {
@@ -81,6 +86,7 @@ window.PRODUCTS=[
    "5-7 LB"
   ],
   "image": "images/products/black-cod.jpg",
+  "images": ["images/products/black-cod.jpg"],
   "description": "Sourced from Alaskan waters, Black Cod, also known as Sablefish, is renowned for its exceptionally rich flavour, silky texture, and naturally high oil content. Its delicate flesh remains moist and tender during cooking, making it a favourite ingredient in sophisticated seafood cuisine."
  },
  {
@@ -94,6 +100,7 @@ window.PRODUCTS=[
    "KG"
   ],
   "image": "images/products/black-angus-australia.jpg",
+  "images": ["images/products/black-angus-australia.jpg"],
   "description": "Australian Black Angus Beef is valued for its excellent marbling, rich beef flavour, and naturally tender texture. Produced in Australia's established cattle industry, it offers a distinctive balance of juiciness and depth of flavour, making it a versatile choice for premium culinary applications."
  },
  {
@@ -107,6 +114,7 @@ window.PRODUCTS=[
    "KG"
   ],
   "image": "images/products/lamb.jpg",
+  "images": ["images/products/lamb.jpg"],
   "description": "Australian Lamb is appreciated for its tender texture, delicate flavour, and natural juiciness. Raised within Australia's established lamb production industry, it offers versatility across a wide range of international cuisines, from Mediterranean specialities to contemporary fine dining."
  },
  {
@@ -120,6 +128,7 @@ window.PRODUCTS=[
    "KG"
   ],
   "image": "images/products/black-angus-usa.jpg",
+  "images": ["images/products/black-angus-usa.jpg"],
   "description": "American Black Angus Beef is recognised for its rich beef character, attractive marbling, and succulent texture. Depending on the cut and grading, it offers a range of flavour profiles and tenderness levels suited to diverse professional culinary requirements."
  },
  {
@@ -133,6 +142,7 @@ window.PRODUCTS=[
    "KG"
   ],
   "image": "images/products/black-angus-argentina.jpg",
+  "images": ["images/products/black-angus-argentina.jpg"],
   "description": "Argentine Black Angus Beef combines the recognised characteristics of Angus cattle with Argentina's long-standing beef-producing tradition. It is appreciated for its full-bodied beef flavour, appealing texture, and versatility across premium meat preparations."
  },
  {
@@ -148,6 +158,7 @@ window.PRODUCTS=[
    "Breast"
   ],
   "image": "images/products/yellow-chicken.jpg",
+  "images": ["images/products/yellow-chicken.jpg"],
   "description": "French Yellow Chicken is valued for its distinctive golden-yellow skin, delicate flavour, and tender, succulent meat. A popular choice in French gastronomy, it brings a traditional culinary character to both classic preparations and contemporary restaurant menus."
  },
  {
@@ -162,6 +173,7 @@ window.PRODUCTS=[
    "40/60gr"
   ],
   "image": "images/products/foie-gras-escalope.jpg",
+  "images": ["images/products/foie-gras-escalope.jpg"],
   "description": "Foie Gras is a distinguished gourmet delicacy celebrated for its exceptionally smooth texture, rich buttery flavour, and refined culinary character. Widely featured in French gastronomy, it is prized for its versatility in sophisticated appetisers, signature dishes, and luxury dining experiences."
  },
  {
@@ -178,6 +190,7 @@ window.PRODUCTS=[
    "Breast"
   ],
   "image": "images/products/duck.jpg",
+  "images": ["images/products/duck.jpg"],
   "description": "French and Hungarian Duck offers a rich, distinctive flavour and a tender texture appreciated in European and international cuisine. Available in multiple cuts, it provides chefs with flexibility for creating both traditional duck specialities and contemporary gourmet dishes."
  },
  {
@@ -193,6 +206,7 @@ window.PRODUCTS=[
    "Breast"
   ],
   "image": "images/products/corn-fed-baby-chicken.jpg",
+  "images": ["images/products/corn-fed-baby-chicken.jpg"],
   "description": "Spanish Corn-Fed Baby Chicken is a premium poultry speciality characterised by its compact size, delicate flavour, and tender meat. Its golden appearance and elegant individual portion size make it particularly suitable for refined restaurant presentations and premium hospitality menus."
  }
 ];
