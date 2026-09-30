@@ -8,7 +8,7 @@
 <meta name="description" content="Caspian & Sun Food Trading LLC delivers the freshest seafood, meat and poultry to global markets under hygienic conditions with strict quality control.">
 <link rel="icon" type="image/png" href="images/logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Alex+Brush&display=swap" rel="stylesheet">
-<link href="components.css?v=4" rel="stylesheet">
+<link href="components.css?v=5" rel="stylesheet">
 <style>
 :root{--deep-teal:#1E4951;--rich-gold:#D7BB51;--antique-gold:#AA8D3F;--charcoal:#171813;--cream:#FAF7F4;--gutter:clamp(1.25rem,5.2vw,6.25rem);}
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -159,16 +159,17 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 .slider{position:relative;margin-right:calc(-1 * var(--gutter));}
 .track{display:flex;gap:clamp(.8rem,1.6vw,1.6rem);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;padding:0 var(--gutter) 6px 0;-webkit-mask-image:linear-gradient(90deg,#000 0,#000 78%,rgba(0,0,0,.35) 100%);mask-image:linear-gradient(90deg,#000 0,#000 78%,rgba(0,0,0,.35) 100%);}
 .track::-webkit-scrollbar{display:none;}
-.tcard{flex:0 0 clamp(250px,19vw,365px);scroll-snap-align:start;background:#fff;border:1px solid #efe8e2;padding:clamp(1.2rem,1.9vw,1.9rem);display:flex;flex-direction:column;min-height:clamp(340px,25vw,478px);}
+.tcard{--tw:clamp(250px,19vw,365px);flex:0 0 var(--tw);scroll-snap-align:start;background:#fff;border:1px solid #efe8e2;padding:clamp(1.2rem,1.9vw,1.9rem);display:flex;flex-direction:column;min-height:clamp(340px,25vw,478px);}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 .tcard .q{width:clamp(26px,2.2vw,42px);fill:var(--deep-teal);margin-bottom:1.2rem;}
 .tcard p{font-size:clamp(.85rem,1.05vw,1rem);line-height:1.85;color:#171813;flex:1;}
 .tperson{display:flex;align-items:center;gap:.9rem;margin-top:1.4rem;}
 .tperson img{width:clamp(38px,3vw,58px);height:clamp(38px,3vw,58px);border-radius:50%;object-fit:cover;flex:none;border:2px solid #fff;box-shadow:0 0 0 1px #e5e5e5;}
 .tperson b{display:block;font-weight:500;font-size:clamp(.95rem,1.15vw,1.1rem);color:#171813;}
 .tperson span{display:block;font-size:clamp(.78rem,.95vw,.9rem);color:#171813;}
-.tcard.video{position:relative;padding:0;container-type:inline-size;background:#0e4a52 url('images/home/testi-chef.jpg') left top/100% auto no-repeat;color:#fff;border-color:transparent;overflow:hidden;}
+.tcard.video{position:relative;padding:0;background:#0e4a52 url('images/home/testi-chef.jpg') left top/100% auto no-repeat;color:#fff;border-color:transparent;overflow:hidden;}
 .tcard.video::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(14,74,82,1) 0%,rgba(14,74,82,.9) 30%,rgba(14,74,82,0) 56%);}
-.tcard.video .play-btn{top:48%;top:63.2cqw;width:26cqw;height:26cqw;background:transparent;box-shadow:none;border:none;z-index:2;}
+.tcard.video .play-btn{top:48%;top:calc(var(--tw) * .632);width:calc(var(--tw) * .26);height:calc(var(--tw) * .26);background:transparent;box-shadow:none;border:none;z-index:2;}
 .tcard.video .play-btn svg,.tcard.video .play-btn::before{display:none;}
 .tcard.video:hover{box-shadow:0 18px 40px rgba(14,74,82,.35);}
 .tcard.video .tperson{position:absolute;left:clamp(1rem,1.6vw,1.6rem);right:1rem;bottom:clamp(1rem,1.6vw,1.6rem);margin:0;z-index:1;}
@@ -269,6 +270,8 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 </style>
 </head>
 <body>
+<div id="preloader" aria-hidden="true"><div class="pl-logo"><span class="pl-ring"></span><img src="casplogo.png" alt=""></div></div>
+
 
 <div id="header-placeholder"></div>
 
@@ -337,7 +340,7 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
     </div>
   </div>
   <div class="wrap">
-    <div class="why-video reveal" data-video="videos/hero-salmon.mp4" role="button" tabindex="0" aria-label="Play video">
+    <div class="why-video reveal" data-video="videos/hero-salmon.mp4">
       <img src="images/home/why-video.jpg" alt="Fresh sea bass on ice">
       <button class="play-btn" type="button" aria-label="Play video"><svg viewBox="0 0 24 24"><path d="M6 3.5v17l14-8.5z"/></svg></button>
     </div>
@@ -404,20 +407,24 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
       <div class="slider reveal">
         <div class="track" id="track">
           <article class="tcard">
+            <h3 class="sr-only">Testimonial from John Doe</h3>
             <svg class="q" viewBox="0 0 24 24"><path d="M3 21h7l3-8V3H3v10h5zM14 21h7l3-8V3H14v10h5z" transform="scale(.96)"/></svg>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
             <div class="tperson"><img src="images/home/avatar-1.jpg" alt="John Doe"><div><b>John Doe</b><span>Le Torta Restuarant</span></div></div>
           </article>
           <article class="tcard video" data-video="videos/hero-salmon.mp4">
+            <h3 class="sr-only">Testimonial from Steve John</h3>
             <button class="play-btn" type="button" aria-label="Play testimonial video"><svg viewBox="0 0 24 24"><path d="M6 3.5v17l14-8.5z"/></svg></button>
             <div class="tperson"><img src="images/home/avatar-2.jpg" alt="Steve John"><div><b>Steve John</b><span>Senior Chef</span></div></div>
           </article>
           <article class="tcard">
+            <h3 class="sr-only">Testimonial from Rohan John</h3>
             <svg class="q" viewBox="0 0 24 24"><path d="M3 21h7l3-8V3H3v10h5zM14 21h7l3-8V3H14v10h5z" transform="scale(.96)"/></svg>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
             <div class="tperson"><img src="images/home/avatar-3.jpg" alt="Rohan John"><div><b>Rohan John</b><span>Chairman Of The Industry</span></div></div>
           </article>
           <article class="tcard">
+            <h3 class="sr-only">Testimonial from John Doe</h3>
             <svg class="q" viewBox="0 0 24 24"><path d="M3 21h7l3-8V3H3v10h5zM14 21h7l3-8V3H14v10h5z" transform="scale(.96)"/></svg>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
             <div class="tperson"><img src="images/home/avatar-1.jpg" alt="John Doe"><div><b>John Doe</b><span>Le Torta Restuarant</span></div></div>
@@ -497,7 +504,7 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
   <video id="lbVideo" controls playsinline></video>
 </div>
 
-<script src="components.js?v=4"></script>
+<script src="components.js?v=5"></script>
 <script>
 (function(){
   /* counters */

@@ -1,4 +1,33 @@
 # Block search engines and crawlers (staging / pre-launch)
+# Security headers
 <IfModule mod_headers.c>
-  Header set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet"
+  Header always set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet"
+
+  # Force HTTPS for 1 year (only honoured by browsers over HTTPS)
+  Header always set Strict-Transport-Security "max-age=31536000"
+
+  # Clickjacking protection
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Legacy XSS filter for older browsers
+  Header always set X-XSS-Protection "1; mode=block"
+
+  # Stop MIME-type sniffing
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Limit referrer information sent to other sites
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Disable browser features the site does not use
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+
+  # Isolate the browsing context
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+
+  # Content Security Policy (site uses inline scripts/styles and Google Fonts)
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
+
+  # Do not reveal server technology
+  Header unset X-Powered-By
+  Header always unset X-Powered-By
 </IfModule>

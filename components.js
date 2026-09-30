@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const headerResponse = await fetch("header.html?v=4");
+    const headerResponse = await fetch("header.html?v=5");
     const headerHtml = await headerResponse.text();
     const headerPlaceholder = document.getElementById("header-placeholder");
     if (headerPlaceholder) {
         headerPlaceholder.innerHTML = headerHtml;
     }
 
-    const footerResponse = await fetch("footer.html?v=4");
+    const footerResponse = await fetch("footer.html?v=5");
     const footerHtml = await footerResponse.text();
     const footerPlaceholder = document.getElementById("footer-placeholder");
     if (footerPlaceholder) {
@@ -108,3 +108,22 @@ function initReveal() {
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
   reveals.forEach(r => observer.observe(r));
 }
+
+// PRELOADER: logo expands and reveals the page once everything has loaded
+(function(){
+  var pl=document.getElementById('preloader');
+  if(!pl)return;
+  var root=document.documentElement,start=Date.now(),MIN=900,done=false;
+  root.classList.add('pl-lock');
+  function finish(){
+    if(done)return;done=true;
+    var wait=Math.max(0,MIN-(Date.now()-start));
+    setTimeout(function(){
+      pl.classList.add('pl-done');
+      root.classList.remove('pl-lock');
+      setTimeout(function(){if(pl.parentNode)pl.parentNode.removeChild(pl);},1400);
+    },wait);
+  }
+  if(document.readyState==='complete')finish();else window.addEventListener('load',finish);
+  setTimeout(finish,7000);
+})();
