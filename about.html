@@ -189,6 +189,52 @@ html,body{max-width:100%;overflow-x:hidden;}
 @media (max-width:600px){
   .footer-section:first-child }
 @media (max-width:768px){.hero{background:radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%), url('images/hero/extracted_5_2000x1331-sm.webp') center/cover;}}
+
+/* NEW SECTIONS: services, sourcing criteria, ordering steps, industries, why choose */
+.alt-bg{background:#F7F3EC;}
+.sec-head{text-align:center;margin-bottom:clamp(2rem,4vw,3rem);}
+.sec-intro{max-width:900px;margin:1rem auto 0;}
+.svc-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(1rem,2vw,1.6rem);}
+.svc-card{grid-column:span 2;background:#fff;padding:clamp(1.4rem,2.4vw,2rem);border:1px solid rgba(23,24,19,.06);transition:transform .4s ease,box-shadow .4s ease;}
+.svc-card:nth-child(4){grid-column:2 / span 2;}
+.svc-card:nth-child(5){grid-column:4 / span 2;}
+.svc-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,.07);}
+.svc-icon{width:54px;height:54px;border-radius:50%;background:var(--deep-teal);color:var(--rich-gold);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;}
+.svc-icon svg{width:26px;height:26px;}
+.svc-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;margin-bottom:.5rem;color:var(--charcoal);}
+.list-lead{font-weight:600;color:var(--charcoal);margin:.4rem 0 .6rem;}
+.check-list,.why-list{list-style:none;}
+.check-list{display:grid;grid-template-columns:1fr 1fr;gap:.5rem 1.5rem;margin-bottom:1.2rem;}
+.check-list li,.why-list li{display:flex;align-items:flex-start;gap:.6rem;font-size:16px;line-height:1.5;color:#3d3d38;}
+.check-list svg,.why-list svg{flex:none;width:20px;height:20px;margin-top:2px;color:var(--antique-gold);}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.6rem);counter-reset:s;}
+.step{position:relative;background:#fff;border:1px solid rgba(23,24,19,.06);padding:1.4rem 1.4rem 1.4rem 5rem;min-height:92px;display:flex;align-items:center;}
+.step-num{position:absolute;left:1.2rem;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:var(--deep-teal);color:var(--rich-gold);font-family:'Playfair Display',serif;font-weight:600;font-size:1.15rem;display:flex;align-items:center;justify-content:center;}
+.step h3{font-size:1rem;font-weight:600;line-height:1.35;color:var(--charcoal);}
+.lead-time{margin-top:clamp(1.6rem,3vw,2.4rem);background:var(--deep-teal);color:#fff;padding:clamp(1.4rem,3vw,2.2rem);border:3px solid var(--rich-gold);}
+.lead-time h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:500;margin-bottom:1rem;color:#fff;}
+.lt-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem 2rem;}
+.lt-label{display:block;font-size:.8rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:#E8E2C8;margin-bottom:.3rem;}
+.lead-time p{color:#fff;}
+.ind-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;}
+.ind-text p,.ind-clients p{margin-bottom:1rem;}
+.ind-list{list-style:none;display:flex;flex-wrap:wrap;gap:.7rem;}
+.ind-list li{background:var(--deep-teal);color:#fff;padding:.6rem 1.2rem;font-size:.9rem;font-weight:600;letter-spacing:.3px;}
+.client-chips{list-style:none;display:flex;flex-wrap:wrap;gap:.6rem;}
+.client-chips li{border:1px solid var(--rich-gold);color:var(--deep-teal);font-weight:600;font-size:.9rem;padding:.4rem 1rem;background:#fff;}
+.why-list{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem 2rem;}
+.why-list li{background:#fff;padding:1rem 1.2rem;border:1px solid rgba(23,24,19,.06);align-items:center;}
+.why-list span{font-weight:600;color:var(--charcoal);font-size:.95rem;line-height:1.4;}
+@media (max-width:1024px){
+  .svc-grid{grid-template-columns:repeat(2,1fr);}
+  .svc-card,.svc-card:nth-child(4),.svc-card:nth-child(5){grid-column:auto;}
+  .steps{grid-template-columns:repeat(2,1fr);}
+  .why-list{grid-template-columns:repeat(2,1fr);}
+  .ind-grid{grid-template-columns:1fr;}
+}
+@media (max-width:640px){
+  .svc-grid,.steps,.why-list,.check-list,.lt-grid{grid-template-columns:1fr;}
+}
 </style>
   <link rel="preload" as="image" href="images/hero/extracted_5_2000x1331.webp" fetchpriority="high" media="(min-width:769px)">
 <link rel="preload" as="image" href="images/hero/extracted_5_2000x1331-sm.webp" fetchpriority="high" media="(max-width:768px)">
@@ -234,33 +280,42 @@ html,body{max-width:100%;overflow-x:hidden;}
   </div>
 </section>
 
+<section class="alt-bg">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">What We Do</div>
+      <h2 class="section-heading section-heading--upper">OUR SERVICES</h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="13" height="9" rx="1"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></div><h3>Import, Supply and Distribution</h3><p>Import, supply and distribution to customers.</p></div>
+      <div class="svc-card reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></div><h3>International Sourcing</h3><p>International sourcing from Europe, North America, Asia, and other global markets.</p></div>
+      <div class="svc-card reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg></div><h3>Wide Product Range</h3><p>Supply of frozen, chilled, ambient, dairy, meat, seafood, bakery, beverages, and specialty food products.</p></div>
+      <div class="svc-card reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><h3>Sourcing to Requirements</h3><p>Product sourcing based on customer requirements.</p></div>
+      <div class="svc-card reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></div><h3>Procurement &amp; Supply Chain</h3><p>International procurement and supply chain management.</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="why-section">
   <div class="why-grid">
     <div class="why-img-wrap">
       <img loading="lazy" decoding="async" width="1600" height="2000" class="why-img" src="images/pdf_extracted/extracted_1_2000x2500.webp" alt="Fresh fish on blue cloth">
     </div>
     <div class="why-content">
-      <div class="eyebrow">Why Choose Us</div>
-      <h2 class="section-heading section-heading--upper">OUR INTERNATIONAL SOURCING EXPERTISE</h2>
-      <p>We work closely with trusted producers across Europe, North America, South America, Asia, Oceania, and other global regions to ensure that every product we supply meets the highest standards of quality, food safety, freshness, consistency, and value.</p>
-      <div class="feature-grid">
-        <div class="feature">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
-          <div><h3>Trusted Producers</h3><p>Suppliers selected on product quality, certifications, reliability, and production standards.</p></div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/><path d="M3 12h18"/></svg></div>
-          <div><h3>Global Network</h3><p>Sourcing from Europe, North America, South America, Asia, Oceania, and other global regions.</p></div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M12 13v8M8 17l4 4 4-4"/></svg></div>
-          <div><h3>Premium Quality</h3><p>Premium products delivered with competitive pricing and dependable supply chains.</p></div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5 5 0 0 0-7-.9l-1.8 1.7-1.8-1.8a5 5 0 0 0-7 7.2L12 20l8.8-9.2a5 5 0 0 0 0-6.2z"/><path d="M8 12l2 2 4-4"/></svg></div>
-          <div><h3>Lasting Partnerships</h3><p>Long-term partnerships built on trust, integrity, transparency, and mutual success.</p></div>
-        </div>
-      </div>
+      <div class="eyebrow">Our Strength</div>
+      <h2 class="section-heading section-heading--upper">INTERNATIONAL SOURCING EXPERTISE</h2>
+      <p>Our experienced sourcing team works directly with carefully selected manufacturers and producers worldwide to ensure that every product meets our customers' quality expectations.</p>
+      <p class="list-lead">We continuously evaluate suppliers based on:</p>
+      <ul class="check-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Product Quality</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Food Safety Standards</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Certifications</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Production Capacity</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Reliability</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Competitive Pricing</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Consistent Supply</li>
+      </ul>
+      <p>By sourcing products from multiple international markets, we are able to provide our customers with the best combination of quality, availability, and value.</p>
     </div>
   </div>
 </section>
@@ -323,6 +378,34 @@ html,body{max-width:100%;overflow-x:hidden;}
   </div>
 </section>
 
+<section class="alt-bg">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Simple &amp; Reliable</div>
+      <h2 class="section-heading section-heading--upper">HOW ORDERING WORKS</h2>
+      <p class="sec-intro">Our order fulfillment process is designed to deliver efficient, reliable, and timely service. From understanding customer requirements and verifying inventory to preparing competitive quotations, coordinating logistics, conducting quality inspections, and ensuring on-time delivery, every step is carefully managed to provide a seamless purchasing experience. We are committed to building long-term partnerships by maintaining adequate inventory, ensuring a consistent product supply, and supporting our customers' future procurement needs.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">1</div><h3>Customer Inquiry</h3></div>
+      <div class="step reveal"><div class="step-num">2</div><h3>Share Your Order Details</h3></div>
+      <div class="step reveal"><div class="step-num">3</div><h3>Inventory Availability Check</h3></div>
+      <div class="step reveal"><div class="step-num">4</div><h3>Best Quotation &amp; Product Offer</h3></div>
+      <div class="step reveal"><div class="step-num">5</div><h3>Order Confirmation</h3></div>
+      <div class="step reveal"><div class="step-num">6</div><h3>Order Preparation &amp; Logistics Arrangement</h3></div>
+      <div class="step reveal"><div class="step-num">7</div><h3>Quality Inspection</h3></div>
+      <div class="step reveal"><div class="step-num">8</div><h3>Delivery to Customer</h3></div>
+      <div class="step reveal"><div class="step-num">9</div><h3>Continuous Supply &amp; After-Sales Support</h3></div>
+    </div>
+    <div class="lead-time reveal">
+      <h3>Lead Time</h3>
+      <div class="lt-grid">
+        <div><span class="lt-label">Stock Available</span><p>Next-day delivery (subject to location and availability)</p></div>
+        <div><span class="lt-label">Urgent Requests</span><p>Same-day urgent requests may be accommodated whenever possible.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cream">
   <div class="wrap">
     <div class="goal-countries">
@@ -332,6 +415,43 @@ html,body{max-width:100%;overflow-x:hidden;}
         <ul class="country-list"><li>Spain</li><li>Russia</li><li>Morocco</li><li>Japan</li><li>China</li><li>Chile</li><li>USA</li><li>Canada</li><li>Hungary</li><li>Australia</li><li>and many other regions around the world</li></ul>
         <p>Every sourcing decision is made with one objective: To provide our customers with the highest-quality products from the countries best known for producing them.</p>
     </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="ind-grid">
+      <div class="ind-text reveal">
+        <div class="eyebrow">Who We Supply</div>
+        <h2 class="section-heading section-heading--upper">INDUSTRIES WE SERVE</h2>
+        <p>Our primary focus is supplying businesses within the HORECA and foodservice industries, including:</p>
+        <ul class="ind-list"><li>Luxury Hotels</li><li>Fine Dining Restaurants</li><li>HORECA Sectors</li></ul>
+      </div>
+      <div class="ind-clients reveal">
+        <p>We work with international restaurants and establishments, including Novikov, Scorpios, Maxx Royal Hotel, Bagatelle, Rüya, NOBU, Zuma, Mandarin Oriental, Gigi, Mondaine, and GAIA.</p>
+        <ul class="client-chips" aria-label="Customers"><li>Novikov</li><li>Scorpios</li><li>Maxx Royal Hotel</li><li>Bagatelle</li><li>Rüya</li><li>NOBU</li><li>Zuma</li><li>Mandarin Oriental</li><li>Gigi</li><li>Mondaine</li><li>GAIA</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt-bg">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Our Promise</div>
+      <h2 class="section-heading section-heading--upper">WHY CHOOSE CASPIAN &amp; SUN FOOD TRADING?</h2>
+    </div>
+    <ul class="why-list">
+      <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Strong international sourcing expertise</span></li>
+      <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Reliable global supplier network</span></li>
+      <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Premium quality products</span></li>
+      <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Competitive market pricing</span></li>
+      <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Efficient logistics coordination</span></li>
+      <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Cold chain supply management</span></li>
+      <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Products Sourced to Customer Requirements</span></li>
+      <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Long-term business partnerships</span></li>
+      <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Dedicated customer support</span></li>
+    </ul>
   </div>
 </section>
 
