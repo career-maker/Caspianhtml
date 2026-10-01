@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const headerResponse = await fetch("header.html?v=5");
+    const headerResponse = await fetch("header.html?v=6");
     const headerHtml = await headerResponse.text();
     const headerPlaceholder = document.getElementById("header-placeholder");
     if (headerPlaceholder) {

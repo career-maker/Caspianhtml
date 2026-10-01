@@ -10,7 +10,7 @@
 <meta name="description" content="Caspian &amp; Sun Food Trading is an international food trading and distribution company supplying premium seafood, meat and poultry to hotels, restaurants and retailers in Türkiye, the UAE and beyond.">
 <link rel="icon" type="image/png" href="images/logo.png">
 <link rel="preload" as="image" imagesrcset="videos/hero-salmon-poster-sm.webp 640w, videos/hero-salmon-poster.webp 1280w" imagesizes="100vw" fetchpriority="high">
-<link href="components.css?v=5" rel="stylesheet">
+<link href="components.css?v=6" rel="stylesheet">
 <style>
 :root{--deep-teal:#1E4951;--rich-gold:#D7BB51;--antique-gold:#AA8D3F;--charcoal:#171813;--cream:#FAF7F4;--gutter:clamp(1.25rem,5.2vw,6.25rem);}
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -126,14 +126,16 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 .clients p{color:#fff;margin-bottom:2rem;max-width:520px;}
 .logos{display:grid;grid-template-columns:repeat(5,1fr);}
 .logo-cell{display:flex;align-items:center;justify-content:center;padding:clamp(.4rem,1vw,1rem) clamp(.3rem,.8vw,.9rem);position:relative;}
-.logo-cell:not(:nth-child(5n))::after{content:'';position:absolute;right:0;top:12%;bottom:12%;width:1px;background:rgba(255,255,255,.1);}
-.logo-cell:nth-child(n+6){border-top:1px solid rgba(255,255,255,.1);}
+.logo-cell:not(:nth-child(5n))::after{content:'';position:absolute;right:0;top:12%;bottom:12%;width:1px;background:rgba(30,73,81,.18);}
+.logo-cell:nth-child(n+6){border-top:1px solid rgba(30,73,81,.18);}
 .logo-cell{transition:background-color .3s ease;}
-.logo-cell:hover{background:#fff;}
+/* subtle light card so dark logos stay readable before hover */
+.logo-cell:not(:empty){background:rgba(255,255,255,.85);}
+.logo-cell:not(:empty):hover{background:#fff;}
 .logo-cell img{width:auto;max-width:100%;max-height:clamp(48px,6vw,84px);height:auto;margin:0 auto;transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
 .logo-cell:hover img{transform:scale(1.06);}
-/* white-on-transparent logo: darken on the white hover card so it stays visible */
-.logo-cell--light:hover img{filter:invert(1);}
+/* La Mar file is white-on-transparent: render it black on the light card */
+.logo-cell--light img{filter:invert(1);}
 
 /* ---------- 6. PRODUCTS ---------- */
 .prod-head{text-align:center;margin-bottom:clamp(1.8rem,3.5vw,3.4rem);}
@@ -255,7 +257,7 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
   .why-head{flex-direction:column;align-items:flex-start;}
   .logos{grid-template-columns:repeat(3,1fr);}
   .logo-cell::after{display:none;}
-  .logo-cell:nth-child(n+4){border-top:1px solid rgba(255,255,255,.1);}
+  .logo-cell:nth-child(n+4){border-top:1px solid rgba(30,73,81,.18);}
   .prod-grid{grid-template-columns:repeat(2,1fr);}
   .art-grid{grid-template-columns:1fr;}
   .slider{margin-right:calc(-1 * var(--gutter));}
@@ -269,7 +271,7 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
   .why-grid:not(:hover) .why-item:nth-child(2){background:transparent;}
   .why-video{aspect-ratio:16/10;}
   .logos{grid-template-columns:repeat(2,1fr);}
-  .logo-cell:nth-child(n+3){border-top:1px solid rgba(255,255,255,.1);}
+  .logo-cell:nth-child(n+3){border-top:1px solid rgba(30,73,81,.18);}
   .pinfo{flex-direction:column;align-items:flex-start;gap:.3rem;}
   .poverlay p{display:none;}
   .counter,.counter:first-child,.counter:last-child{flex:1 1 100%;}

@@ -10,7 +10,7 @@ header.hide{transform:translateY(-100%);}
 header.scrolled{background:rgba(255,255,255,.68);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);box-shadow:0 4px 30px rgba(0,0,0,.06);border-bottom:1px solid rgba(0,0,0,.06);padding:clamp(.6rem,1.1vw,1rem) clamp(1.5rem,4vw,5.5rem);}
 .logo{display:flex;align-items:center;min-width:fit-content;}
 .logo a{display:flex;align-items:center;}
-.logo img{height:clamp(80px,8vw,140px);width:auto;transition:height .4s ease;}
+.logo img{height:clamp(96px,9.5vw,168px);width:auto;transition:height .4s ease;}
 header.scrolled .logo img{height:clamp(50px,5vw,80px);}
 nav{display:flex;gap:clamp(1.5rem,3vw,4rem);align-items:center;flex:1;justify-content:flex-start;flex-wrap:nowrap;min-width:0;}
 nav a{position:relative;font-family:'Playfair Display',serif;color:#fff;text-decoration:none;font-size:clamp(.68rem,1vw,1.05rem);font-weight:500;transition:color .35s ease;text-transform:uppercase;letter-spacing:.6px;white-space:nowrap;text-shadow:0 1px 4px rgba(0,0,0,.25);padding-bottom:4px;}
@@ -18,7 +18,9 @@ nav a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;b
 header.scrolled nav a{color:var(--charcoal);text-shadow:none;}
 nav a:hover,nav a.active{color:var(--rich-gold);}
 nav a:hover::after,nav a.active::after{width:100%;}
-.header-right{display:flex;align-items:center;gap:clamp(.6rem,1.3vw,1.8rem);justify-content:flex-end;flex:1;}
+.header-end{display:flex;align-items:center;justify-content:space-between;flex:1;min-width:0;gap:clamp(.6rem,1.5vw,1.5rem);}
+.nav-right{flex:none;margin-left:clamp(1rem,3vw,4rem);}
+.header-right{margin-left:auto;display:flex;align-items:center;gap:clamp(.6rem,1.3vw,1.8rem);justify-content:flex-end;flex:none;}
 .phone-cta{display:flex;align-items:center;gap:.4rem;color:#fff;font-size:clamp(.68rem,1vw,1.05rem);font-weight:500;white-space:nowrap;transition:color .4s ease;text-shadow:0 1px 4px rgba(0,0,0,.25);}
 .phone-cta svg{width:14px;height:14px;stroke:#fff;fill:none;transition:stroke .4s ease;flex:none;}
 header.scrolled .phone-cta{color:var(--charcoal);text-shadow:none;}
