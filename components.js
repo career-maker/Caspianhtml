@@ -172,3 +172,16 @@ function initReveal() {
   }
   if(document.readyState==='complete')setTimeout(warm,300);else window.addEventListener('load',function(){setTimeout(warm,300);});
 })();
+
+// Product cards: on touch devices the hover overlay is skipped and a tap anywhere on the card opens its detail page.
+(function(){
+  var cards=document.querySelectorAll('.pcard, .product-card');
+  if(!cards.length)return;
+  cards.forEach(function(card){
+    card.addEventListener('click',function(e){
+      if(e.target.closest('a'))return;
+      var link=card.querySelector('a[href*="product-detail"]');
+      if(link)window.location.href=link.getAttribute('href');
+    });
+  });
+})();
