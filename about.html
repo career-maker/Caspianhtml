@@ -135,7 +135,7 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 /* ≤1300px — hamburger kicks in BEFORE nav+logo+actions run out of room and wrap (decoupled from the 1024px content-stacking breakpoint below) */
 /* ≤1024px — tablet + phone: hamburger nav kicks in, two-column sections stack */
 @media (max-width:1024px){
-  .who-grid,.sustain-grid,.goal-grid{grid-template-columns:1fr;}
+  .who-grid,.goal-grid{grid-template-columns:1fr;}
   .why-grid{grid-template-columns:1fr;}
   .why-img-wrap{min-height:0;height:360px;}
   .best-section{padding:0;}
@@ -153,6 +153,8 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
   .wrap{padding:0 1.25rem;    .best-bg { height: 250px; }
   }
   .who-images{height:300px;}
+  /* mission keeps image + text side by side on tablets (no empty right column); stacks only on phones */
+  .sustain-grid{grid-template-columns:1fr;}
   .why-content,.best-card{padding-left:1.25rem;padding-right:1.25rem;}
   .feature-grid{grid-template-columns:1fr;gap:1.5rem;}
   .process-grid{grid-template-columns:1fr;row-gap:2rem;}
