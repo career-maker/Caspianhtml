@@ -81,7 +81,9 @@ img{max-width:100%;display:block;}
 .view-link{font-family:'Manrope',sans-serif;font-size:12px;color:var(--deep-teal);text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color .3s ease;}
 .view-link:hover{color:var(--charcoal);}
 .view-link svg{width:16px;height:16px;stroke:currentColor;fill:none;}
-.product-info{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;transition:opacity .3s ease;}
+.product-info{display:flex;justify-content:space-between;align-items:center;gap:clamp(1rem,1.6vw,1.6rem);padding-top:1rem;transition:opacity .3s ease;}
+.product-name{flex:1 1 auto;min-width:0;}
+.product-info .view-link{flex:none;white-space:nowrap;}
 .product-name{font-family:'Manrope',sans-serif;font-size:clamp(.9rem,1.15vw,1.1rem);font-weight:500;text-transform:uppercase;color:var(--charcoal);}
 
 
