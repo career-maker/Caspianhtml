@@ -324,6 +324,7 @@
     .btn-shop { position: relative; display: inline-block; }
     .btn-shop::after { content:''; position:absolute; bottom:-8px; right:-8px; width:100%; height:100%; border:1.5px solid var(--rich-gold); z-index:0; transition: transform .35s cubic-bezier(.34,1.56,.64,1); }
     .btn-shop:hover::after { transform: translate(4px,4px); }
+    .cta-button-alt { display: inline-block; text-decoration: none; }
     .cta-button-alt {
       position: relative;
       z-index: 1;
@@ -379,6 +380,8 @@
       header.scrolled { padding: .7rem 1.25rem; }
       .cta-btn { display: none; }
       .btn-shop, .form-submit, .cta-button-alt { width: 100%; }
+      .btn-shop { display: block; width: calc(100% - 8px); }
+      .cta-button-alt { display: block; text-align: center; text-decoration: none; }
       .map-placeholder { height: 280px; }
       .location-card {
         position: relative;
