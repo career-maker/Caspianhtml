@@ -176,12 +176,13 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 .tperson img{width:clamp(38px,3vw,58px);height:clamp(38px,3vw,58px);border-radius:50%;object-fit:cover;flex:none;border:2px solid #fff;box-shadow:0 0 0 1px #e5e5e5;}
 .tperson b{display:block;font-weight:500;font-size:clamp(.95rem,1.15vw,1.1rem);color:#171813;}
 .tperson span{display:block;font-size:clamp(.78rem,.95vw,.9rem);color:#171813;}
-.tcard.video{position:relative;padding:0;background:#0e4a52 url('images/home/testi-chef.webp') left top/100% auto no-repeat;color:#fff;border-color:transparent;overflow:hidden;}
-.tcard.video::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(14,74,82,1) 0%,rgba(14,74,82,.9) 30%,rgba(14,74,82,0) 56%);}
-.tcard.video .play-btn{top:48%;top:calc(var(--tw) * .632);width:calc(var(--tw) * .26);height:calc(var(--tw) * .26);background:transparent;box-shadow:none;border:none;z-index:2;}
+.tcard.video{--pb:calc(clamp(38px,3vw,58px) + 2 * clamp(1rem,1.6vw,1.6rem));position:relative;align-self:flex-start;min-height:0;padding:calc(var(--tw) * .9011) 0 0;background:#0e4a52 url('images/home/testi-chef.webp') left top/100% auto no-repeat;color:#fff;border-color:transparent;overflow:hidden;}
+/* teal panel starts right under the photo and is only as tall as the person block; grows only if content is added */
+.tcard.video::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,#0e4a52 0,#0e4a52 var(--pb),rgba(14,74,82,.9) calc(var(--pb) + var(--tw) * .12),rgba(14,74,82,0) calc(var(--pb) + var(--tw) * .4));}
+.tcard.video .play-btn{top:calc(var(--tw) * .45);width:calc(var(--tw) * .26);height:calc(var(--tw) * .26);background:transparent;box-shadow:none;border:none;z-index:2;}
 .tcard.video .play-btn svg,.tcard.video .play-btn::before{display:none;}
 .tcard.video:hover{box-shadow:0 18px 40px rgba(14,74,82,.35);}
-.tcard.video .tperson{position:absolute;left:clamp(1rem,1.6vw,1.6rem);right:1rem;bottom:clamp(1rem,1.6vw,1.6rem);margin:0;z-index:1;}
+.tcard.video .tperson{position:relative;margin:0;padding:clamp(1rem,1.6vw,1.6rem);z-index:1;}
 .tcard.video .tperson b,.tcard.video .tperson span{color:#fff;}
 .tcard.video .tperson img{border-color:#fff;}
 .slider-ui{display:flex;justify-content:space-between;align-items:center;margin-top:clamp(1.4rem,2.4vw,2.4rem);padding-right:var(--gutter);}
