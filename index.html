@@ -210,7 +210,14 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 .art p{font-size:clamp(.85rem,1.1vw,1rem);line-height:1.65;color:#171813;margin-bottom:.9rem;max-width:30em;}
 .acol{display:flex;flex-direction:column;}
 .acol .art + .art{border-top:1px solid #e3e3e3;margin-top:clamp(1.2rem,2vw,2rem);padding-top:clamp(1.2rem,2vw,2rem);}
-.acol .art.text-first h3{margin-top:0;}
+/* side articles: one image per column at a time; hovering the text-only card swaps the image to it (the other collapses) */
+.acol .awrap{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .5s cubic-bezier(.16,1,.3,1),opacity .4s ease;}
+.acol .art.show-img .awrap{grid-template-rows:1fr;opacity:1;}
+.acol .awrap>.aimg{min-height:0;overflow:hidden;}
+.acol .abox{position:relative;padding-top:60.74%;}
+.acol .abox img{position:absolute;inset:0;}
+.acol .art h3{margin-top:0;transition:color .3s ease,margin-top .5s cubic-bezier(.16,1,.3,1);}
+.acol .art.show-img h3{margin-top:clamp(.9rem,1.5vw,1.6rem);}
 
 /* ---------- 9. CTA ---------- */
 .cta{position:relative;min-height:clamp(320px,26.3vw,540px);background:#0e1011;color:#fff;display:flex;align-items:center;overflow:hidden;}
@@ -470,26 +477,28 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
         <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"></span></span>
       </a>
       <div class="acol">
-        <a class="art sm reveal" href="blog-detail.html?p=importance-reliable-food-sourcing">
-          <div class="aimg"><img loading="lazy" decoding="async" width="433" height="263" src="images/home/art-2.webp" alt="Understanding the Importance of Reliable Food Sourcing"></div>
+        <a class="art reveal show-img" href="blog-detail.html?p=importance-reliable-food-sourcing">
+          <div class="awrap"><div class="aimg"><div class="abox"><img loading="lazy" decoding="async" width="433" height="263" src="images/home/art-2.webp" alt="Understanding the Importance of Reliable Food Sourcing"></div></div></div>
           <h3>Understanding the Importance of Reliable Food Sourcing</h3>
           <p>Why consistent supply, verified suppliers and transparent processes matter more than ever to foodservice businesses.</p>
           <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"></span></span>
         </a>
-        <a class="art text-first reveal" href="blog-detail.html?p=origin-to-table-premium-seafood">
+        <a class="art reveal" href="blog-detail.html?p=origin-to-table-premium-seafood">
+          <div class="awrap"><div class="aimg"><div class="abox"><img loading="lazy" decoding="async" width="433" height="263" src="images/products/thumb/hokkaido-scallops.webp" alt="From Origin to Table: What Defines Premium Seafood?"></div></div></div>
           <h3>From Origin to Table: What Defines Premium Seafood?</h3>
           <p>Species, origin, handling and grading all shape the quality of premium seafood long before it reaches the plate.</p>
           <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"></span></span>
         </a>
       </div>
       <div class="acol">
-        <a class="art text-first reveal" href="blog-detail.html?p=global-seafood-trends-horeca">
+        <a class="art reveal" href="blog-detail.html?p=global-seafood-trends-horeca">
+          <div class="awrap"><div class="aimg"><div class="abox"><img loading="lazy" decoding="async" width="433" height="263" src="images/products/thumb/carabinero-shrimp.webp" alt="Global Seafood Trends Shaping the HORECA Industry"></div></div></div>
           <h3>Global Seafood Trends Shaping the HORECA Industry</h3>
           <p>From provenance storytelling to specialty species, the trends influencing how hotels, restaurants and caterers buy seafood.</p>
           <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"></span></span>
         </a>
-        <a class="art sm reveal" href="blog-detail.html?p=international-sourcing-premium-hospitality">
-          <div class="aimg"><img loading="lazy" decoding="async" width="433" height="263" src="images/home/art-3.webp" alt="How International Food Sourcing Supports Premium Hospitality"></div>
+        <a class="art reveal show-img" href="blog-detail.html?p=international-sourcing-premium-hospitality">
+          <div class="awrap"><div class="aimg"><div class="abox"><img loading="lazy" decoding="async" width="433" height="263" src="images/home/art-3.webp" alt="How International Food Sourcing Supports Premium Hospitality"></div></div></div>
           <h3>How International Food Sourcing Supports Premium Hospitality</h3>
           <p>Why luxury hospitality relies on a global network of producers to deliver the products guests expect.</p>
           <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"></span></span>
@@ -558,6 +567,19 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
       new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting)start();else stop();});},{threshold:.3}).observe(box);
     }else start();
   })();
+
+  /* blogs: in each side column hovering the text-only article shows its image and hides the other one; restores on leave */
+  document.querySelectorAll('.acol').forEach(function(col){
+    var arts=[].slice.call(col.querySelectorAll('.art'));
+    var initial=arts.map(function(a){return a.classList.contains('show-img');});
+    function restore(){arts.forEach(function(a,i){a.classList.toggle('show-img',initial[i]);});}
+    arts.forEach(function(a){
+      a.addEventListener('mouseenter',function(){arts.forEach(function(o){o.classList.toggle('show-img',o===a);});});
+      a.addEventListener('focusin',function(){arts.forEach(function(o){o.classList.toggle('show-img',o===a);});});
+    });
+    col.addEventListener('mouseleave',restore);
+    col.addEventListener('focusout',function(e){if(!col.contains(e.relatedTarget))restore();});
+  });
 
   /* testimonial slider */
   var track=document.getElementById('track'),dots=[].slice.call(document.querySelectorAll('#dots i'));
