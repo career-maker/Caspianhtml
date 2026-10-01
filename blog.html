@@ -27,8 +27,8 @@ img{max-width:100%;display:block;}
 .reveal.in-view{opacity:1;transform:translateY(0);}
 @media (prefers-reduced-motion: reduce){.reveal{opacity:1!important;transform:none!important;transition:none!important;}}
 
-/* HERO */
-display:flex;align-items:flex-end;padding:clamp(1.5rem,4vw,3.5rem) clamp(2.5rem,7vw,5.5rem);color:#fff;justify-content:flex-end;flex-direction:column;}
+/* HERO - full-viewport hero with video/poster backdrop (fixed height permitted) */
+.hero{position:relative;height:100vh;height:100dvh;display:flex;align-items:flex-end;padding:clamp(1.5rem,4vw,3.5rem) clamp(2.5rem,7vw,5.5rem);color:#fff;justify-content:flex-end;flex-direction:column;}
 .hero-inner{max-width:1400px;margin:0 auto;width:100%;text-align:left;padding:0 clamp(1.5rem,5vw,3rem);padding-bottom:clamp(2rem,4vw,3.5rem);}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6.5vw,4.2rem);font-weight:500;margin-bottom:.4rem;text-shadow:0 2px 12px rgba(0,0,0,.25);opacity:0;animation:heroFadeUp .6s cubic-bezier(.16,1,.3,1) .05s forwards;}
 .hero p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27px;max-width:480px;color:#fff;opacity:0;animation:heroFadeUp .6s cubic-bezier(.16,1,.3,1) .12s forwards;}
