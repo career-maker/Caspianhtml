@@ -551,6 +551,20 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
   }
   track.addEventListener('scroll',function(){window.requestAnimationFrame(sync);},{passive:true});
   dots.forEach(function(d,k){d.addEventListener('click',function(){track.scrollTo({left:k*step(),behavior:'smooth'});});});
+  /* auto-scroll: advance every few seconds, loop back at the end; pause while hovering/focused, touching, lightbox open or tab hidden */
+  var autoTimer=null,paused=false,body=document.querySelector('.testi-body'),lbEl=document.getElementById('lightbox');
+  var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function advance(){
+    if(paused||document.hidden||lbEl.classList.contains('open'))return;
+    var atEnd=track.scrollLeft+track.clientWidth>=track.scrollWidth-4;
+    if(atEnd)track.scrollTo({left:0,behavior:'smooth'});else track.scrollBy({left:step(),behavior:'smooth'});
+  }
+  function startAuto(){if(!reduceMotion&&!autoTimer)autoTimer=setInterval(advance,3500);}
+  function setPaused(v){return function(){paused=v;};}
+  ['mouseenter','focusin','touchstart'].forEach(function(e){body.addEventListener(e,setPaused(true),{passive:true});});
+  ['mouseleave','focusout'].forEach(function(e){body.addEventListener(e,setPaused(false));});
+  body.addEventListener('touchend',function(){setTimeout(function(){paused=false;},4000);},{passive:true});
+  startAuto();
 
   /* video lightbox */
   var lb=document.getElementById('lightbox'),lv=document.getElementById('lbVideo');
