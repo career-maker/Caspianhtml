@@ -136,7 +136,8 @@
     }
     @media (max-width:600px){
       .spec-row{grid-template-columns:1fr;gap:.4rem;}
-      .assure{grid-template-columns:1fr;gap:.9rem;}
+      .assure{grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem;align-items:start;}
+      .assure-item{flex-direction:column;align-items:center;text-align:center;gap:.5rem;font-size:.72rem;}
       .cta-row{flex-direction:column;align-items:stretch;}
       .btn-shop,.btn-shop a,.btn-outline{width:100%;justify-content:center;}
     }
