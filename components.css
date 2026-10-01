@@ -100,7 +100,7 @@ footer{background:var(--deep-teal);color:#fff;padding:clamp(2.5rem,5vw,4rem) cla
 /* MEDIA QUERIES EXTRACT */
 @media (max-width:1024px){
   nav{display:none;}
-  header .cta-left{display:none;}
+  .header-start{display:none;}
   header .cta-right{display:block;}
   .phone-cta{display:none;}
   .hamburger{display:flex;}
