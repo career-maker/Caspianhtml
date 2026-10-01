@@ -238,16 +238,14 @@ html,body{max-width:100%;overflow-x:hidden;}
 
 /* Services: water-fill hover (theme teal + gold only) */
 .svc-card{position:relative;overflow:hidden;isolation:isolate;transition:transform .4s ease,box-shadow .4s ease,border-color .4s ease;}
-.svc-fill{position:absolute;left:0;right:0;bottom:0;top:0;background:var(--deep-teal);transform:translateY(calc(100% + 20px));transition:transform .9s cubic-bezier(.45,.05,.25,1);z-index:-1;}
-.svc-fill::before{content:'';position:absolute;left:0;right:0;top:-19px;height:20px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 20' preserveAspectRatio='none'%3E%3Cpath d='M0 10 Q15 0 30 10 T60 10 T90 10 T120 10 V20 H0Z' fill='%231E4951'/%3E%3C/svg%3E") repeat-x 0 0/120px 20px;animation:svcWave 2.2s linear infinite;}
-@keyframes svcWave{to{background-position-x:-120px;}}
+.svc-fill{position:absolute;left:0;right:0;bottom:0;top:0;background:var(--deep-teal);transform:translateY(101%);transition:transform .7s cubic-bezier(.45,.05,.25,1);z-index:-1;}
 .svc-card:hover .svc-fill,.svc-card:focus-within .svc-fill{transform:translateY(0);}
 .svc-card .svc-icon,.svc-card h3,.svc-card p{position:relative;transition:color .5s ease .15s,background-color .5s ease .15s;}
 .svc-card:hover{border-color:var(--rich-gold);}
 .svc-card:hover h3{color:#fff;}
 .svc-card:hover p{color:#E8E2C8;}
 .svc-card:hover .svc-icon{background:var(--rich-gold);color:var(--deep-teal);}
-@media (prefers-reduced-motion:reduce){.svc-fill{transition:none;}.svc-fill::before{animation:none;}}
+@media (prefers-reduced-motion:reduce){.svc-fill{transition:none;}}
 
 /* Countries: flag cards */
 .goal-countries{max-width:1100px;}
@@ -263,6 +261,21 @@ html,body{max-width:100%;overflow-x:hidden;}
 .flag-more .flag-img.globe{display:flex;align-items:center;justify-content:center;background:var(--deep-teal);color:var(--rich-gold);box-shadow:none;border-radius:50%;width:48px;height:48px;}
 .flag-more .globe svg{width:26px;height:26px;}
 .flag-more .flag-name{text-transform:none;letter-spacing:0;font-weight:500;font-size:.85rem;}
+
+.flag-more{position:relative;overflow:hidden;isolation:isolate;min-height:84px;}
+.flag-more::after{content:'';position:absolute;right:-2%;top:50%;width:min(46%,420px);aspect-ratio:2023/777;transform:translateY(-50%);background:url('images/dotted-map.webp') no-repeat center/contain;opacity:.32;pointer-events:none;z-index:-1;}
+@media (max-width:520px){.flag-more::after{width:70%;right:-12%;}}
+
+/* Why choose: flat fill sweep on hover (theme teal + gold) */
+.why-list li{position:relative;overflow:hidden;isolation:isolate;transition:transform .4s ease,box-shadow .4s ease,border-color .4s ease;}
+.why-list li::before{content:'';position:absolute;inset:0;background:var(--deep-teal);transform:scaleX(0);transform-origin:left center;transition:transform .6s cubic-bezier(.45,.05,.25,1);z-index:-1;}
+.why-list li:hover{transform:translateY(-3px);border-color:var(--rich-gold);box-shadow:0 12px 26px rgba(30,73,81,.14);}
+.why-list li:hover::before{transform:scaleX(1);}
+.why-list li span{transition:color .4s ease .1s;}
+.why-list li svg{transition:color .4s ease .1s,transform .4s ease;}
+.why-list li:hover span{color:#fff;}
+.why-list li:hover svg{color:var(--rich-gold);transform:scale(1.15);}
+@media (prefers-reduced-motion:reduce){.why-list li::before{transition:none;}.why-list li{transition:none;}}
 </style>
   <link rel="preload" as="image" href="images/hero/extracted_5_2000x1331.webp" fetchpriority="high" media="(min-width:769px)">
 <link rel="preload" as="image" href="images/hero/extracted_5_2000x1331-sm.webp" fetchpriority="high" media="(max-width:768px)">
