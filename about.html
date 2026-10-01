@@ -235,6 +235,34 @@ html,body{max-width:100%;overflow-x:hidden;}
 @media (max-width:640px){
   .svc-grid,.steps,.why-list,.check-list,.lt-grid{grid-template-columns:1fr;}
 }
+
+/* Services: water-fill hover (theme teal + gold only) */
+.svc-card{position:relative;overflow:hidden;isolation:isolate;transition:transform .4s ease,box-shadow .4s ease,border-color .4s ease;}
+.svc-fill{position:absolute;left:0;right:0;bottom:0;top:0;background:var(--deep-teal);transform:translateY(calc(100% + 20px));transition:transform .9s cubic-bezier(.45,.05,.25,1);z-index:-1;}
+.svc-fill::before{content:'';position:absolute;left:0;right:0;top:-19px;height:20px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 20' preserveAspectRatio='none'%3E%3Cpath d='M0 10 Q15 0 30 10 T60 10 T90 10 T120 10 V20 H0Z' fill='%231E4951'/%3E%3C/svg%3E") repeat-x 0 0/120px 20px;animation:svcWave 2.2s linear infinite;}
+@keyframes svcWave{to{background-position-x:-120px;}}
+.svc-card:hover .svc-fill,.svc-card:focus-within .svc-fill{transform:translateY(0);}
+.svc-card .svc-icon,.svc-card h3,.svc-card p{position:relative;transition:color .5s ease .15s,background-color .5s ease .15s;}
+.svc-card:hover{border-color:var(--rich-gold);}
+.svc-card:hover h3{color:#fff;}
+.svc-card:hover p{color:#E8E2C8;}
+.svc-card:hover .svc-icon{background:var(--rich-gold);color:var(--deep-teal);}
+@media (prefers-reduced-motion:reduce){.svc-fill{transition:none;}.svc-fill::before{animation:none;}}
+
+/* Countries: flag cards */
+.goal-countries{max-width:1100px;}
+.flag-grid{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(.9rem,1.8vw,1.4rem);margin:1.6rem 0 1.8rem;}
+.flag-card{display:flex;flex-direction:column;align-items:center;gap:.7rem;padding:1.1rem .6rem 1rem;background:#fff;border:1px solid rgba(30,73,81,.12);transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;}
+.flag-card:hover{transform:translateY(-4px);border-color:var(--rich-gold);box-shadow:0 14px 30px rgba(30,73,81,.12);}
+.flag-img{display:block;width:72px;height:48px;border-radius:6px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.08),0 6px 14px rgba(0,0,0,.12);}
+.flag-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.flag-name{font-size:.82rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--deep-teal);line-height:1.35;text-align:center;}
+.flag-more{border-style:dashed;grid-column:1 / -1;flex-direction:row;justify-content:center;padding:.9rem 1rem;}
+@media (max-width:860px){.flag-grid{grid-template-columns:repeat(3,1fr);}}
+@media (max-width:520px){.flag-grid{grid-template-columns:repeat(2,1fr);}}
+.flag-more .flag-img.globe{display:flex;align-items:center;justify-content:center;background:var(--deep-teal);color:var(--rich-gold);box-shadow:none;border-radius:50%;width:48px;height:48px;}
+.flag-more .globe svg{width:26px;height:26px;}
+.flag-more .flag-name{text-transform:none;letter-spacing:0;font-weight:500;font-size:.85rem;}
 </style>
   <link rel="preload" as="image" href="images/hero/extracted_5_2000x1331.webp" fetchpriority="high" media="(min-width:769px)">
 <link rel="preload" as="image" href="images/hero/extracted_5_2000x1331-sm.webp" fetchpriority="high" media="(max-width:768px)">
@@ -287,11 +315,11 @@ html,body{max-width:100%;overflow-x:hidden;}
       <h2 class="section-heading section-heading--upper">OUR SERVICES</h2>
     </div>
     <div class="svc-grid">
-      <div class="svc-card reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="13" height="9" rx="1"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></div><h3>Import, Supply and Distribution</h3><p>Import, supply and distribution to customers.</p></div>
-      <div class="svc-card reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></div><h3>International Sourcing</h3><p>International sourcing from Europe, North America, Asia, and other global markets.</p></div>
-      <div class="svc-card reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg></div><h3>Wide Product Range</h3><p>Supply of frozen, chilled, ambient, dairy, meat, seafood, bakery, beverages, and specialty food products.</p></div>
-      <div class="svc-card reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><h3>Sourcing to Requirements</h3><p>Product sourcing based on customer requirements.</p></div>
-      <div class="svc-card reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></div><h3>Procurement &amp; Supply Chain</h3><p>International procurement and supply chain management.</p></div>
+      <div class="svc-card reveal"><span class="svc-fill" aria-hidden="true"></span><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="13" height="9" rx="1"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></div><h3>Import, Supply and Distribution</h3><p>Import, supply and distribution to customers.</p></div>
+      <div class="svc-card reveal"><span class="svc-fill" aria-hidden="true"></span><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></div><h3>International Sourcing</h3><p>International sourcing from Europe, North America, Asia, and other global markets.</p></div>
+      <div class="svc-card reveal"><span class="svc-fill" aria-hidden="true"></span><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg></div><h3>Wide Product Range</h3><p>Supply of frozen, chilled, ambient, dairy, meat, seafood, bakery, beverages, and specialty food products.</p></div>
+      <div class="svc-card reveal"><span class="svc-fill" aria-hidden="true"></span><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><h3>Sourcing to Requirements</h3><p>Product sourcing based on customer requirements.</p></div>
+      <div class="svc-card reveal"><span class="svc-fill" aria-hidden="true"></span><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></div><h3>Procurement &amp; Supply Chain</h3><p>International procurement and supply chain management.</p></div>
     </div>
   </div>
 </section>
@@ -412,7 +440,7 @@ html,body{max-width:100%;overflow-x:hidden;}
         <div class="eyebrow">Global Sourcing</div>
         <h2 class="section-heading section-heading--upper">COUNTRIES WE SOURCE FROM</h2>
         <p>Our international sourcing network includes trusted suppliers from:</p>
-        <ul class="country-list"><li>Spain</li><li>Russia</li><li>Morocco</li><li>Japan</li><li>China</li><li>Chile</li><li>USA</li><li>Canada</li><li>Hungary</li><li>Australia</li><li>and many other regions around the world</li></ul>
+        <ul class="flag-grid"><li class="flag-card"><span class="flag-img"><img src="images/flags/spain.svg" width="72" height="48" alt="" loading="lazy" decoding="async"></span><span class="flag-name">Spain</span></li><li class="flag-card"><span class="flag-img"><img src="images/flags/russia.svg" width="72" height="48" alt="" loading="lazy" decoding="async"></span><span class="flag-name">Russia</span></li><li class="flag-card"><span class="flag-img"><img src="images/flags/morocco.svg" width="72" height="48" alt="" loading="lazy" decoding="async"></span><span class="flag-name">Morocco</span></li><li class="flag-card"><span class="flag-img"><img src="images/flags/japan.svg" width="72" height="48" alt="" loading="lazy" decoding="async"></span><span class="flag-name">Japan</span></li><li class="flag-card"><span class="flag-img"><img src="images/flags/china.svg" width="72" height="48" alt="" loading="lazy" decoding="async"></span><span class="flag-name">China</span></li><li class="flag-card"><span class="flag-img"><img src="images/flags/chile.svg" width="72" height="48" alt="" loading="lazy" decoding="async"></span><span class="flag-name">Chile</span></li><li class="flag-card"><span class="flag-img"><img src="images/flags/usa.svg" width="72" height="48" alt="" loading="lazy" decoding="async"></span><span class="flag-name">USA</span></li><li class="flag-card"><span class="flag-img"><img src="images/flags/canada.svg" width="72" height="48" alt="" loading="lazy" decoding="async"></span><span class="flag-name">Canada</span></li><li class="flag-card"><span class="flag-img"><img src="images/flags/hungary.svg" width="72" height="48" alt="" loading="lazy" decoding="async"></span><span class="flag-name">Hungary</span></li><li class="flag-card"><span class="flag-img"><img src="images/flags/australia.svg" width="72" height="48" alt="" loading="lazy" decoding="async"></span><span class="flag-name">Australia</span></li><li class="flag-card flag-more"><span class="flag-img globe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></span><span class="flag-name">and many other regions around the world</span></li></ul>
         <p>Every sourcing decision is made with one objective: To provide our customers with the highest-quality products from the countries best known for producing them.</p>
     </div>
   </div>
