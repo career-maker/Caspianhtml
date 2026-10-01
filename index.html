@@ -132,6 +132,8 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 .logo-cell:hover{background:#fff;}
 .logo-cell img{width:auto;max-width:100%;max-height:clamp(48px,6vw,84px);height:auto;margin:0 auto;transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
 .logo-cell:hover img{transform:scale(1.06);}
+/* white-on-transparent logo: darken on the white hover card so it stays visible */
+.logo-cell--light:hover img{filter:invert(1);}
 
 /* ---------- 6. PRODUCTS ---------- */
 .prod-head{text-align:center;margin-bottom:clamp(1.8rem,3.5vw,3.4rem);}
@@ -363,15 +365,14 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
     </div>
     <div class="logos reveal">
       <div class="logo-cell"><img loading="lazy" decoding="async" width="131" height="47" src="images/home/partner-1.png" alt="Partner logo 1"></div>
-      <div class="logo-cell"><img loading="lazy" decoding="async" width="65" height="69" src="images/home/partner-2.png" alt="Partner logo 2"></div>
+      <div class="logo-cell"><img loading="lazy" decoding="async" width="286" height="300" src="images/home/partner-2.png" alt="Maido by Mitsuharu"></div>
       <div class="logo-cell"><img loading="lazy" decoding="async" width="94" height="74" src="images/home/partner-3.png" alt="Partner logo 3"></div>
-      <div class="logo-cell"><img loading="lazy" decoding="async" width="97" height="58" src="images/home/partner-4.png" alt="Partner logo 4"></div>
+      <div class="logo-cell logo-cell--light"><img loading="lazy" decoding="async" width="330" height="197" src="images/home/partner-4.png" alt="La Mar"></div>
       <div class="logo-cell"><img loading="lazy" decoding="async" width="83" height="83" src="images/home/partner-5.png" alt="Partner logo 5"></div>
       <div class="logo-cell"><img loading="lazy" decoding="async" width="114" height="60" src="images/home/partner-6.png" alt="Partner logo 6"></div>
       <div class="logo-cell"><img loading="lazy" decoding="async" width="160" height="63" src="images/home/partner-7.png" alt="Partner logo 7"></div>
       <div class="logo-cell"><img loading="lazy" decoding="async" width="111" height="84" src="images/home/partner-8.png" alt="Partner logo 8"></div>
       <div class="logo-cell"><img loading="lazy" decoding="async" width="89" height="89" src="images/home/partner-9.png" alt="Partner logo 9"></div>
-      <div class="logo-cell"><img loading="lazy" decoding="async" width="114" height="54" src="images/home/partner-10.png" alt="Partner logo 10"></div>
     </div>
   </div>
 </section>
@@ -456,35 +457,35 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
       <h2 class="section-heading">Recent Articles</h2>
     </div>
     <div class="art-grid">
-      <a class="art big reveal" href="blog-detail.html">
-        <div class="aimg"><img loading="lazy" decoding="async" width="706" height="512" src="images/home/art-1.webp" alt="Fish and pomegranate on a wooden board"></div>
-        <h3>Why Seafood is the Future of Healthy Eating</h3>
-        <p>Seafood has always been recognized as one of the most nutritious foods available.</p>
+      <a class="art big reveal" href="blog-detail.html?p=rising-demand-premium-seafood">
+        <div class="aimg"><img loading="lazy" decoding="async" width="706" height="512" src="images/home/art-1.webp" alt="The Rising Demand for Premium Seafood in Global Markets"></div>
+        <h3>The Rising Demand for Premium Seafood in Global Markets</h3>
+        <p>Hotels, restaurants and retailers worldwide are placing greater value on quality, provenance and consistency in seafood.</p>
         <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"></span></span>
       </a>
       <div class="acol">
-        <a class="art sm reveal" href="blog-detail.html">
-          <div class="aimg"><img loading="lazy" decoding="async" width="433" height="263" src="images/home/art-2.webp" alt="Salmon steaks on a wooden board"></div>
-          <h3>Sauces: The Secret to Culinary Harmony</h3>
-          <p>Behind every memorable dish is often a sauce that ties the ingredients together.</p>
+        <a class="art sm reveal" href="blog-detail.html?p=importance-reliable-food-sourcing">
+          <div class="aimg"><img loading="lazy" decoding="async" width="433" height="263" src="images/home/art-2.webp" alt="Understanding the Importance of Reliable Food Sourcing"></div>
+          <h3>Understanding the Importance of Reliable Food Sourcing</h3>
+          <p>Why consistent supply, verified suppliers and transparent processes matter more than ever to foodservice businesses.</p>
           <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"></span></span>
         </a>
-        <a class="art text-first reveal" href="blog-detail.html">
-          <h3>Sauces: The Secret to Culinary Harmony</h3>
-          <p>Behind every memorable dish is often a sauce that ties the ingredients together.</p>
+        <a class="art text-first reveal" href="blog-detail.html?p=origin-to-table-premium-seafood">
+          <h3>From Origin to Table: What Defines Premium Seafood?</h3>
+          <p>Species, origin, handling and grading all shape the quality of premium seafood long before it reaches the plate.</p>
           <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"></span></span>
         </a>
       </div>
       <div class="acol">
-        <a class="art text-first reveal" href="blog-detail.html">
-          <h3>Sauces: The Secret to Culinary Harmony</h3>
-          <p>Behind every memorable dish is often a sauce that ties the ingredients together.</p>
+        <a class="art text-first reveal" href="blog-detail.html?p=global-seafood-trends-horeca">
+          <h3>Global Seafood Trends Shaping the HORECA Industry</h3>
+          <p>From provenance storytelling to specialty species, the trends influencing how hotels, restaurants and caterers buy seafood.</p>
           <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"></span></span>
         </a>
-        <a class="art sm reveal" href="blog-detail.html">
-          <div class="aimg"><img loading="lazy" decoding="async" width="433" height="263" src="images/home/art-3.webp" alt="Mussels in a dark bowl"></div>
-          <h3>The Art of Preserving the Ocean's Bounty</h3>
-          <p>Behind every memorable dish is often a sauce that ties the ingredients together.</p>
+        <a class="art sm reveal" href="blog-detail.html?p=international-sourcing-premium-hospitality">
+          <div class="aimg"><img loading="lazy" decoding="async" width="433" height="263" src="images/home/art-3.webp" alt="How International Food Sourcing Supports Premium Hospitality"></div>
+          <h3>How International Food Sourcing Supports Premium Hospitality</h3>
+          <p>Why luxury hospitality relies on a global network of producers to deliver the products guests expect.</p>
           <span class="view-more">View More <span class="vm-dash"></span><span class="vm-circle"></span></span>
         </a>
       </div>
