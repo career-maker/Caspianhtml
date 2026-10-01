@@ -162,3 +162,13 @@ function initReveal() {
   var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('bg-on');io.unobserve(x.target);}});},{rootMargin:'600px 0px'});
   els.forEach(function(e){io.observe(e);});
 })();
+
+// Warm lazy images: once the page has loaded, fetch the remaining lazy images in the background
+// so they are ready before the visitor scrolls to them (does not compete with the hero/LCP).
+(function(){
+  function warm(){
+    var run=function(){document.querySelectorAll('img[loading="lazy"]').forEach(function(i){i.loading='eager';});};
+    if('requestIdleCallback' in window)requestIdleCallback(run,{timeout:2500});else setTimeout(run,800);
+  }
+  if(document.readyState==='complete')setTimeout(warm,300);else window.addEventListener('load',function(){setTimeout(warm,300);});
+})();

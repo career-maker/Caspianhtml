@@ -276,6 +276,34 @@ html,body{max-width:100%;overflow-x:hidden;}
 .why-list li:hover span{color:#fff;}
 .why-list li:hover svg{color:var(--rich-gold);transform:scale(1.15);}
 @media (prefers-reduced-motion:reduce){.why-list li::before{transition:none;}.why-list li{transition:none;}}
+
+/* Lead time: refined panel with watermarks */
+.lead-time{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(135deg,#1E4951 0%,#163A41 100%);}
+.lead-time::before{content:'';position:absolute;right:-60px;bottom:-70px;width:340px;height:340px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='.5' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='10.5'/%3E%3Ccircle cx='12' cy='12' r='9.4' stroke-dasharray='.2 1.1'/%3E%3Cpath d='M12 5.5V12l4.2 2.4'/%3E%3Cpath d='M12 2v1.6M12 20.4V22M2 12h1.6M20.4 12H22'/%3E%3C/svg%3E") no-repeat center/contain;opacity:.1;z-index:-1;pointer-events:none;}
+.lead-time::after{content:'';position:absolute;left:-90px;top:-90px;width:260px;height:260px;border-radius:50%;border:1px solid rgba(215,187,81,.25);box-shadow:0 0 0 28px rgba(215,187,81,.06),0 0 0 56px rgba(215,187,81,.04);z-index:-1;pointer-events:none;}
+.lt-wm{position:absolute;right:clamp(1rem,8vw,6rem);top:50%;width:min(36%,420px);aspect-ratio:2023/777;transform:translateY(-50%);background:url('images/dotted-map.webp') no-repeat center/contain;filter:brightness(0) invert(1);opacity:.07;z-index:-1;pointer-events:none;}
+.lt-head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.3rem;}
+.lt-icon{width:46px;height:46px;border-radius:50%;background:var(--rich-gold);color:var(--deep-teal);display:flex;align-items:center;justify-content:center;flex:none;}
+.lt-icon svg{width:24px;height:24px;}
+.lead-time h3{margin:0;}
+.lt-grid{position:relative;gap:1.2rem;}
+.lt-item{display:flex;gap:1rem;align-items:flex-start;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-left:3px solid var(--rich-gold);padding:1.1rem 1.3rem;backdrop-filter:blur(2px);transition:background .35s ease,transform .35s ease;}
+.lt-item:hover{background:rgba(255,255,255,.12);transform:translateY(-3px);}
+.lt-ico{flex:none;width:40px;height:40px;border-radius:10px;background:rgba(215,187,81,.16);color:var(--rich-gold);display:flex;align-items:center;justify-content:center;}
+.lt-ico svg{width:22px;height:22px;}
+.lt-item p{margin:0;line-height:1.55;}
+@media (max-width:640px){.lt-wm{width:70%;right:-10%;}}
+
+/* How ordering works: flat fill hover (theme teal + gold) */
+.step{overflow:hidden;isolation:isolate;transition:transform .4s ease,box-shadow .4s ease,border-color .4s ease;}
+.step::before{content:'';position:absolute;inset:0;background:var(--deep-teal);transform:translateY(101%);transition:transform .6s cubic-bezier(.45,.05,.25,1);z-index:-1;}
+.step:hover{transform:translateY(-4px);border-color:var(--rich-gold);box-shadow:0 14px 30px rgba(30,73,81,.14);}
+.step:hover::before{transform:translateY(0);}
+.step h3{transition:color .4s ease .1s;}
+.step:hover h3{color:#fff;}
+.step-num{transition:background-color .4s ease .1s,color .4s ease .1s,transform .4s ease;}
+.step:hover .step-num{background:var(--rich-gold);color:var(--deep-teal);transform:translateY(-50%) scale(1.08);}
+@media (prefers-reduced-motion:reduce){.step,.step::before{transition:none;}}
 </style>
   <link rel="preload" as="image" href="images/hero/extracted_5_2000x1331.webp" fetchpriority="high" media="(min-width:769px)">
 <link rel="preload" as="image" href="images/hero/extracted_5_2000x1331-sm.webp" fetchpriority="high" media="(max-width:768px)">
@@ -314,8 +342,8 @@ html,body{max-width:100%;overflow-x:hidden;}
         <p>Today, with our headquarters in Istanbul, Türkiye, and expanding operations in Dubai, UAE, we connect world-class food manufacturers with businesses throughout the Middle East and international markets.</p>
       </div>
       <div class="who-images">
-        <img loading="lazy" decoding="async" width="1600" height="1190" class="who-img-back" src="images/pdf_extracted/extracted_6_2000x1488.webp" alt="Fresh seafood selection">
-        <img loading="lazy" decoding="async" width="1600" height="2852" class="who-img-front" src="images/pdf_extracted/extracted_3_2208x3936.webp" alt="Premium fish and caviar">
+        <img loading="lazy" width="900" height="669" decoding="async" class="who-img-back" src="images/pdf_extracted/extracted_6_2000x1488-about.webp" alt="Fresh seafood selection">
+        <img loading="lazy" width="640" height="1140" decoding="async" class="who-img-front" src="images/pdf_extracted/extracted_3_2208x3936-about.webp" alt="Premium fish and caviar">
       </div>
     </div>
   </div>
@@ -340,7 +368,7 @@ html,body{max-width:100%;overflow-x:hidden;}
 <section class="why-section">
   <div class="why-grid">
     <div class="why-img-wrap">
-      <img loading="lazy" decoding="async" width="1600" height="2000" class="why-img" src="images/pdf_extracted/extracted_1_2000x2500.webp" alt="Fresh fish on blue cloth">
+      <img loading="lazy" width="1000" height="1250" decoding="async" class="why-img" src="images/pdf_extracted/extracted_1_2000x2500-about.webp" alt="Fresh fish on blue cloth">
     </div>
     <div class="why-content">
       <div class="eyebrow">Our Strength</div>
@@ -386,7 +414,7 @@ html,body{max-width:100%;overflow-x:hidden;}
 </section>
 
 <section class="best-section">
-  <img loading="lazy" decoding="async" width="1600" height="1199" class="best-bg" src="images/pdf_extracted/extracted_4_2000x1499.webp" alt="Fresh fish on ice">
+  <img loading="lazy" width="1400" height="1049" decoding="async" class="best-bg" src="images/pdf_extracted/extracted_4_2000x1499-about.webp" alt="Fresh fish on ice">
   <div class="best-card">
     <div class="eyebrow">Mission &amp; Vision</div>
     <h2 class="section-heading section-heading--upper">OUR VISION</h2>
@@ -397,7 +425,7 @@ html,body{max-width:100%;overflow-x:hidden;}
 <section>
   <div class="wrap">
     <div class="sustain-grid">
-      <img loading="lazy" decoding="async" width="1600" height="900" class="sustain-img" src="images/pdf_extracted/extracted_8_1920x1080.webp" alt="Underwater ocean scene">
+      <img loading="lazy" decoding="async" width="900" height="506" class="sustain-img" src="images/pdf_extracted/extracted_8_1920x1080-about.webp" alt="Underwater ocean scene">
       <div class="sustain-content">
         <div class="eyebrow">Mission &amp; Vision</div>
         <h2 class="section-heading section-heading--upper">OUR MISSION</h2>
@@ -438,10 +466,11 @@ html,body{max-width:100%;overflow-x:hidden;}
       <div class="step reveal"><div class="step-num">9</div><h3>Continuous Supply &amp; After-Sales Support</h3></div>
     </div>
     <div class="lead-time reveal">
-      <h3>Lead Time</h3>
+      <span class="lt-wm" aria-hidden="true"></span>
+      <div class="lt-head"><span class="lt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></span><h3>Lead Time</h3></div>
       <div class="lt-grid">
-        <div><span class="lt-label">Stock Available</span><p>Next-day delivery (subject to location and availability)</p></div>
-        <div><span class="lt-label">Urgent Requests</span><p>Same-day urgent requests may be accommodated whenever possible.</p></div>
+        <div class="lt-item"><span class="lt-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8.5 15l2.5 2.5L15.5 13"/></svg></span><div><span class="lt-label">Stock Available</span><p>Next-day delivery (subject to location and availability)</p></div></div>
+        <div class="lt-item"><span class="lt-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5H11L10 22l8.5-11.5H12z"/></svg></span><div><span class="lt-label">Urgent Requests</span><p>Same-day urgent requests may be accommodated whenever possible.</p></div></div>
       </div>
     </div>
   </div>
