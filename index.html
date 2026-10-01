@@ -131,9 +131,9 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 .logo-cell{transition:background-color .3s ease;}
 /* subtle light card so dark logos stay readable before hover */
 .logo-cell:not(:empty){background:rgba(255,255,255,.6);}
-.logo-cell:not(:empty):hover{background:#fff;}
+.logo-cell:not(:empty):hover,.logo-cell.is-active{background:#fff;}
 .logo-cell img{width:auto;max-width:100%;max-height:clamp(48px,6vw,84px);height:auto;margin:0 auto;transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
-.logo-cell:hover img{transform:scale(1.06);}
+.logo-cell:hover img,.logo-cell.is-active img{transform:scale(1.06);}
 /* La Mar file is white-on-transparent: render it black on the light card */
 .logo-cell--light img{filter:invert(1);}
 
@@ -538,6 +538,26 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target);}});},{threshold:.6});
     counters.forEach(function(c){c.textContent='0'+(c.dataset.suffix||'');io.observe(c);});
   }
+
+  /* clients: highlight each logo in turn (1s apart); real hover takes over and pauses the cycle */
+  (function(){
+    var box=document.querySelector('.logos');if(!box)return;
+    var cells=[].slice.call(box.querySelectorAll('.logo-cell')).filter(function(c){return c.children.length;});
+    if(!cells.length||(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches))return;
+    var i=-1,timer=null,hovering=false,visible=false;
+    function clear(){cells.forEach(function(c){c.classList.remove('is-active');});}
+    function tick(){
+      if(hovering||document.hidden)return;
+      clear();i=(i+1)%cells.length;cells[i].classList.add('is-active');
+    }
+    function start(){if(!timer){tick();timer=setInterval(tick,1000);}}
+    function stop(){clearInterval(timer);timer=null;clear();}
+    box.addEventListener('mouseenter',function(){hovering=true;clear();});
+    box.addEventListener('mouseleave',function(){hovering=false;});
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting)start();else stop();});},{threshold:.3}).observe(box);
+    }else start();
+  })();
 
   /* testimonial slider */
   var track=document.getElementById('track'),dots=[].slice.call(document.querySelectorAll('#dots i'));
